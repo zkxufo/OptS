@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 import math
-
+import numpy as np
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def get_zigzag():
@@ -139,3 +139,10 @@ def deblockify(blocks: torch.Tensor, size) -> torch.Tensor:
     blocks = blocks[:,:,:size[0],:size[1]]
     return blocks
 
+def load_3x3_weight(model_name = "Alexnet"):
+    rt_arr = np.zeros((3,3))
+    seq_weight = np.genfromtxt("color_conv_W/"+model_name+"_W_OPT.txt")
+    for i in range(3):
+        for j in range(3):
+            rt_arr[i, j] = seq_weight[i*3+j]
+    return torch.Tensor(rt_arr)

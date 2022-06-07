@@ -1,0 +1,1 @@
+python3 Optimal.py -model VGG11 -Batch_size 100 -Nexample 10000

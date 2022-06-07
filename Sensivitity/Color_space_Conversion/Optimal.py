@@ -55,9 +55,9 @@ def main(model = 'alexnet', Batch_size = 100, Nexample= 10000):
     print(" ")
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='model,  ')
-    parser.add_argument('-model',type=str, help='your name, enter it')
-    parser.add_argument('-Batch_size', type=int,help='your name, enter it')
-    parser.add_argument('-Nexample',type=int, help='your name, enter it')
+    parser = argparse.ArgumentParser(description='model, Batch_size, Nexample')
+    parser.add_argument('-model',type=str, default='alexnet', help='DNN model')
+    parser.add_argument('-Batch_size', type=int, default=100,help='Number of examples in one batch')
+    parser.add_argument('-Nexample',type=int, default=10000, help='Number of example')
     args = parser.parse_args()
     main(**vars(args))
