@@ -1,0 +1,1 @@
+python3 ChannelSen.py -model Alexnet -Batch_size 100 -Nexample 10000

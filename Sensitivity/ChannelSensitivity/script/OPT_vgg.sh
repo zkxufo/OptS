@@ -1,0 +1,1 @@
+python3 ChannelSen.py -model VGG11 -Batch_size 100 -Nexample 10000

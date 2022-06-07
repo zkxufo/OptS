@@ -70,9 +70,9 @@ for dt in tqdm.tqdm(test_loader):
     # plt.show()
     compressed_img, bit_rate = SDQ.__call__(data, "NoModel", J, a, b,
                                             QF_Y, QF_C, Beta_S, Lmbd, eps)
-#     break
-# plt.imshow(compressed_img.transpose(1,2,0)/255.)#red
-# plt.show()
+    break
+plt.imshow(compressed_img.transpose(1,2,0)/255.)#red
+plt.show()
 # plt.imshow(data[0]/255.)#red
 # plt.show()
 # plt.imshow(data[1]/255.)#green
