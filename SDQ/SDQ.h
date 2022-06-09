@@ -62,18 +62,21 @@ void SDQ::norm(map<int, double> & P){
     // cout<<"total: "<<total<<endl;
     for(map<int, double>::iterator it = P.begin(); it != P.end(); ++it){
         KEY = it->first;
-        P[KEY] = P[KEY]/total;
+        if(KEY!=TOTAL_KEY){
+            P[KEY] = P[KEY]/total;
+        }
     }
 }
-
 
 void SDQ::cal_ent(map<int, double> & P){
     //tested
     int R,S;
+    int KEY;
     for(map<int, double>::iterator it = P.begin(); it != P.end(); ++it){
-        if(it->first!=TOTAL_KEY){
-            hash2rs(it->first, R, S);
-            it->second = (-log2(it->second)+ 1.0*S);
+        KEY = it->first;
+        if(KEY!=TOTAL_KEY){
+            hash2rs(KEY, R, S);
+            P[KEY] = (-log2(P[KEY])+ 1.0*S);
         }
     }
 }

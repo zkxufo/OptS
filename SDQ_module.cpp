@@ -48,7 +48,6 @@ namespace py = pybind11;
 // wrap C++ function with NumPy array IO
 std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style | py::array::forcecast> array,
                      string Model, int J, int a, int b, int QF_Y, int QF_C, double Beta, double Lmbd, double eps){
-  //cout<<"shape: "<<J<<" "<<a<<" "<<b<<" "<<Model<<std::endl;
   unsigned long size[2];
   size[0] = (unsigned long)array.shape()[1];
   size[1] = (unsigned long)array.shape()[2];
