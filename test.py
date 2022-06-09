@@ -20,13 +20,13 @@ test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffl
 J = 4
 a = 4
 b = 4
-QF_Y = 50
-QF_C = 50
+QF_Y = 75
+QF_C = 75
 Beta_S = 1
 Beta_W = 1
 Beta_X = 1
-Lmbd = 10
-eps = 0.01
+Lmbd = 0.0000000001
+eps = 10
 corr_counts = 0
 total_counts = 0
 # data = np.array(Image.open(r"./sample/lena3.tif")).transpose(2,0,1)

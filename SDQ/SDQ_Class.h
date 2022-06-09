@@ -122,7 +122,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
                 seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                 seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-    for(i=0;i<3;++i){
+    for(i=0;i<5;++i){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
@@ -130,7 +130,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
         // std::cout<<SDQ::Loss<<std::endl;
     }
     EntPSY = SDQ::Block.state.ent;
-    for(i=0;i<3;++i){
+    for(i=0;i<5;++i){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,

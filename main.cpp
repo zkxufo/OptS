@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
     <<"QF_C:  "<<QF_C<<std::endl
     <<"eps: "<<eps<<std::endl<<std::flush;
   }
-  cv::Mat image; 
+  cv::Mat image;
   image = cv::imread(IM_PATH);
   if(! image.data){
         std::cout <<  "Could not open or find the image" << std::endl ;
@@ -110,7 +110,6 @@ int main(int argc, char* argv[]) {
   // string IM_PATH_str = IM_PATH;
   // cout<<"./crp_lena/"+IM_PATH_str<<endl;
   // string encoded_filename = "./crp_lena/"+IM_PATH_str;
-
   // jpeg_decoder test(IM_PATH_str);
   // jpeg_encoder enc(&test, encoded_filename, QF_Y);
   // enc.copy_sdq(Vect_img, sdq.Q_table_Y, sdq.Q_table_C);
