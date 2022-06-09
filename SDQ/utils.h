@@ -39,7 +39,7 @@ int argmin(double J_lst[63]){
     int idx=0;
     int i;
     double min_ent = J_lst[0];
-    for(i=0; i<63;++i){
+    for(i=0; i<63; i++){
         if (J_lst[i]<min_ent){
             min_ent = J_lst[i];
             idx = i;
@@ -76,7 +76,7 @@ int size_group(double num, const int MAX_val=10, const int MIN_val = 0){
 void cumsum(double C[64], double CumC[64], double Sen_Map[64]){
     CumC[0] = 0;
     int i;
-    for(i=1; i<64; ++i){
+    for(i=1; i<64; i++){
         CumC[i] = CumC[i-1]+Sen_Map[i]*pow(C[i], 2);
     }
 }
@@ -114,7 +114,7 @@ double MSE3C(vector<vector<vector<double>>>img1,
     int nrows = img1[0].size();
     int ncols = img1[0][0].size();
     for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols;j++){
+        for(int j=0; j<ncols; j++){
             m += pow(img1[0][j][i]-img2[0][j][i], 2);
             m += pow(img1[1][j][i]-img2[1][j][i], 2);
             m += pow(img1[2][j][i]-img2[2][j][i], 2);
@@ -137,7 +137,7 @@ double MSEY(vector<vector<vector<double>>> img1,
     int nrows = img1[0].size();
     int ncols = img1[0][0].size();
     for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols;j++){
+        for(int j=0; j<ncols; j++){
             Y1 = 0.299*img1[0][i][j] + 0.587*img1[1][i][j] + 0.114*img1[2][i][j];
             Y2 = 0.299*img2[0][i][j] + 0.587*img2[1][i][j] + 0.114*img2[2][i][j];
             m += pow((Y1-Y2), 2);

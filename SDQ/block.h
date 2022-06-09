@@ -53,7 +53,7 @@ void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
     int i;
     BLOCK::eps = eps;
     std::fill_n(BLOCK::state.cost,64,0);
-    for(i=0;i<64;++i){
+    for(i=0; i<64; i++){
         BLOCK::Sen_Map[0][i] = Beta_S*Sen_Map[0][i];
         BLOCK::Sen_Map[1][i] = Beta_W*Sen_Map[1][i];
         BLOCK::Sen_Map[2][i] = Beta_X*Sen_Map[2][i];
@@ -65,7 +65,7 @@ void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
 
 void BLOCK::set_Q_table(double Q_table[64]){
     int i;
-    for(i=0;i<64;++i){BLOCK::Q_table[i] = Q_table[i];}
+    for(i=0; i<64; i++){BLOCK::Q_table[i] = Q_table[i];}
 }
 
 void BLOCK::set_channel(char channel){
@@ -101,13 +101,6 @@ double BLOCK::eob_cost(int i, double CumC[64]){
 void BLOCK::cal_RS(double C[64], double ind[64], 
                    vector<int>& RSlst,
                    vector<int>& IDlst){
-////////////////////////////////////////////////////////////////////////
-    // cout<<"Pi: ";
-    // for(map<int, double>::iterator it = BLOCK::ent.begin(); it != BLOCK::ent.end(); ++it){
-    //     hash2rs(it->first, rr, ss);
-    //     cout<<rr<<" "<<ss<<": "<<it->second<<endl;
-    // }cout<<endl<<endl<<endl<<flush;
-////////////////////////////////////////////////////////////////////////
     int i,r,s;
     double Sign;
     double cumsum_C[64];cumsum_C[0]=0;
@@ -116,31 +109,25 @@ void BLOCK::cal_RS(double C[64], double ind[64],
     int S[64];
     double D[3][64];
     int curnt_gap;
-    // S[0]=size_group(ind[0], 10, 0);
-    for(i=1;i<64;++i){
+    for(i=1; i<64; i++){
         ind[i] = round(C[i]/BLOCK::Q_table[i]);
         S[i]=size_group(ind[i], 10, 0); // S the size group of 64 DCT coefficients in zig-zag order
     }
     cumsum(C, cumsum_C, BLOCK::Sen_Map[BLOCK::Sen_Map_Idx]); 
     int upbnd = find_the_last_non_zero(ind);
-    // cout<<"upbnd: "<<upbnd<<endl;
-    // upbnd = 63;
-    // step 1: find the distortion and in-category index if C_i is forced to size group s.
-    for(i=1; i<=upbnd;++i){
+    for(i=1; i<=upbnd; i++){
         Sign = sign(C[i]);
         switch (S[i]){
             case 0 ... 1:{
                 ID[0][i] = Sign;   
                 ID[1][i] = 2*Sign; 
                 ID[2][i] = 4*Sign;
-                //cout<<ID[0][i]<<" "<<ID[1][i]<<" "<<ID[2][i]<<" "<<endl;
                 break;
             }
             case 2 ... 9:{
                 ID[0][i] = ID_max_abs[S[i]-2] *Sign;
                 ID[1][i] = ind[i];
                 ID[2][i] = ID_min_abs[S[i]] *Sign;
-                //cout<<ID[0][i]<<" "<<ID[1][i]<<" "<<ID[2][i]<<" "<<endl;
                 break;
             }
             default:{
@@ -151,8 +138,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
                 break;
             }
         }
-        // cout<<S[i]<<": "<<ID[0][i]<<" "<<ID[1][i]<<" "<<ID[2][i]<<" "<<endl<<flush;
-        for (s=0; s<3;++s){// s is the size group
+        for (s=0; s<3; s++){// s is the size group
             D[s][i] = pow(C[i]-ID[s][i]*Q_table[i], 2);
         }
     }
@@ -160,21 +146,20 @@ void BLOCK::cal_RS(double C[64], double ind[64],
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.}; 
-    //std::fill_n(J_lst, 63, INIT_LOSS);
     double curr_minicost;
     int i_nl, size;
     double dist_inc, mean_square_dist;
-    for(i=1; i<=upbnd;++i){
+    for(i=1; i<=upbnd; i++){
         curr_minicost = INIT_LOSS;
         if(i < 16){i_nl=i;}else{i_nl=16;}
-        for(r=0; r<i_nl;++r){
+        for(r=0; r<i_nl; r++){
             mean_square_dist = BLOCK::dist(r, i, cumsum_C);
             if (mean_square_dist>curr_minicost){
                 continue;
             }
             switch (S[i]){
                 case 0 ... 1:{
-                    for(s_idx=0; s_idx<3; ++s_idx){ //s_idx: 0 1 2
+                    for(s_idx=0; s_idx<3; s_idx++){ //s_idx: 0 1 2
                         size=s_idx+1;               //size : 1 2 3
                         dist_inc = BLOCK::Sen_Map[BLOCK::Sen_Map_Idx][i]*(D[s_idx][i]) + mean_square_dist;
                         J = state.cost[i-r-1] + dist_inc + BLOCK::Lmbda*cal_ent(r,size);
@@ -188,7 +173,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
                     break; 
                 }
                 case 2 ... 9:{
-                    for(s_idx=0; s_idx<3; ++s_idx){ //s_idx: 0   1  2
+                    for(s_idx=0; s_idx<3; s_idx++){ //s_idx: 0   1  2
                         size = S[i]-1+s_idx;        //size : S-1 S  S+1
                         dist_inc = BLOCK::Sen_Map[BLOCK::Sen_Map_Idx][i]*(D[s_idx][i])+mean_square_dist;
                         J = state.cost[i-r-1] + dist_inc + BLOCK::Lmbda*cal_ent(r,size);
@@ -202,7 +187,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
                     break;
                 }
                 default:{
-                    for(s_idx=0; s_idx<3; ++s_idx){ //s_idx: 0 1 2 
+                    for(s_idx=0; s_idx<3; s_idx++){ //s_idx: 0 1 2 
                         size = s_idx+8;             //size : 8 9 10
                         dist_inc = BLOCK::Sen_Map[BLOCK::Sen_Map_Idx][i]*(D[s_idx][i])+mean_square_dist;
                         J = state.cost[i-r-1] + dist_inc + BLOCK::Lmbda*BLOCK::cal_ent(r,size);
@@ -220,11 +205,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
         // consider the special transition (15,0) for state i (i\geq 16)
         if ((16 <= i)&&(i <= 62)){
             dist_inc = BLOCK::dist(15, i, cumsum_C) + BLOCK::Sen_Map[BLOCK::Sen_Map_Idx][i]*(pow(C[i],2));
-            // TODO:: check whether rs are in the ent
             J = state.cost[i-16] + dist_inc + BLOCK::Lmbda*BLOCK::cal_ent(15,0);
-//////////////////////////////////////////////////////////////////////////
-            // cout<<"J: "<<state.cost[i-16]<<" "<<dist_inc<<" "<<BLOCK::Lmbda*BLOCK::cal_ent(15,0)<<endl;
-//////////////////////////////////////////////////////////////////////////
             if(J<=curr_minicost){
                 curr_minicost = J;
                 state.rs[i] = rs2hash(15,0);
@@ -237,7 +218,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
     int curr_idx;
     // step 3 find the optimal path for current block
     state.cost[63] = eob_cost(0, cumsum_C);
-    for(i=0;i<=63;i++){
+    for(i=0; i<=63; i++){
         J_lst[i]=state.cost[i+1]+eob_cost(i+1, cumsum_C);
         if(J_lst[i]<state.cost[63]){
             state.cost[63] = J_lst[i];

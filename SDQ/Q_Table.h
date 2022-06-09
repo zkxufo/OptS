@@ -32,7 +32,7 @@ void quantizationTable(int QF, bool Luminance, double Q_Table[64]){
         S = 200-2*QF;
         }
         if (Luminance == true){
-            for(int i=0; i<64; ++i){
+            for(int i=0; i<64; i++){
                 q = (50+S*quantizationTableData_Y[i])/100;
                 if(floor(q)<MINQVALUE){
                     Q_Table[i] = MINQVALUE;
@@ -43,7 +43,7 @@ void quantizationTable(int QF, bool Luminance, double Q_Table[64]){
             }
         }
         else{
-            for(int i=0; i<64; ++i){
+            for(int i=0; i<64; i++){
                 q = (50+S*quantizationTableData_C[i])/100;
                 Q_Table[i] = max(floor(q), MINQVALUE);
             }

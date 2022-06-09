@@ -43,7 +43,7 @@ void LoadSenMap(string model, double Sen_Map[3][64]){
     }
     else{
         for(int c=0; c<3; c++){
-            for(int i=0;i<64;i++){
+            for(int i=0; i<64; i++){
                 Sen_Map[c][i] = 1;
             }
         }

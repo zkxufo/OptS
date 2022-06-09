@@ -60,16 +60,16 @@ void block_2_seqdct(double blockified_img_Y[][8][8],
     double tmp_Y[8];
     double res_Y[8][8];
     int idx, N, i, j;
-    for (N=0; N<N_block; ++N){
-        for (i=0; i<8; ++i){
+    for (N=0; N<N_block; N++){
+        for (i=0; i<8; i++){
             D1DCT(blockified_img_Y[N][i], tmp_Y);
-            for (j=0; j<8; ++j){
+            for (j=0; j<8; j++){
                 res_Y[j][i] = tmp_Y[j];
             }
         }  
-        for (i=0; i<8; ++i){
+        for (i=0; i<8; i++){
             D1DCT(res_Y[i], tmp_Y);
-            for (j=0; j<8; ++j){
+            for (j=0; j<8; j++){
                 idx = ZIGZAG[j][i];
                 seq_dct_coefs_Y[N][idx] = tmp_Y[j]/8.;
             }
@@ -158,16 +158,16 @@ void seq_2_blockidct(double seq_dct_coefs_Y[][64], double blockified_img_Y[][8][
     double tmp_Y[8];
     double res_Y[8][8];
     int idx, c, N, i, j;
-    for (N=0; N<N_block; ++N){
-        for (i=0; i<8; ++i){
+    for (N=0; N<N_block; N++){
+        for (i=0; i<8; i++){
             D1IDCT(seq_dct_coefs_Y[N], i, tmp_Y);
-            for (j=0; j<8; ++j){
+            for (j=0; j<8; j++){
                 res_Y[j][i] = tmp_Y[j];
             }
         }
-        for (i=0; i<8; ++i){
+        for (i=0; i<8; i++){
             D1IDCT(res_Y[i], tmp_Y);
-            for (j=0; j<8; ++j){
+            for (j=0; j<8; j++){
                 blockified_img_Y[N][j][i] = tmp_Y[j]/8.;
             }
         }
@@ -178,9 +178,9 @@ void seq_2_block(double seq_dct_coefs_Y[][64], double blockified_img_Y[][8][8], 
     double tmp_Y[8];
     double res_Y[8][8];
     int idx, N, i, j;
-    for (N=0; N<N_block; ++N){
-        for (i=0; i<8; ++i){
-            for (j=0; j<8; ++j){
+    for (N=0; N<N_block; N++){
+        for (i=0; i<8; i++){
+            for (j=0; j<8; j++){
                 idx = ZIGZAG[i][j];
                 blockified_img_Y[N][i][j] = seq_dct_coefs_Y[N][idx];
             }
