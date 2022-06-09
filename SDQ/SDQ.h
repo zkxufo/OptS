@@ -70,13 +70,13 @@ void SDQ::norm(map<int, double> & P){
 
 void SDQ::cal_ent(map<int, double> & P){
     //tested
-    int R,S;
+    int R, S;
     int KEY;
     for(map<int, double>::iterator it = P.begin(); it != P.end(); ++it){
         KEY = it->first;
         if(KEY!=TOTAL_KEY){
             hash2rs(KEY, R, S);
-            P[KEY] = (-log2(P[KEY])+ 1.0*S);
+            P[KEY] = (-log2(P[KEY])+ (double)S);
         }
     }
 }

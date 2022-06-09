@@ -3,8 +3,7 @@
 #include <ctime>
 #include <chrono>
 using namespace std;
-// using namespace cv;
-//using namespace std::literals;
+
 const double MIN_Q_VAL = 1.733;
 
 class SDQ{

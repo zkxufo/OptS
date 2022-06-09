@@ -3,6 +3,7 @@
 #include <map>
 #include <iostream>
 #include <algorithm>
+
 const double INIT_LOSS = 1e30;
 const double  ZERO = 0;
 using namespace std;
@@ -16,15 +17,12 @@ class BLOCK{
         const int ID_min_abs[10] = {1, 2, 4, 8, 16, 32, 64,  128, 256, 512 };
         node state;
         map<int, double> ent;
+        map<int, double> P;
         double Sen_Map[3][64]; //'S', 'W', 'X'
         double J = INIT_LOSS;
         double Lmbda;
         int Sen_Map_Idx =0;
         char channel; //'S', 'W', 'X'
-//////////////////////////////////////////////////////////////////////////
-        double tmpval;
-        int tmpint, rr ,ss;
-//////////////////////////////////////////////////////////////////////////
         // methods
         double cal_ent(int r, int size);
         void cal_RS(double C[64], double ind[64], 
