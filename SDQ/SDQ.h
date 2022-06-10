@@ -1,7 +1,5 @@
 #include "SDQ_Class.h"
 
-int TOTAL_KEY = -10011;
-
 void SDQ::Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst){
     //tested
     // convert a flatten block to a Run Size list
@@ -136,7 +134,6 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
         SDQ::Loss += SDQ::Block.J;
     }
     cout<<"Yent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
-    SDQ::Block.ent.clear();
 }
 
 
@@ -145,6 +142,7 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
     int i;
     // C channel
     SDQ::Block.ent.clear();
+    SDQ::Block.P.clear();
     std::fill_n(SDQ::Block.state.ID, 64,0);
     std::fill_n(SDQ::Block.state.rs, 64,0);
     // initialize Pc0
@@ -172,7 +170,6 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::RSlst_to_Block(seq_dct_idxs_Cb[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Cb[i]);
         SDQ::RSlst.clear();SDQ::IDlst.clear();
-        // cout<<SDQ::Block.J<<" ";
         SDQ::Loss += SDQ::Block.J;
     }
     SDQ::Block.set_channel('X');
@@ -185,11 +182,9 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::RSlst_to_Block(seq_dct_idxs_Cr[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Cr[i]);
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
-        // cout<<SDQ::Block.J<<" ";
         SDQ::Loss += SDQ::Block.J;  
     }
     cout<<"Cent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
-    SDQ::Block.ent.clear();
 }
 
 void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){

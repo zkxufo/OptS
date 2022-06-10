@@ -5,7 +5,7 @@
 using namespace std;
 
 const double MIN_Q_VAL = 1.733;
-
+const int TOTAL_KEY = -10011;
 class SDQ{
     public:
         // attributes
@@ -128,6 +128,28 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
         SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
         // std::cout<<SDQ::Loss<<std::endl;
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    int ii, rr,ss;
+    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+    //     ii = it->first;
+    //     hash2rs(ii,rr,ss);
+    //     cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
+    // }
+    for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+        ii = it->first;
+        if(ii!=TOTAL_KEY){
+            hash2rs(ii,rr,ss);
+            cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
+        }
+    }cout<<endl;
+    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+    //     ii = it->first;
+    //     if(ii!=TOTAL_KEY){
+    //     hash2rs(ii,rr,ss);
+    //     cout<< it->second<<", ";
+    //     }
+    // }cout<<endl;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
     EntPSY = SDQ::Block.state.ent;
     for(i=0; i<5; i++){
         SDQ::Loss = 0;
@@ -138,6 +160,27 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
                      seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+    //     ii = it->first;
+    //     hash2rs(ii,rr,ss);
+    //     cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
+    // }
+    for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+        ii = it->first;
+        if(ii!=TOTAL_KEY){
+            hash2rs(ii,rr,ss);
+            cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
+        }
+    }cout<<endl;
+    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+    //     ii = it->first;
+    //     if(ii!=TOTAL_KEY){
+    //     hash2rs(ii,rr,ss);
+    //     cout<< it->second<<", ";
+    //     }
+    // }cout<<endl;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
     EntPSC = SDQ::Block.state.ent;
     cout<<"BPP: "<<(EntPSC+EntPSY)/512/512<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
