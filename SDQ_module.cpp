@@ -11,7 +11,6 @@
 #include "./SDQ/Q_Table.h"
 #include "./SDQ/SDQ.h"
 #include "./SDQ/load.h"
-
 using namespace cv;
 using namespace std;
 

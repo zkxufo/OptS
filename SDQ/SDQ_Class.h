@@ -2,6 +2,8 @@
 #include "block.h"
 #include <ctime>
 #include <chrono>
+#include "../EntCoding/Huffman.h"
+#include "../EntCoding/EntUtils.h"
 using namespace std;
 
 const double MIN_Q_VAL = 1.733;
@@ -84,6 +86,11 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     // const std::chrono::time_point<std::chrono::steady_clock> start =
     //     std::chrono::steady_clock::now();
     int i,j,k,l;
+    map<int, int> huffman_size;
+    map<int, int> CODESIZE;
+    int BITS[33];
+    int size;
+    std::fill_n(BITS, 33, 0);
     shape(image, SDQ::img_shape_Y);
     SDQ::n_col = SDQ::img_shape_Y[1];
     SDQ::n_row = SDQ::img_shape_Y[0];
@@ -128,28 +135,14 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
         SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
         // std::cout<<SDQ::Loss<<std::endl;
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    int ii, rr,ss;
-    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     ii = it->first;
-    //     hash2rs(ii,rr,ss);
-    //     cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
-    // }
-    for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-        ii = it->first;
-        if(ii!=TOTAL_KEY){
-            hash2rs(ii,rr,ss);
-            cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
-        }
-    }cout<<endl;
-    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     ii = it->first;
-    //     if(ii!=TOTAL_KEY){
-    //     hash2rs(ii,rr,ss);
-    //     cout<< it->second<<", ";
-    //     }
-    // }cout<<endl;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // cal huffman size
+    // size = SDQ::Block.P.size();
+    // std::multimap<double, int> SortedP = flip_map(SDQ::Block.P);
+    // HuffmanCodes(SDQ::Block.P, size, CODESIZE);
+    // numOfCodesOfEachSize(CODESIZE, BITS);
+    // adjustBitLengthTo16Bits(BITS);
+    // HuffmanSize(BITS, huffman_size, SortedP, size);
+    //
     EntPSY = SDQ::Block.state.ent;
     for(i=0; i<5; i++){
         SDQ::Loss = 0;
@@ -160,27 +153,6 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
                      seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     ii = it->first;
-    //     hash2rs(ii,rr,ss);
-    //     cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
-    // }
-    for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-        ii = it->first;
-        if(ii!=TOTAL_KEY){
-            hash2rs(ii,rr,ss);
-            cout<<ii<<"::"<<rr<<":"<<ss<<"->"<< it->second<<endl;
-        }
-    }cout<<endl;
-    // for(map<int, double>::iterator it =SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     ii = it->first;
-    //     if(ii!=TOTAL_KEY){
-    //     hash2rs(ii,rr,ss);
-    //     cout<< it->second<<", ";
-    //     }
-    // }cout<<endl;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
     EntPSC = SDQ::Block.state.ent;
     cout<<"BPP: "<<(EntPSC+EntPSY)/512/512<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;

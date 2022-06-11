@@ -60,8 +60,10 @@ void SDQ::norm(map<int, double> P, map<int, double> & ent){
     // cout<<"total: "<<total<<endl;
     for(map<int, double>::iterator it = P.begin(); it != P.end(); it++){
         KEY = it->first;
+        // cout<<KEY<<":"<<P[KEY]/total<<endl<<flush;
         if(KEY!=TOTAL_KEY){
-            ent.insert({KEY, P[KEY]/total});
+            ent.insert({KEY, 0});
+            ent[KEY] = P[KEY]/total;
         }
     }
 }
@@ -154,8 +156,18 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::Block_to_RSlst(seq_dct_idxs_Cb[i], SDQ::RSlst, SDQ::IDlst);
         SDQ::cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.P);
     }
+////////////////////////////////////////////////////////////////////////////////
+    // for(map<int, double>::iterator it = SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
+    //     cout<<it->first<<"->"<<it->second<<endl<<flush;
+    // }
+////////////////////////////////////////////////////////////////////////////////
     SDQ::RSlst.clear(); SDQ::IDlst.clear();
     SDQ::norm(SDQ::Block.P, SDQ::Block.ent);
+    ////////////////////////////////////////////////////////////////////////////////
+    // for(map<int, double>::iterator it = SDQ::Block.ent.begin(); it != SDQ::Block.ent.end(); it++){
+    //     cout<<it->first<<"-->"<<it->second<<endl<<flush;
+    // }
+////////////////////////////////////////////////////////////////////////////////
     SDQ::cal_ent(SDQ::Block.ent);
     SDQ::Block.set_channel('W');
     SDQ::Block.set_Q_table(SDQ::Q_table_C);

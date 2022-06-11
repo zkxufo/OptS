@@ -38,6 +38,7 @@ class BLOCK{
 
 double BLOCK::cal_ent(int r, int size){
     int hash_val = rs2hash(r,size);
+    // cout<<r<<","<<size<<":";
     double ent_val;
     if(BLOCK::ent.count(hash_val)){
         ent_val = BLOCK::ent[hash_val];
@@ -45,6 +46,7 @@ double BLOCK::cal_ent(int r, int size){
     else{
         ent_val = INIT_LOSS;
     }
+    // cout<<ent_val<<endl;
     return ent_val;
 }
 
