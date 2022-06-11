@@ -136,13 +136,18 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
         // std::cout<<SDQ::Loss<<std::endl;
     }
     // cal huffman size
-    // size = SDQ::Block.P.size();
-    // std::multimap<double, int> SortedP = flip_map(SDQ::Block.P);
-    // HuffmanCodes(SDQ::Block.P, size, CODESIZE);
-    // numOfCodesOfEachSize(CODESIZE, BITS);
-    // adjustBitLengthTo16Bits(BITS);
-    // HuffmanSize(BITS, huffman_size, SortedP, size);
-    //
+//////////////////////////////////////////////////////////////////////
+    size = SDQ::Block.P.size();
+    std::multimap<double, int> SortedP = flip_map(SDQ::Block.P);
+    HuffmanCodes(SDQ::Block.P, size, CODESIZE);
+    numOfCodesOfEachSize(CODESIZE, BITS);
+    adjustBitLengthTo16Bits(BITS);
+    HuffmanSize(BITS, huffman_size, SortedP, size);
+    SortedP.clear();
+    CODESIZE.clear();
+    std::fill_n(BITS, 33, 0);
+    huffman_size.clear();
+//////////////////////////////////////////////////////////////////////
     EntPSY = SDQ::Block.state.ent;
     for(i=0; i<5; i++){
         SDQ::Loss = 0;
@@ -153,6 +158,14 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
                      seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
+//////////////////////////////////////////////////////////////////////
+    size = SDQ::Block.P.size();
+    SortedP = flip_map(SDQ::Block.P);
+    HuffmanCodes(SDQ::Block.P, size, CODESIZE);
+    numOfCodesOfEachSize(CODESIZE, BITS);
+    adjustBitLengthTo16Bits(BITS);
+    HuffmanSize(BITS, huffman_size, SortedP, size);
+//////////////////////////////////////////////////////////////////////
     EntPSC = SDQ::Block.state.ent;
     cout<<"BPP: "<<(EntPSC+EntPSY)/512/512<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;

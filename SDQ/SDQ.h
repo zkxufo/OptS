@@ -11,7 +11,7 @@ void SDQ::Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst
         if(block[i] == 0){
             if(r != 15){continue;}
             else{
-                RS150+=1;
+                RS150++;
             }
         }
         else{
@@ -46,7 +46,7 @@ void SDQ::RSlst_to_Block(double DC, vector<int> RSlst,
             blk_idx = blk_idx+r+1;
             if(s!=0){
                 block[blk_idx] = IDlst[ididx];
-                ididx += 1;
+                ididx++;
             }
         }
         else{break;}
