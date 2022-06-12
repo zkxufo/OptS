@@ -2,8 +2,8 @@
 #include "block.h"
 #include <ctime>
 #include <chrono>
-#include "../EntCoding/Huffman.h"
-#include "../EntCoding/EntUtils.h"
+// #include "../EntCoding/Huffman.h"
+// #include "../EntCoding/EntUtils.h"
 using namespace std;
 
 const double MIN_Q_VAL = 1.733;
@@ -35,7 +35,10 @@ class SDQ{
         int QF_Y;
         int J, a, b;
         double Loss;
-        double EntPSY, EntPSC;
+        double EntACY = 0;
+        double EntACC = 0;
+        double EntDCY = 0;
+        double EntDCC = 0;
         vector<int> RSlst;
         vector<int> IDlst;
         void __init__(double eps, double Beta_S, double Beta_W, double Beta_X,
@@ -85,7 +88,7 @@ void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
 void SDQ::__call__(vector<vector<vector<double>>>& image){
     // const std::chrono::time_point<std::chrono::steady_clock> start =
     //     std::chrono::steady_clock::now();
-    int i,j,k,l;
+    int i,j,k,l,r,s;
     map<int, int> huffman_size;
     map<int, int> CODESIZE;
     int BITS[33];
@@ -111,6 +114,10 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     auto seq_dct_idxs_Cb = new double[SDQ::seq_len_C][64];
     auto seq_dct_idxs_Cr = new double[SDQ::seq_len_C][64];
 
+    auto DC_idxs_Y = new double[SDQ::seq_len_Y];
+    auto DC_idxs_Cb = new double[SDQ::seq_len_C];
+    auto DC_idxs_Cr = new double[SDQ::seq_len_C];
+
     blockify(image[0], SDQ::img_shape_Y, blockified_img_Y);
     blockify(image[1], SDQ::img_shape_C, blockified_img_Cb);    
     blockify(image[2], SDQ::img_shape_C, blockified_img_Cr);
@@ -129,54 +136,70 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
                 seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                 seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+
+    // DPCM(seq_dct_idxs_Y, DC_idxs_Y, SDQ::seq_len_Y);
+    // DPCM(seq_dct_idxs_Cb, DC_idxs_Cb, SDQ::seq_len_C);
+    // DPCM(seq_dct_idxs_Cr, DC_idxs_Cr, SDQ::seq_len_C);
+    // cal_P_from_DIFF(DC_idxs_Y);
     for(i=0; i<5; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
-        SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
+        // SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
         // std::cout<<SDQ::Loss<<std::endl;
     }
     // cal huffman size
 //////////////////////////////////////////////////////////////////////
-    SDQ::Block.P.erase(TOTAL_KEY);
-    size = SDQ::Block.P.size();
-    std::multimap<double, int> SortedP = flip_map(SDQ::Block.P);
-    HuffmanCodes(SDQ::Block.P, size, CODESIZE);
-    numOfCodesOfEachSize(CODESIZE, BITS);
-    adjustBitLengthTo16Bits(BITS);
-    HuffmanSize(BITS, huffman_size, SortedP, size);
-    SortedP.clear();
-    CODESIZE.clear();
-    std::fill_n(BITS, 33, 0);
-    for(map<int, int>::iterator it = huffman_size.begin(); it != huffman_size.end(); it++){
-        cout<<it->first<<"-->"<<it->second<<endl;
-    }
-    huffman_size.clear();
+    // SDQ::Block.P.erase(TOTAL_KEY);
+    // for(map<int, double>::iterator it =  SDQ::Block.P.begin(); it !=  SDQ::Block.P.end(); it++){
+    //     cout<<it->first<<"->"<<it->second<<endl;
+    // }
+    // size = SDQ::Block.P.size();
+    // std::multimap<double, int> SortedP = flip_map(SDQ::Block.P);
+    // HuffmanCodes(SDQ::Block.P, size, CODESIZE);
+    // numOfCodesOfEachSize(CODESIZE, BITS);
+    // adjustBitLengthTo16Bits(BITS);
+    // HuffmanSize(BITS, huffman_size, SortedP, size);
+    // SortedP.clear();
+    // CODESIZE.clear();
+    // std::fill_n(BITS, 33, 0);
+    // for(map<int, int>::iterator it = huffman_size.begin(); it != huffman_size.end(); it++){
+    //     hash2rs(it->first, r,s);
+    //     EntACY += SDQ::Block.P[it->first]*((it->second)+s);
+    //     // cout<<it->first<<"-->"<<it->second<<endl;
+    // }
+    // huffman_size.clear();
 //////////////////////////////////////////////////////////////////////
-    EntPSY = SDQ::Block.state.ent;
+    EntACY = SDQ::Block.state.ent;
     for(i=0; i<5; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                       seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-        SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
-                     seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+        // SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
+        //              seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
 //////////////////////////////////////////////////////////////////////
-    SDQ::Block.P.erase(TOTAL_KEY);
-    size = SDQ::Block.P.size();
-    SortedP = flip_map(SDQ::Block.P);
-    HuffmanCodes(SDQ::Block.P, size, CODESIZE);
-    numOfCodesOfEachSize(CODESIZE, BITS);
-    adjustBitLengthTo16Bits(BITS);
-    HuffmanSize(BITS, huffman_size, SortedP, size);
-    for(map<int, int>::iterator it = huffman_size.begin(); it != huffman_size.end(); it++){
-        cout<<it->first<<"-->"<<it->second<<endl;
-    }
+    // cout<<"finish Q"<<endl;
+    // SDQ::Block.P.erase(TOTAL_KEY);
+    // for(map<int, double>::iterator it =  SDQ::Block.P.begin(); it !=  SDQ::Block.P.end(); it++){
+    //     cout<<it->first<<"->"<<it->second<<endl;
+    // }
+    // size = SDQ::Block.P.size();
+    // SortedP = flip_map(SDQ::Block.P);
+    // HuffmanCodes(SDQ::Block.P, size, CODESIZE);
+    // numOfCodesOfEachSize(CODESIZE, BITS);
+    // adjustBitLengthTo16Bits(BITS);
+    // HuffmanSize(BITS, huffman_size, SortedP, size);
+    // for(map<int, int>::iterator it = huffman_size.begin(); it != huffman_size.end(); it++){
+    //     hash2rs(it->first, r,s);
+    //     EntACC += SDQ::Block.P[it->first]*((it->second)+s);
+    //     // cout<<it->first<<"-->"<<it->second<<endl;
+    // }
 //////////////////////////////////////////////////////////////////////
-    EntPSC = SDQ::Block.state.ent;
-    cout<<"BPP: "<<(EntPSC+EntPSY)/512/512<<endl;
+    EntACC = SDQ::Block.state.ent;
+    cout<<"BPP: "<<(EntACC+EntACY)/512/512<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
     Dequantize(seq_dct_idxs_Y, SDQ::Q_table_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][64]
     Dequantize(seq_dct_idxs_Cb, SDQ::Q_table_C, SDQ::seq_len_C);

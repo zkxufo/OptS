@@ -90,7 +90,6 @@ def main(model = 'alexnet', Batch_size = 100, Nexample= 10000, resize = True):
         Cb_sen_list = np.concatenate((Cb_sen_list, data_grad[2]))
         if Y_sen_list.shape[0] >= thr:
             break
-
     zigzag = get_zigzag()
     Y_sen_list_flat = np.zeros((64, thr))
     Cb_sen_list_flat = np.zeros((64, thr))
