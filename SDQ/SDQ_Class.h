@@ -216,8 +216,4 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     delete [] blockified_img_Y; delete [] blockified_img_Cb; delete [] blockified_img_Cr;
     Upsampling(image[1]);
     Upsampling(image[2]);
-    // vector<vector<vector<double>>>padded_img = pad_Vector(image);
-    // Huffman code 
-    // const auto end = std::chrono::steady_clock::now();
-    // std::cout<<(end - start) / 1s << "s.\n";
 }
