@@ -97,14 +97,11 @@ int main(int argc, char* argv[]) {
   rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
   // rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
   
-  
   SDQ sdq;
   sdq.__init__(eps, Beta_S, Beta_W, Beta_X,
                Lmbda, Sen_Map, QF_Y , QF_C, 
                J, a, b);
   sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
-  // sdq.Q_table_C;
-  // sdq.Q_table_Y;
 
   /////////////////////////////////////////////////////////////
   // string IM_PATH_str = IM_PATH;
@@ -125,7 +122,6 @@ int main(int argc, char* argv[]) {
   cout<<"PSNR: "<<psnrVal<<endl;
 
   Vector2Mat(Vect_img, image);
-  // std::cout<<image<<flush;
   cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
   cv::imshow("Display window",  image);
   cv::waitKey(0);
