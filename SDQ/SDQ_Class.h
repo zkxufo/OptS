@@ -155,11 +155,11 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     // cout<<"EntDCC:"<<EntDCC<<endl;
     DC_P.clear();
 ///////////////////////////////////////////////////////////////////////////////////////////
-    for(i=0; i<1; i++){
+    for(i=0; i<3; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
-        // SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
+        SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
         // std::cout<<SDQ::Loss<<std::endl;
     }
     // cal huffman size    
@@ -174,13 +174,13 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::Block.P.clear();
 //////////////////////////////////////////////////////////////////////
     // EntACY = SDQ::Block.state.ent;
-    for(i=0; i<1; i++){
+    for(i=0; i<0; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
         SDQ::opt_RS_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                       seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-        // SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
-        //              seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+        SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
+                     seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
 //////////////////////////////////////////////////////////////////////
@@ -191,11 +191,11 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     // EntACC = SDQ::Block.state.ent;
     double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
     file_size += 8*(1+1); // SOI
-    file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
+    // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
     file_size += 8*(1+1+2+1+1+64); // DQT
     file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
     // TODO: cal n in DHT
-    file_size += 8*(1+1+2+1+16)*4+256*4; //DHT
+    file_size += 8*(1+1+2+1+16)*2+256*2; //DHT
     file_size += 8*(1+1+2+1+1+1+3); // SOS
     file_size += 8*(2+2+1+2);
     file_size += 8*(1+1); //EOI

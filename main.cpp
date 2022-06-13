@@ -122,8 +122,8 @@ int main(int argc, char* argv[]) {
   cout<<"PSNR: "<<psnrVal<<endl;
 
   Vector2Mat(Vect_img, image);
-  cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
-  cv::imshow("Display window",  image);
-  cv::waitKey(0);
+  // cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
+  // cv::imshow("Display window",  image);
+  // cv::waitKey(0);
   return 0;
 }
