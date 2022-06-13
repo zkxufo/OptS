@@ -195,7 +195,9 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     file_size += 8*(1+1+2+1+1+64); // DQT
     file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
     // TODO: cal n in DHT
-    file_size += 8*(1+1+2+1+16)+256; //DHT
+    file_size += 8*(1+1+2+1+16)*4+256*4; //DHT
+    file_size += 8*(1+1+2+1+1+1+3); // SOS
+    file_size += 8*(2+2+1+2);
     file_size += 8*(1+1); //EOI
     cout<<"BPP: "<<file_size/512/512<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
