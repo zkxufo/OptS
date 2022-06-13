@@ -62,7 +62,6 @@ void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
         //cout<<BLOCK::Sen_Map[0][i]<<" "<<BLOCK::Sen_Map[1][i]<<" "<<BLOCK::Sen_Map[2][i]<<" "<<endl;
     }
     BLOCK::Lmbda = Lmbda;
-    cout<<BLOCK::Lmbda<<endl;
 }
 
 void BLOCK::set_Q_table(double Q_table[64]){

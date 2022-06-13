@@ -135,7 +135,7 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
         // cout<<SDQ::Block.J<<" ";
         SDQ::Loss += SDQ::Block.J;
     }
-    cout<<"Yent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
+    // cout<<"Yent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
 }
 
 
@@ -196,7 +196,7 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
         SDQ::Loss += SDQ::Block.J;  
     }
-    cout<<"Cent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
+    // cout<<"Cent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
 }
 
 void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){

@@ -10,8 +10,8 @@
 #include "./SDQ/Q_Table.h"
 #include "./SDQ/SDQ.h"
 #include "./SDQ/load.h"
-#include "./EntCoding/jpegdecoder.h"
-#include "./EntCoding/jpegencoder.h"
+// #include "jpegdecoder.h"
+// #include "jpegencoder.h"
 
 using namespace cv;
 using namespace std;
@@ -107,11 +107,11 @@ int main(int argc, char* argv[]) {
   // sdq.Q_table_Y;
 
   /////////////////////////////////////////////////////////////
-  string IM_PATH_str = IM_PATH;
-  cout<<"./lena/"+IM_PATH_str<<endl;
-  string encoded_filename = "./lena/"+IM_PATH_str;
+  // string IM_PATH_str = IM_PATH;
+  // cout<<"./lena/"+IM_PATH_str<<endl;
+  // string encoded_filename = "./lena/"+IM_PATH_str;
 
-  jpeg_decoder test(IM_PATH_str);
+  // jpeg_decoder test(IM_PATH_str);
   // jpeg_encoder enc(&test, encoded_filename, QF_Y);
   // enc.copy_sdq(Vect_img, sdq.Q_table_Y, sdq.Q_table_C);
   // enc.savePicture();
@@ -121,8 +121,8 @@ int main(int argc, char* argv[]) {
   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
 
   // swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
-  double p = PSNRY(Vect_img, ori_img);
-  cout<<"PSNR: "<<p<<endl;
+  double psnrVal = PSNRY(Vect_img, ori_img);
+  cout<<"PSNR: "<<psnrVal<<endl;
 
   Vector2Mat(Vect_img, image);
   // std::cout<<image<<flush;

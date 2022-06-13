@@ -150,6 +150,6 @@ double MSEY(vector<vector<vector<double>>> img1,
 double PSNRY(vector<vector<vector<double>>> img1,
            vector<vector<vector<double>>> img2){
     double m = MSEY(img1, img2);
-    cout<<"m: "<<m<<endl;
+    // cout<<"m: "<<m<<endl;
     return 10*log10(pow(MAX_PXL_VAL,2)/m);
 }
