@@ -85,8 +85,6 @@ void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
 }
 
 void SDQ::__call__(vector<vector<vector<double>>>& image){
-    // const std::chrono::time_point<std::chrono::steady_clock> start =
-    //     std::chrono::steady_clock::now();
     int i,j,k,l,r,s;
     int BITS[33];
     int size;
@@ -135,7 +133,6 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
                 seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                 seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-///////////////////////////////////////////////////////////////////////////////////////////
     map<int, double> DC_P;
     DC_P.clear();
     double EntDCY=0;
@@ -154,7 +151,6 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     EntDCC = calHuffmanCodeSize(DC_P);
     // cout<<"EntDCC:"<<EntDCC<<endl;
     DC_P.clear();
-///////////////////////////////////////////////////////////////////////////////////////////
     for(i=0; i<3; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
@@ -163,17 +159,9 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
         // std::cout<<SDQ::Loss<<std::endl;
     }
     // cal huffman size    
-//////////////////////////////////////////////////////////////////////
-    // for(map<int, double>::iterator it = SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     cout<<it->first<<"-->"<<it->second<<endl;
-    // }
-//////////////////////////////////////////////////////////////////////
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACY = calHuffmanCodeSize(SDQ::Block.P);
-    // cout<<"EntACY: "<<EntACY<<endl;
     SDQ::Block.P.clear();
-//////////////////////////////////////////////////////////////////////
-    // EntACY = SDQ::Block.state.ent;
     for(i=0; i<0; i++){
         SDQ::Loss = 0;
         SDQ::Block.state.ent=0;
@@ -183,23 +171,19 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
                      seq_dct_idxs_Cr,seq_dct_coefs_Cr);
         // std::cout<<SDQ::Loss<<std::endl;
     }
-//////////////////////////////////////////////////////////////////////
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACC = calHuffmanCodeSize(SDQ::Block.P);
-    // cout<<"EntACC: "<<EntACC<<endl;  
-//////////////////////////////////////////////////////////////////////
-    // EntACC = SDQ::Block.state.ent;
     double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
     file_size += 8*(1+1); // SOI
     // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
     file_size += 8*(1+1+2+1+1+64); // DQT
     file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
-    // TODO: cal n in DHT
+    // TODO: cal n in DHT and change 2 to 4
     file_size += 8*(1+1+2+1+16)*2+256*2; //DHT
     file_size += 8*(1+1+2+1+1+1+3); // SOS
     file_size += 8*(2+2+1+2);
     file_size += 8*(1+1); //EOI
-    cout<<"BPP: "<<file_size/512/512<<endl;
+    cout<<"BPP: "<<file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1]<<endl;
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
     Dequantize(seq_dct_idxs_Y, SDQ::Q_table_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][64]
     Dequantize(seq_dct_idxs_Cb, SDQ::Q_table_C, SDQ::seq_len_C);
