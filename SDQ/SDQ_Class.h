@@ -144,7 +144,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     cal_P_from_DIFF(DC_idxs_Y, DC_P, SDQ::seq_len_Y);
     DC_P.erase(TOTAL_KEY);
     EntDCY = calHuffmanCodeSize(DC_P);
-    cout<<"EntDCY:"<<EntDCY<<endl;
+    // cout<<"EntDCY:"<<EntDCY<<endl;
     DC_P.clear();
     DPCM(seq_dct_idxs_Cb, DC_idxs_Cb, SDQ::seq_len_C);
     cal_P_from_DIFF(DC_idxs_Cb, DC_P, SDQ::seq_len_C);
@@ -152,7 +152,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     cal_P_from_DIFF(DC_idxs_Cr, DC_P, SDQ::seq_len_C);
     DC_P.erase(TOTAL_KEY);
     EntDCC = calHuffmanCodeSize(DC_P);
-    cout<<"EntDCC:"<<EntDCC<<endl;
+    // cout<<"EntDCC:"<<EntDCC<<endl;
     DC_P.clear();
 ///////////////////////////////////////////////////////////////////////////////////////////
     for(i=0; i<1; i++){
@@ -170,7 +170,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
 //////////////////////////////////////////////////////////////////////
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACY = calHuffmanCodeSize(SDQ::Block.P);
-    cout<<"EntACY: "<<EntACY<<endl;
+    // cout<<"EntACY: "<<EntACY<<endl;
     SDQ::Block.P.clear();
 //////////////////////////////////////////////////////////////////////
     // EntACY = SDQ::Block.state.ent;
@@ -186,7 +186,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
 //////////////////////////////////////////////////////////////////////
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACC = calHuffmanCodeSize(SDQ::Block.P);
-    cout<<"EntACC: "<<EntACC<<endl;  
+    // cout<<"EntACC: "<<EntACC<<endl;  
 //////////////////////////////////////////////////////////////////////
     // EntACC = SDQ::Block.state.ent;
     double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
