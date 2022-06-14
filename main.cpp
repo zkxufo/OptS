@@ -1,6 +1,3 @@
-// ./main_output -M Alexnet -P ./ILSVRC2012_val_00017916.JPEG -J 4 -a 2 -b 0 -Q 50 -q 50 -B 1e9
-// #include <opencv2/imgcodecs.hpp>
-// #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <unistd.h>
 #include <getopt.h>
@@ -10,8 +7,6 @@
 #include "./SDQ/Q_Table.h"
 #include "./SDQ/SDQ.h"
 #include "./SDQ/load.h"
-// #include "jpegdecoder.h"
-// #include "jpegencoder.h"
 
 using namespace cv;
 using namespace std;
@@ -122,8 +117,8 @@ int main(int argc, char* argv[]) {
   cout<<"PSNR: "<<psnrVal<<endl;
 
   Vector2Mat(Vect_img, image);
-  // cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
-  // cv::imshow("Display window",  image);
-  // cv::waitKey(0);
+  cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE);
+  cv::imshow("Display window",  image);
+  cv::waitKey(0);
   return 0;
 }

@@ -4,7 +4,7 @@
 #include <math.h>
 using namespace std;
 const double MINQVALUE = 1;
-// const double MAXQVALUE = sqrt(3)*128.;
+const double MAXQVALUE = 128.;
 
 void quantizationTable(int QF, bool Luminance, double Q_Table[64]){
     if (QF <100){
@@ -45,7 +45,7 @@ void quantizationTable(int QF, bool Luminance, double Q_Table[64]){
         else{
             for(int i=0; i<64; i++){
                 q = (50+S*quantizationTableData_C[i])/100;
-                Q_Table[i] = max(floor(q), MINQVALUE);
+                Q_Table[i] = min(max(floor(q), MINQVALUE),MAXQVALUE);
             }
         }
     }

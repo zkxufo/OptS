@@ -1,4 +1,3 @@
-// C++ program for Huffman Coding
 #include <iostream>
 #include <cstdlib>
 #include <map>
@@ -120,24 +119,13 @@ double calHuffmanCodeSize(map<int, double> P){
         array<int, 33> BITS;
         BITS = findNumberOfCode(CODESIZE);
         adjustBitLengthTo16Bits(BITS);
-        // for(auto i: BITS){
-        //     cout<<i<<endl;
-        // }cout<<endl<<endl<<flush;
         vector<double> sizeList = sizeForEachCode(BITS);
-        // cout<<"sizeList: "<<endl;
-        // for(auto i: sizeList){
-        //     cout<<i<<endl;
-        // }cout<<endl<<endl<<flush;
-        // for(int i=0;i<43;i++){
-        //     cout<<i<<": "<<sizeList[i]<<endl;
-        // }cout<<endl;
         std::multimap<double, int> SortedP;
         SortedP = flip_map(P);
         int i=0;
         int r,s;
         double codingsize;
         for(std::multimap<double, int>::iterator it = SortedP.begin(); it != SortedP.end(); it++){
-            // cout<<it->second<<" ";
             s = it->second%16;
             codingsize = sizeList[i]+(double)s;
             cnt += codingsize*(it->first);

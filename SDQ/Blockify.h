@@ -57,6 +57,9 @@ void blockify(vector<vector<double>> img, int img_size[2], double v_im[][8][8]){
                     if (x_idx<img_size[0] && y_idx<img_size[1]){
                         v_im[N][w][h] = img[x_idx][y_idx]; 
                     }
+                    else{
+                        v_im[N][w][h] = 0;
+                    }
                 }
             }
         }
