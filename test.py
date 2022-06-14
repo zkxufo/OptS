@@ -20,8 +20,8 @@ test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffl
 J = 4
 a = 1
 b = 0
-QF_Y = 40
-QF_C = 40
+QF_Y = 90
+QF_C = 90
 Beta_S = 1
 Beta_W = 1
 Beta_X = 1
@@ -29,8 +29,8 @@ Lmbd = 8
 eps = 10
 # # corr_counts = 0
 # # total_counts = 0
-data = np.array(Image.open(r"./sample/img101.jpeg")).transpose(2,0,1)
-# data = np.array(Image.open(r"./sample/ILSVRC2012_val_00017916.JPEG")).transpose(2,0,1)
+# data = np.array(Image.open(r"./sample/img101.jpeg")).transpose(2,0,1)
+data = np.array(Image.open(r"./sample/ILSVRC2012_val_00017916.JPEG")).transpose(2,0,1)
 # ILSVRC2012_val_00017916.JPEG
 # plt.imshow(data.transpose(1,2,0)/255.)
 # plt.show()

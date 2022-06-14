@@ -134,62 +134,62 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
              SDQ::Q_table_C,SDQ::seq_len_C);
     
 /////////////////////////////////////////////////////////////////////////////
-    // //TODO:: opt_DC
-    // SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
-    //             seq_dct_idxs_Cb,seq_dct_coefs_Cb,
-    //             seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-    // map<int, double> DC_P;
-    // DC_P.clear();
-    // double EntDCY=0;
-    // double EntDCC=0;
-    // DPCM(seq_dct_idxs_Y, DC_idxs_Y, SDQ::seq_len_Y);
-    // cal_P_from_DIFF(DC_idxs_Y, DC_P, SDQ::seq_len_Y);
-    // DC_P.erase(TOTAL_KEY);
-    // EntDCY = calHuffmanCodeSize(DC_P);
-    // // cout<<"EntDCY:"<<EntDCY<<endl;
-    // DC_P.clear();
-    // DPCM(seq_dct_idxs_Cb, DC_idxs_Cb, SDQ::seq_len_C);
-    // cal_P_from_DIFF(DC_idxs_Cb, DC_P, SDQ::seq_len_C);
-    // DPCM(seq_dct_idxs_Cr, DC_idxs_Cr, SDQ::seq_len_C);
-    // cal_P_from_DIFF(DC_idxs_Cr, DC_P, SDQ::seq_len_C);
-    // DC_P.erase(TOTAL_KEY);
-    // EntDCC = calHuffmanCodeSize(DC_P);
-    // // cout<<"EntDCC:"<<EntDCC<<endl;
-    // DC_P.clear();
-    // for(i=0; i<3; i++){
-    //     SDQ::Loss = 0;
-    //     SDQ::Block.state.ent=0;
-    //     SDQ::opt_RS_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
-    //     SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
-    //     // std::cout<<SDQ::Loss<<std::endl;
-    // }
-    // // cal huffman size    
-    // SDQ::Block.P.erase(TOTAL_KEY);
-    // EntACY = calHuffmanCodeSize(SDQ::Block.P);
-    // SDQ::Block.P.clear();
-    // for(i=0; i<3; i++){
-    //     SDQ::Loss = 0;
-    //     SDQ::Block.state.ent=0;
-    //     SDQ::opt_RS_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
-    //                   seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-    //     SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
-    //                  seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-    //     // std::cout<<SDQ::Loss<<std::endl;
-    // }
-    // SDQ::Block.P.erase(TOTAL_KEY);
-    // EntACC = calHuffmanCodeSize(SDQ::Block.P);
+    //TODO:: opt_DC
+    SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
+                seq_dct_idxs_Cb,seq_dct_coefs_Cb,
+                seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+    map<int, double> DC_P;
+    DC_P.clear();
+    double EntDCY=0;
+    double EntDCC=0;
+    DPCM(seq_dct_idxs_Y, DC_idxs_Y, SDQ::seq_len_Y);
+    cal_P_from_DIFF(DC_idxs_Y, DC_P, SDQ::seq_len_Y);
+    DC_P.erase(TOTAL_KEY);
+    EntDCY = calHuffmanCodeSize(DC_P);
+    // cout<<"EntDCY:"<<EntDCY<<endl;
+    DC_P.clear();
+    DPCM(seq_dct_idxs_Cb, DC_idxs_Cb, SDQ::seq_len_C);
+    cal_P_from_DIFF(DC_idxs_Cb, DC_P, SDQ::seq_len_C);
+    DPCM(seq_dct_idxs_Cr, DC_idxs_Cr, SDQ::seq_len_C);
+    cal_P_from_DIFF(DC_idxs_Cr, DC_P, SDQ::seq_len_C);
+    DC_P.erase(TOTAL_KEY);
+    EntDCC = calHuffmanCodeSize(DC_P);
+    // cout<<"EntDCC:"<<EntDCC<<endl;
+    DC_P.clear();
+    for(i=0; i<3; i++){
+        SDQ::Loss = 0;
+        SDQ::Block.state.ent=0;
+        SDQ::opt_RS_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
+        SDQ::opt_Q_Y(seq_dct_idxs_Y,seq_dct_coefs_Y);
+        // std::cout<<SDQ::Loss<<std::endl;
+    }
+    // cal huffman size    
+    SDQ::Block.P.erase(TOTAL_KEY);
+    EntACY = calHuffmanCodeSize(SDQ::Block.P);
+    SDQ::Block.P.clear();
+    for(i=0; i<3; i++){
+        SDQ::Loss = 0;
+        SDQ::Block.state.ent=0;
+        SDQ::opt_RS_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
+                      seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+        SDQ::opt_Q_C(seq_dct_idxs_Cb,seq_dct_coefs_Cb,
+                     seq_dct_idxs_Cr,seq_dct_coefs_Cr);
+        // std::cout<<SDQ::Loss<<std::endl;
+    }
+    SDQ::Block.P.erase(TOTAL_KEY);
+    EntACC = calHuffmanCodeSize(SDQ::Block.P);
     double BPP=0;
-    // double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
-    // file_size += 8*(1+1); // SOI
-    // // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
-    // file_size += 8*(1+1+2+1+1+64); // DQT
-    // file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
-    // // TODO: cal n in DHT and change 2 to 4
-    // file_size += 8*(1+1+2+1+16)*2+256*2; //DHT
-    // file_size += 8*(1+1+2+1+1+1+3); // SOS
-    // file_size += 8*(2+2+1+2);
-    // file_size += 8*(1+1); //EOI
-    // BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
+    double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
+    file_size += 8*(1+1); // SOI
+    // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
+    file_size += 8*(1+1+2+1+1+64); // DQT
+    file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
+    // TODO: cal n in DHT and change 2 to 4
+    file_size += 8*(1+1+2+1+16)*2+256*2; //DHT
+    file_size += 8*(1+1+2+1+1+1+3); // SOS
+    file_size += 8*(2+2+1+2);
+    file_size += 8*(1+1); //EOI
+    BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
     
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
     Dequantize(seq_dct_idxs_Y, SDQ::Q_table_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][64]
