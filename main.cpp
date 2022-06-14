@@ -101,8 +101,8 @@ int main(int argc, char* argv[]) {
   sdq.__init__(eps, Beta_S, Beta_W, Beta_X,
                Lmbda, Sen_Map, QF_Y , QF_C, 
                J, a, b);
-  sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
-
+  double BPP = sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
+  cout<<"BPP: "<<BPP<<endl;
   /////////////////////////////////////////////////////////////
   // string IM_PATH_str = IM_PATH;
   // cout<<"./lena/"+IM_PATH_str<<endl;

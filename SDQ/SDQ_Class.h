@@ -61,7 +61,7 @@ class SDQ{
         void opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]);
         void opt_Q_C(double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64],
                      double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64]);
-        void __call__(vector<vector<vector<double>>>& image);
+        double __call__(vector<vector<vector<double>>>& image);
 };
 
 void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
@@ -84,7 +84,7 @@ void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
     SDQ::b = b;
 }
 
-void SDQ::__call__(vector<vector<vector<double>>>& image){
+double SDQ::__call__(vector<vector<vector<double>>>& image){
     int i,j,k,l,r,s;
     int BITS[33];
     int size;
@@ -173,6 +173,7 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     }
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACC = calHuffmanCodeSize(SDQ::Block.P);
+    double BPP=0;
     double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
     file_size += 8*(1+1); // SOI
     // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
@@ -183,16 +184,15 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     file_size += 8*(1+1+2+1+1+1+3); // SOS
     file_size += 8*(2+2+1+2);
     file_size += 8*(1+1); //EOI
-    cout<<"BPP: "<<file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1]<<endl;
+    BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
+    
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
     Dequantize(seq_dct_idxs_Y, SDQ::Q_table_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][64]
     Dequantize(seq_dct_idxs_Cb, SDQ::Q_table_C, SDQ::seq_len_C);
     Dequantize(seq_dct_idxs_Cr, SDQ::Q_table_C, SDQ::seq_len_C);
-
     seq_2_blockidct(seq_dct_idxs_Y, blockified_img_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][8[8]
     seq_2_blockidct(seq_dct_idxs_Cb, blockified_img_Cb, SDQ::seq_len_C);
     seq_2_blockidct(seq_dct_idxs_Cr, blockified_img_Cr, SDQ::seq_len_C);
-    
     delete [] seq_dct_idxs_Y; delete [] seq_dct_idxs_Cb; delete [] seq_dct_idxs_Cr;
     deblockify(blockified_img_Y,  image[0], SDQ::img_shape_Y); //seq_dct_idxs_Y: [][], crop here!
     deblockify(blockified_img_Cb, image[1], SDQ::img_shape_C);
@@ -200,4 +200,5 @@ void SDQ::__call__(vector<vector<vector<double>>>& image){
     delete [] blockified_img_Y; delete [] blockified_img_Cb; delete [] blockified_img_Cr;
     Upsampling(image[1]);
     Upsampling(image[2]);
+    return BPP;
 }

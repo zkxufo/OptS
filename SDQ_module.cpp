@@ -59,7 +59,7 @@ std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style |
   //delete [] &array;
   // call pure C++ function
   //TODO::
-  double bit_rate = 5.123;
+  double BPP =0;
   vector<double> result(array.size());
   seq2img(pos, Vect_img, size[0], size[1]);
   double Lmbda = Lmbd;
@@ -82,7 +82,7 @@ std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style |
   }
   SDQ sdq;
   sdq.__init__(eps, Beta_S, Beta_W, Beta_X, Lmbda, Sen_Map, QF_Y, QF_C, J, a ,b);
-  sdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
+  BPP = sdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
   if(Model=="NoModel"){
     YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
   }
@@ -103,7 +103,7 @@ std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style |
     ndim,                                    /* number of dimensions     */
     shape,                                   /* shape of the matrix      */
     strides                                  /* strides for each axis    */
-  )), bit_rate);
+  )), BPP);
 }
 // wrap as Python module
 PYBIND11_MODULE(SDQ,m)
