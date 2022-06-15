@@ -13,14 +13,11 @@ class SDQ{
         double Beta_S;
         double Beta_W;
         double Beta_X;
-        //double Sen_Map[3][64] = {0};
         double Q_table_Y[64];
         double Q_table_C[64];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
-        // int SmplHstep, SmplVstep;
-        // int Smplcols, Smplrows;
         BLOCK Block;
         int seq_block_dcts[64];
         int DCT_block_shape[3];
@@ -43,15 +40,6 @@ class SDQ{
         void __init__(double eps, double Beta_S, double Beta_W, double Beta_X,
                       double Lmbda, double Sen_Map[3][64], int QF_Y, int QF_C, 
                       int J, int a, int b);
-        // void Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst);
-        // void RSlst_to_Block(double DC, vector<int> RSlst,
-        //                     vector<int> IDlst, double block[64]);
-        // void cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P);
-        // void norm(map<int, double> P, map<int, double> & ent);
-        // void cal_ent(map<int, double> & ent);
-        // void Subsampling(vector<vector<double>>& img);
-        // void Upsampling(vector<vector<double>>& img);
-
         void opt_DC(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64],
                     double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
                     double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]);
