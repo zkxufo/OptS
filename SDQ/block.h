@@ -38,7 +38,6 @@ class BLOCK{
 
 double BLOCK::cal_ent(int r, int size){
     int hash_val = rs2hash(r,size);
-    // cout<<r<<","<<size<<":";
     double ent_val;
     if(BLOCK::ent.count(hash_val)){
         ent_val = BLOCK::ent[hash_val];
@@ -46,7 +45,6 @@ double BLOCK::cal_ent(int r, int size){
     else{
         ent_val = INIT_LOSS;
     }
-    // cout<<ent_val<<endl;
     return ent_val;
 }
 
@@ -59,7 +57,6 @@ void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
         BLOCK::Sen_Map[0][i] = Beta_S*Sen_Map[0][i];
         BLOCK::Sen_Map[1][i] = Beta_W*Sen_Map[1][i];
         BLOCK::Sen_Map[2][i] = Beta_X*Sen_Map[2][i];
-        //cout<<BLOCK::Sen_Map[0][i]<<" "<<BLOCK::Sen_Map[1][i]<<" "<<BLOCK::Sen_Map[2][i]<<" "<<endl;
     }
     BLOCK::Lmbda = Lmbda;
 }
@@ -91,7 +88,7 @@ double BLOCK::dist(int r,int i, double CumC[64]){
 double BLOCK::eob_cost(int i, double CumC[64]){
     double cost;
     if (i >= 63){
-        cost=0;
+        cost = 0.;
     }
     else{
         cost=CumC[63]-CumC[i]+ cal_ent(0,0);
@@ -121,7 +118,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
         switch (S[i]){
             case 0 ... 1:{
                 ID[0][i] = Sign;   
-                ID[1][i] = 2*Sign; 
+                ID[1][i] = 2*Sign;
                 ID[2][i] = 4*Sign;
                 break;
             }
@@ -135,7 +132,6 @@ void BLOCK::cal_RS(double C[64], double ind[64],
                 ID[0][i] = 255*Sign; // size group 8
                 ID[1][i] = 511*Sign; // size group 9
                 ID[2][i] = ind[i];   // size group 10
-                //cout<<ID[0][i]<<" "<<ID[1][i]<<" "<<ID[2][i]<<" "<<endl;
                 break;
             }
         }
@@ -161,7 +157,7 @@ void BLOCK::cal_RS(double C[64], double ind[64],
             switch (S[i]){
                 case 0 ... 1:{
                     for(s_idx=0; s_idx<3; s_idx++){ //s_idx: 0 1 2
-                        size=s_idx+1;               //size : 1 2 3
+                        size = s_idx+1;             //size : 1 2 3
                         dist_inc = BLOCK::Sen_Map[BLOCK::Sen_Map_Idx][i]*(D[s_idx][i]) + mean_square_dist;
                         J = state.cost[i-r-1] + dist_inc + BLOCK::Lmbda*cal_ent(r,size);
                         if (J<curr_minicost){

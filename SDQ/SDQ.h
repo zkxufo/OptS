@@ -35,10 +35,8 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
         RSlst_to_Block(seq_dct_idxs_Y[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Y[i]);
         SDQ::RSlst.clear();SDQ::IDlst.clear();
-        // cout<<SDQ::Block.J<<" ";
         SDQ::Loss += SDQ::Block.J;
     }
-    // cout<<"Yent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
 }
 
 
@@ -61,11 +59,6 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
     }
     SDQ::RSlst.clear(); SDQ::IDlst.clear();
     norm(SDQ::Block.P, SDQ::Block.ent);
-    ////////////////////////////////////////////////////////////////////////////////
-    // for(map<int, double>::iterator it = SDQ::Block.ent.begin(); it != SDQ::Block.ent.end(); it++){
-    //     cout<<it->first<<"-->"<<it->second<<endl<<flush;
-    // }
-////////////////////////////////////////////////////////////////////////////////
     cal_ent(SDQ::Block.ent);
     SDQ::Block.set_channel('W');
     SDQ::Block.set_Q_table(SDQ::Q_table_C);
@@ -94,7 +87,6 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
         SDQ::Loss += SDQ::Block.J;  
     }
-    // cout<<"Cent: "<<SDQ::Block.state.ent<<" "<<endl<<flush;
 }
 
 void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
@@ -102,7 +94,8 @@ void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
     double denominator=0;
     double val;
     int i,j;
-    for(j=0; j<63; j++){
+    //TODO: start with 1
+    for(j=1; j<63; j++){
         for(i=0; i<SDQ::seq_len_Y; i++){
             divisor += seq_dct_coefs_Y[i][j+1]*seq_dct_idxs_Y[i][j+1];
             denominator += pow(seq_dct_idxs_Y[i][j+1],2);
@@ -122,7 +115,8 @@ void SDQ::opt_Q_C(double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64],
     double denominator=0;
     double val;
     int i,j;
-    for(j=0; j<63; j++){  
+    //TODO: start with 1
+    for(j=1; j<63; j++){  
         for(i=0; i<SDQ::seq_len_C; i++){
             divisor+=seq_dct_coefs_Cb[i][j+1]*seq_dct_idxs_Cb[i][j+1];
             divisor += seq_dct_coefs_Cr[i][j+1]*seq_dct_idxs_Cr[i][j+1];
