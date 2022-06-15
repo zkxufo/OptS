@@ -9,9 +9,6 @@ const double MIN_Q_VAL = 1;
 class HDQ{
     public:
         // attributes
-        double Beta_S;
-        double Beta_W;
-        double Beta_X;
         double Q_table_Y[64];
         double Q_table_C[64];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
@@ -36,22 +33,17 @@ class HDQ{
         double EntDCC = 0;
         vector<int> RSlst;
         vector<int> IDlst;
-        void __init__(double eps, double Beta_S, double Beta_W, double Beta_X,
-                      double Lmbda, int QF_Y, int QF_C, 
+        void __init__(int QF_Y, int QF_C, 
                       int J, int a, int b);
         double __call__(vector<vector<vector<double>>>& image);
 };
 
-void HDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
-                   double Lmbda, int QF_Y, int QF_C, 
+void HDQ::__init__(int QF_Y, int QF_C, 
                    int J, int a, int b){
     HDQ::RSlst.reserve(64);
     HDQ::IDlst.reserve(64);
     HDQ::RSlst.clear();
     HDQ::IDlst.clear();
-    HDQ::Beta_S = Beta_S;
-    HDQ::Beta_W = Beta_W;
-    HDQ::Beta_X = Beta_X;
     quantizationTable(QF_Y, true, HDQ::Q_table_Y);
     quantizationTable(QF_C, false, HDQ::Q_table_C);
     HDQ::J_Y = 10e10;

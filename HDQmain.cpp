@@ -87,9 +87,7 @@ int main(int argc, char* argv[]) {
   // rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
   
   HDQ hdq;
-  hdq.__init__(eps, Beta_S, Beta_W, Beta_X,
-               Lmbda, QF_Y , QF_C, 
-               J, a, b);
+  hdq.__init__(QF_Y , QF_C, J, a, b);
   double BPP = hdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
   cout<<"BPP: "<<BPP<<endl;
 

@@ -23,7 +23,7 @@ namespace py = pybind11;
 
 // wrap C++ function with NumPy array IO
 std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style | py::array::forcecast> array,
-                     string Model, int J, int a, int b, int QF_Y, int QF_C, double Beta, double Lmbd, double eps){
+                     string Model, int J, int a, int b, int QF_Y, int QF_C){
   unsigned long size[2];
   size[0] = (unsigned long)array.shape()[1];
   size[1] = (unsigned long)array.shape()[2];
@@ -37,10 +37,6 @@ std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style |
   double BPP =0;
   vector<double> result(array.size());
   seq2img(pos, Vect_img, size[0], size[1]);
-  double Lmbda = Lmbd;
-  double Beta_S = Beta;
-  double Beta_W = Beta;
-  double Beta_X = Beta;  
   double W_rgb2swx[3][3];
   double W_swx2rgb[3][3];
   double bias_rgb2swx = 128;
@@ -48,7 +44,7 @@ std::pair<py::array, double> py__call__(py::array_t<double, py::array::c_style |
   // Mat2Vector(image, Vect_img);
   rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
   HDQ hdq;
-  hdq.__init__(eps, Beta_S, Beta_W, Beta_X, Lmbda, QF_Y, QF_C, J, a ,b);
+  hdq.__init__(QF_Y, QF_C, J, a ,b);
   BPP = hdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
   img2seq(Vect_img, result, size[0], size[1]);
