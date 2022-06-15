@@ -2,6 +2,8 @@
 #include "block.h"
 #include <ctime>
 #include <chrono>
+#include "../Utils/utils.h"
+#include "../Utils/Q_Table.h"
 #include "../EntCoding/Huffman.h"
 using namespace std;
 
