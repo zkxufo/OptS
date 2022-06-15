@@ -1,12 +1,12 @@
 #include "SDQ_Class.h"
 
-void SDQ::opt_DC(double seq_dct_idxs_Y[][64],  double seq_dct_coefs_Y[][64],
-                 double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
-                 double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]){
-    double a = seq_dct_idxs_Y[0][0];
+void SDQ::opt_DC(float seq_dct_idxs_Y[][64],  float seq_dct_coefs_Y[][64],
+                 float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64],
+                 float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64]){
+    float a = seq_dct_idxs_Y[0][0];
 }
 
-void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
+void SDQ::opt_RS_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]){
     int i;
     // C channel
     std::fill_n(SDQ::Block.state.ID, 64,0);
@@ -40,8 +40,8 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
 }
 
 
-void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
-                   double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]){
+void SDQ::opt_RS_C(float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64],
+                   float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64]){
     int i;
     // C channel
     SDQ::Block.ent.clear();
@@ -89,10 +89,10 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
     }
 }
 
-void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
-    double divisor=0;
-    double denominator=0;
-    double val;
+void SDQ::opt_Q_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]){
+    float divisor=0;
+    float denominator=0;
+    float val;
     int i,j;
     //TODO: start with 1
     for(j=1; j<63; j++){
@@ -109,11 +109,11 @@ void SDQ::opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
     }
 }
 
-void SDQ::opt_Q_C(double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64],
-                  double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64]){      
-    double divisor=0;
-    double denominator=0;
-    double val;
+void SDQ::opt_Q_C(float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64],
+                  float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64]){      
+    float divisor=0;
+    float denominator=0;
+    float val;
     int i,j;
     //TODO: start with 1
     for(j=1; j<63; j++){  

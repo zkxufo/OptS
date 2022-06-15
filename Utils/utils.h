@@ -8,9 +8,9 @@ using namespace std;
 // using namespace cv;
 //TODO:: check N and ID is necessary
 
-const double MAX_PXL_VAL = 255.;
-
-const double FLAG_SIZE =  8*(1+1) // SOI
+// const float MAX_PXL_VAL = 255.;
+// const float MIN_PXL_VAL = 0.;
+const float FLAG_SIZE =  8*(1+1) // SOI
                         + 8*(1+1+2+5+1+1+2+2+1) // APP0
                         + 8*(1+1+2+1+1+64) // DQT
                         + 8*(1+1+2+1+2+2+1+1+1+1) // SOF0
@@ -20,7 +20,7 @@ const double FLAG_SIZE =  8*(1+1) // SOI
                         + 8*(1+1); //EOI;
 
 struct node{
-    double cost[64];
+    float cost[64];
     int ID[64]= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -29,11 +29,11 @@ struct node{
                  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    double ent = 0;
+    float ent = 0;
 };
 
-double sign(double C){
-    double Sign;
+float sign(float C){
+    float Sign;
     if (C >= 0){
         Sign = 1;
     }
@@ -43,11 +43,11 @@ double sign(double C){
     return Sign;
 }
 
-int argmin(double J_lst[63]){
+int argmin(float J_lst[63]){
     //return the index of min entry in the list
     int idx=0;
     int i;
-    double min_ent = J_lst[0];
+    float min_ent = J_lst[0];
     for(i=0; i<63; i++){
         if (J_lst[i]<min_ent){
             min_ent = J_lst[i];
@@ -57,12 +57,12 @@ int argmin(double J_lst[63]){
     return idx;
 }
 
-void shape(vector<vector<vector<double>>> img, int S[2]){
+void shape(vector<vector<vector<float>>> img, int S[2]){
     S[0] = img[0].size();
     S[1] = img[0][0].size();
 }
 
-int size_group(double num, const int MAX_val=10, const int MIN_val = 0){
+int size_group(float num, const int MAX_val=10, const int MIN_val = 0){
     int S;
     int abs_num = abs(num);
     switch (abs_num){
@@ -82,7 +82,7 @@ int size_group(double num, const int MAX_val=10, const int MIN_val = 0){
     return min(max(S,MIN_val), MAX_val);
 }
 
-void cumsum(double C[64], double CumC[64], double Sen_Map[64]){
+void cumsum(float C[64], float CumC[64], float Sen_Map[64]){
     CumC[0] = 0;
     int i;
     for(i=1; i<64; i++){
@@ -103,7 +103,7 @@ void hash2rs(int hash_val, int & r, int & s){
     s = hash_val%16;
 }
 
-int find_the_last_non_zero(double arr[64]){
+int find_the_last_non_zero(float arr[64]){
     int i;
     int idx=0;
     for(i=63; i>0; i--){
@@ -117,9 +117,9 @@ int find_the_last_non_zero(double arr[64]){
     return 63-idx;
 }
 
-double MSE3C(vector<vector<vector<double>>>img1,
-           vector<vector<vector<double>>>img2){
-    double m = 0;
+float MSE3C(vector<vector<vector<float>>>img1,
+           vector<vector<vector<float>>>img2){
+    float m = 0;
     int nrows = img1[0].size();
     int ncols = img1[0][0].size();
     for(int i=0; i<nrows; i++){
@@ -133,16 +133,16 @@ double MSE3C(vector<vector<vector<double>>>img1,
     return m;
 }
 
-double PSNR3C(vector<vector<vector<double>>> img1,
-           vector<vector<vector<double>>> img2){
-    double m = MSE3C(img1, img2);
+float PSNR3C(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = MSE3C(img1, img2);
     return 10*log10(pow(MAX_PXL_VAL,2)/m);
 }
 
-double MSEY(vector<vector<vector<double>>> img1,
-           vector<vector<vector<double>>> img2){
-    double m = 0;
-    double Y1, Y2;
+float MSEY(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = 0;
+    float Y1, Y2;
     int nrows = img1[0].size();
     int ncols = img1[0][0].size();
     for(int i=0; i<nrows; i++){
@@ -156,13 +156,13 @@ double MSEY(vector<vector<vector<double>>> img1,
     return m;
 }
 
-double PSNRY(vector<vector<vector<double>>> img1,
-           vector<vector<vector<double>>> img2){
-    double m = MSEY(img1, img2);
+float PSNRY(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = MSEY(img1, img2);
     return 10*log10(pow(MAX_PXL_VAL,2)/m);
 }
 
-void seq2img(vector<double> pos, vector<vector<vector<double>>>& img, int nrow, int ncol){
+void seq2img(vector<float> pos, vector<vector<vector<float>>>& img, int nrow, int ncol){
   for(int c=0; c<3; ++c){
     for(int i=0; i<nrow; ++i){
       for(int j=0; j<ncol; ++j){
@@ -172,7 +172,7 @@ void seq2img(vector<double> pos, vector<vector<vector<double>>>& img, int nrow, 
   }
 }
 
-void img2seq(vector<vector<vector<double>>> img, vector<double>& pos, int nrow, int ncol){
+void img2seq(vector<vector<vector<float>>> img, vector<float>& pos, int nrow, int ncol){
   for(int c=0; c<3; ++c){
     for(int i=0; i<nrow; ++i){
       for(int j=0; j<ncol; ++j){
@@ -182,7 +182,7 @@ void img2seq(vector<vector<vector<double>>> img, vector<double>& pos, int nrow, 
   }
 }
 
-void Subsampling(vector<vector<double>>& img,int img_shape_Y[2],
+void Subsampling(vector<vector<float>>& img,int img_shape_Y[2],
                  int img_shape_C[2], int J, int a, int b){
     int Nrows = img_shape_Y[0];
     int Ncols = img_shape_Y[1];
@@ -208,7 +208,7 @@ void Subsampling(vector<vector<double>>& img,int img_shape_Y[2],
     img_shape_C[1] = min(Ncols,Smplcols);
 }
 
-void Upsampling(vector<vector<double>>& img, int img_shape_Y[2], 
+void Upsampling(vector<vector<float>>& img, int img_shape_Y[2], 
                 int J, int a, int b){
     int Nsampled_row = img_shape_Y[0];
     int Nsampled_col = img_shape_Y[1];

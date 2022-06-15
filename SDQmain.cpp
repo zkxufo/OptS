@@ -19,9 +19,9 @@ int main(int argc, char* argv[]) {
   int b = 4;
   int QF_Y = 20;
   int QF_C = 30;
-  double Beta = 1e9;
-  double Lmbda = 1e9;
-  double eps = 0.1;
+  float Beta = 1e9;
+  float Lmbda = 1e9;
+  float eps = 0.1;
   while ((option = getopt(argc, argv, "hiM:P:J:a:b:e:Q:q:B:e:L:")) !=-1){
     switch (option){
       case 'h':{
@@ -67,20 +67,20 @@ int main(int argc, char* argv[]) {
         std::cout <<  "Could not open or find the image" << std::endl ;
         return -1;
       }
-  double Beta_S = Beta;
-  double Beta_W = Beta;
-  double Beta_X = Beta;
-  double Sen_Map[3][64]={0};
+  float Beta_S = Beta;
+  float Beta_W = Beta;
+  float Beta_X = Beta;
+  float Sen_Map[3][64]={0};
   LoadSenMap(Model, Sen_Map);
   
-  double W_rgb2swx[3][3];
-  double W_swx2rgb[3][3];
+  float W_rgb2swx[3][3];
+  float W_swx2rgb[3][3];
   LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
-  double bias_rgb2swx = 128;
+  float bias_rgb2swx = 128;
   int nrows = image.rows;
   int ncols = image.cols;
-  vector<vector<vector<double>>> Vect_img(3, vector<vector<double>>(nrows, vector<double>(ncols, 0)));
-  vector<vector<vector<double>>> ori_img(3, vector<vector<double>>(nrows, vector<double>(ncols, 0)));
+  vector<vector<vector<float>>> Vect_img(3, vector<vector<float>>(nrows, vector<float>(ncols, 0)));
+  vector<vector<vector<float>>> ori_img(3, vector<vector<float>>(nrows, vector<float>(ncols, 0)));
   Mat2Vector(image, Vect_img);
   Mat2Vector(image, ori_img);
   // cout<<Model;
@@ -92,13 +92,13 @@ int main(int argc, char* argv[]) {
   sdq.__init__(eps, Beta_S, Beta_W, Beta_X,
                Lmbda, Sen_Map, QF_Y , QF_C, 
                J, a, b);
-  double BPP = sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
+  float BPP = sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
   cout<<"BPP: "<<BPP<<endl;
 
   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
 
   // swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
-  double psnrVal = PSNRY(Vect_img, ori_img);
+  float psnrVal = PSNRY(Vect_img, ori_img);
   cout<<"PSNR: "<<psnrVal<<endl;
 
   Vector2Mat(Vect_img, image);

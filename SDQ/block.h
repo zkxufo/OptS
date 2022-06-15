@@ -4,41 +4,41 @@
 #include <iostream>
 #include <algorithm>
 #include "../Utils/utils.h"
-const double INIT_LOSS = 1e30;
-const double  ZERO = 0;
+const float INIT_LOSS = 1e30;
+const float  ZERO = 0;
 using namespace std;
 
 class BLOCK{
     public:
         // attributes
-        double eps;
-        double Q_table[64];
+        float eps;
+        float Q_table[64];
         const int ID_max_abs[10] = {1, 3, 7, 15,31, 63, 127, 255, 511, 1023};
         const int ID_min_abs[10] = {1, 2, 4, 8, 16, 32, 64,  128, 256, 512 };
         node state;
-        map<int, double> ent;
-        map<int, double> P;
-        double Sen_Map[3][64]; //'S', 'W', 'X'
-        double J = INIT_LOSS;
-        double Lmbda;
+        map<int, float> ent;
+        map<int, float> P;
+        float Sen_Map[3][64]; //'S', 'W', 'X'
+        float J = INIT_LOSS;
+        float Lmbda;
         int Sen_Map_Idx =0;
         char channel; //'S', 'W', 'X'
         // methods
-        double cal_ent(int r, int size);
-        void cal_RS(double C[64], double ind[64], 
+        float cal_ent(int r, int size);
+        void cal_RS(float C[64], float ind[64], 
                     vector<int>& RSlst,
                     vector<int>& IDlst);
-        double eob_cost(int i, double CumC[64]);
-        double dist(int r,int i, double CumC[64]);
-        void __init__(double eps, double Beta_S, double  Beta_W,
-                     double Beta_X, double Lmbda, double Sen_Map[3][64]);
-        void set_Q_table(double Q_table[64]);
+        float eob_cost(int i, float CumC[64]);
+        float dist(int r,int i, float CumC[64]);
+        void __init__(float eps, float Beta_S, float  Beta_W,
+                     float Beta_X, float Lmbda, float Sen_Map[3][64]);
+        void set_Q_table(float Q_table[64]);
         void set_channel(char channel);
 };
 
-double BLOCK::cal_ent(int r, int size){
+float BLOCK::cal_ent(int r, int size){
     int hash_val = rs2hash(r,size);
-    double ent_val;
+    float ent_val;
     if(BLOCK::ent.count(hash_val)){
         ent_val = BLOCK::ent[hash_val];
     }
@@ -48,8 +48,8 @@ double BLOCK::cal_ent(int r, int size){
     return ent_val;
 }
 
-void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
-                     double Beta_X, double Lmbda, double Sen_Map[3][64]){
+void BLOCK::__init__(float eps, float Beta_S, float  Beta_W,
+                     float Beta_X, float Lmbda, float Sen_Map[3][64]){
     int i;
     BLOCK::eps = eps;
     std::fill_n(BLOCK::state.cost,64,0);
@@ -61,7 +61,7 @@ void BLOCK::__init__(double eps, double Beta_S, double  Beta_W,
     BLOCK::Lmbda = Lmbda;
 }
 
-void BLOCK::set_Q_table(double Q_table[64]){
+void BLOCK::set_Q_table(float Q_table[64]){
     int i;
     for(i=0; i<64; i++){BLOCK::Q_table[i] = Q_table[i];}
 }
@@ -76,7 +76,7 @@ void BLOCK::set_channel(char channel){
     }
 }
 
-double BLOCK::dist(int r,int i, double CumC[64]){
+float BLOCK::dist(int r,int i, float CumC[64]){
     if(r==0){
         return 0.;
     }
@@ -85,8 +85,8 @@ double BLOCK::dist(int r,int i, double CumC[64]){
     }
 }
 
-double BLOCK::eob_cost(int i, double CumC[64]){
-    double cost;
+float BLOCK::eob_cost(int i, float CumC[64]){
+    float cost;
     if (i >= 63){
         cost = 0.;
     }
@@ -96,16 +96,16 @@ double BLOCK::eob_cost(int i, double CumC[64]){
     return cost;
 }
 
-void BLOCK::cal_RS(double C[64], double ind[64], 
+void BLOCK::cal_RS(float C[64], float ind[64], 
                    vector<int>& RSlst,
                    vector<int>& IDlst){
     int i,r,s;
-    double Sign;
-    double cumsum_C[64];cumsum_C[0]=0;
+    float Sign;
+    float cumsum_C[64];cumsum_C[0]=0;
     int s_idx = 0;
     int ID[3][64];
     int S[64];
-    double D[3][64];
+    float D[3][64];
     int curnt_gap;
     for(i=1; i<64; i++){
         ind[i] = round(C[i]/BLOCK::Q_table[i]);
@@ -139,13 +139,13 @@ void BLOCK::cal_RS(double C[64], double ind[64],
             D[s][i] = pow(C[i]-ID[s][i]*Q_table[i], 2);
         }
     }
-    double J_lst[63]= {0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+    float J_lst[63]= {0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
                        0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.}; 
-    double curr_minicost;
+    float curr_minicost;
     int i_nl, size;
-    double dist_inc, mean_square_dist;
+    float dist_inc, mean_square_dist;
     for(i=1; i<=upbnd; i++){
         curr_minicost = INIT_LOSS;
         if(i < 16){i_nl=i;}else{i_nl=16;}

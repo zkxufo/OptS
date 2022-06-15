@@ -16,7 +16,7 @@ int pad_shape(int Num, int size=8){
     return n;
 }
 
- void Mat2Vector(cv::Mat Mat_img, vector<vector<vector<double>>>& Vect_img){
+ void Mat2Vector(cv::Mat Mat_img, vector<vector<vector<float>>>& Vect_img){
      int i, j;
      int nrows = Mat_img.rows;
      int ncols = Mat_img.cols;
@@ -29,7 +29,7 @@ int pad_shape(int Num, int size=8){
      }
  }
 
- void Vector2Mat(vector<vector<vector<double>>> Vect_img, cv::Mat Mat_img){
+ void Vector2Mat(vector<vector<vector<float>>> Vect_img, cv::Mat Mat_img){
      int i, j;
      int nrows = Mat_img.rows;
      int ncols = Mat_img.cols;
@@ -42,7 +42,7 @@ int pad_shape(int Num, int size=8){
      }
  }
 
-void blockify(vector<vector<double>> img, int img_size[2], double v_im[][8][8]){
+void blockify(vector<vector<float>> img, int img_size[2], float v_im[][8][8]){
     int pad_row = pad_shape(img_size[0])/8; 
     int pad_col = pad_shape(img_size[1])/8; 
     int N;
@@ -66,13 +66,13 @@ void blockify(vector<vector<double>> img, int img_size[2], double v_im[][8][8]){
     }
 }
 
-void deblockify(double blockified_img[][8][8], vector<vector<double>>& deblockify_image, int img_size[2]){
+void deblockify(float blockified_img[][8][8], vector<vector<float>>& deblockify_image, int img_size[2]){
     int pad_row = pad_shape(img_size[0])/8;
     int pad_col = pad_shape(img_size[1])/8;
     int N = 0;
     int x_idx, y_idx;
     int n_blocks = pad_col*pad_row/64;
-    double pix_val;
+    float pix_val;
     for(int i=0; i<pad_row; ++i){
         for(int j=0; j<pad_col; ++j){
             N = i*pad_col+j;
@@ -90,12 +90,12 @@ void deblockify(double blockified_img[][8][8], vector<vector<double>>& deblockif
     }
 }
 
-vector<vector<vector<double>>> pad_Vector(vector<vector<vector<double>>> Vector_img){
+vector<vector<vector<float>>> pad_Vector(vector<vector<vector<float>>> Vector_img){
     int nrow = Vector_img[0].size();
     int ncol = Vector_img[0][0].size();
     int pad_row = pad_shape(nrow);
     int pad_col = pad_shape(ncol);
-    vector<vector<vector<double>>> pad_img(3, vector<vector<double>>(pad_row, vector<double>(pad_col, 0)));
+    vector<vector<vector<float>>> pad_img(3, vector<vector<float>>(pad_row, vector<float>(pad_col, 0)));
     int pix_val;
     for(int c=0; c<3;c++){
         for(int i=0; i<pad_row; ++i){

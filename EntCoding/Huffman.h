@@ -11,19 +11,19 @@ using namespace std;
 #define MAX_TREE_HT 33
 
 struct CompareSecond{
-    bool operator()(const pair<int, double>& left, const pair<int, double>& right) const{
+    bool operator()(const pair<int, float>& left, const pair<int, float>& right) const{
         return left.second <= right.second;
     }
 };
-int getMinKey(std::map<int, double> mymap){
-  std::pair<int, double> min = *min_element(mymap.begin(), mymap.end(), CompareSecond());
+int getMinKey(std::map<int, float> mymap){
+  std::pair<int, float> min = *min_element(mymap.begin(), mymap.end(), CompareSecond());
   return min.first;
 }
 
-array<int, 256> findHuffmanCodeSize(map<int, double> P){
+array<int, 256> findHuffmanCodeSize(map<int, float> P){
     int V1;
     int V2;
-    double V1Val;
+    float V1Val;
     static array<int, 256> CODESIZE ;
     CODESIZE.fill(0);
     int OTHEERS[256];
@@ -86,8 +86,8 @@ void adjustBitLengthTo16Bits(array<int, 33> & BITS){
     }
 }
 
-vector<double> sizeForEachCode(array<int, 33> BITS){
-    static vector<double> Size;
+vector<float> sizeForEachCode(array<int, 33> BITS){
+    static vector<float> Size;
     Size.clear();
     for(int i=1;i<33;i++){
         for(int j=0;j<BITS[i];j++){
@@ -110,23 +110,23 @@ std::multimap<B,A> flip_map(const std::map<A,B> &src){
     return dst;
 }
 
-double calHuffmanCodeSize(map<int, double> P){
-    double cnt = 0;
+float calHuffmanCodeSize(map<int, float> P){
+    float cnt = 0;
     if(P.size()>1){
         array<int, 256> CODESIZE;
         CODESIZE = findHuffmanCodeSize(P);
         array<int, 33> BITS;
         BITS = findNumberOfCode(CODESIZE);
         adjustBitLengthTo16Bits(BITS);
-        vector<double> sizeList = sizeForEachCode(BITS);
-        std::multimap<double, int> SortedP;
+        vector<float> sizeList = sizeForEachCode(BITS);
+        std::multimap<float, int> SortedP;
         SortedP = flip_map(P);
         int i=0;
         int r,s;
-        double codingsize;
-        for(std::multimap<double, int>::iterator it = SortedP.begin(); it != SortedP.end(); it++){
+        float codingsize;
+        for(std::multimap<float, int>::iterator it = SortedP.begin(); it != SortedP.end(); it++){
             s = it->second%16;
-            codingsize = sizeList[i]+(double)s;
+            codingsize = sizeList[i]+(float)s;
             cnt += codingsize*(it->first);
             i++;
         }

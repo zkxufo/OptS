@@ -6,15 +6,15 @@
 #include "../EntCoding/Huffman.h"
 using namespace std;
 
-const double MIN_Q_VAL = 1;
+const float MIN_Q_VAL = 1;
 class SDQ{
     public:
         // attributes
-        double Beta_S;
-        double Beta_W;
-        double Beta_X;
-        double Q_table_Y[64];
-        double Q_table_C[64];
+        float Beta_S;
+        float Beta_W;
+        float Beta_X;
+        float Q_table_Y[64];
+        float Q_table_C[64];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
@@ -23,37 +23,37 @@ class SDQ{
         int DCT_block_shape[3];
         int img_shape_Y[2], img_shape_C[2]; // size of channels after subsampling
         //TODO: P_DC for DC coefficient
-        map<int, double> P_DC_Y;
-        map<int, double> P_DC_C;
-        double J_Y = 10e10;
-        double J_C = 10e10;
+        map<int, float> P_DC_Y;
+        map<int, float> P_DC_C;
+        float J_Y = 10e10;
+        float J_C = 10e10;
         int QF_C;
         int QF_Y;
         int J, a, b;
-        double Loss;
-        double EntACY = 0;
-        double EntACC = 0;
-        double EntDCY = 0;
-        double EntDCC = 0;
+        float Loss;
+        float EntACY = 0;
+        float EntACC = 0;
+        float EntDCY = 0;
+        float EntDCC = 0;
         vector<int> RSlst;
         vector<int> IDlst;
-        void __init__(double eps, double Beta_S, double Beta_W, double Beta_X,
-                      double Lmbda, double Sen_Map[3][64], int QF_Y, int QF_C, 
+        void __init__(float eps, float Beta_S, float Beta_W, float Beta_X,
+                      float Lmbda, float Sen_Map[3][64], int QF_Y, int QF_C, 
                       int J, int a, int b);
-        void opt_DC(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64],
-                    double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
-                    double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]);
-        void opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]);
-        void opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
-                      double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]);
-        void opt_Q_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]);
-        void opt_Q_C(double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64],
-                     double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64]);
-        double __call__(vector<vector<vector<double>>>& image);
+        void opt_DC(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64],
+                    float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64],
+                    float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64]);
+        void opt_RS_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]);
+        void opt_RS_C(float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64],
+                      float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64]);
+        void opt_Q_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]);
+        void opt_Q_C(float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64],
+                     float seq_dct_idxs_Cr[][64], float seq_dct_coefs_Cr[][64]);
+        float __call__(vector<vector<vector<float>>>& image);
 };
 
-void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
-                   double Lmbda, double Sen_Map[3][64], int QF_Y, int QF_C, 
+void SDQ::__init__(float eps, float Beta_S, float Beta_W, float Beta_X,
+                   float Lmbda, float Sen_Map[3][64], int QF_Y, int QF_C, 
                    int J, int a, int b){
     SDQ::RSlst.reserve(64);
     SDQ::IDlst.reserve(64);
@@ -72,7 +72,7 @@ void SDQ::__init__(double eps, double Beta_S, double Beta_W, double Beta_X,
     SDQ::b = b;
 }
 
-double SDQ::__call__(vector<vector<vector<double>>>& image){
+float SDQ::__call__(vector<vector<vector<float>>>& image){
     int i,j,k,l,r,s;
     int BITS[33];
     int size;
@@ -92,21 +92,21 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     Subsampling(image[2], SDQ::img_shape_Y, SDQ::img_shape_C, SDQ::J, SDQ::a, SDQ::b);
 
     SDQ::seq_len_C = pad_shape(Smplcols, 8)*pad_shape(Smplrows, 8)/64;
-    auto blockified_img_Y = new double[SDQ::seq_len_Y][8][8];
-    auto blockified_img_Cb = new double[SDQ::seq_len_C][8][8];
-    auto blockified_img_Cr = new double[SDQ::seq_len_C][8][8];
+    auto blockified_img_Y = new float[SDQ::seq_len_Y][8][8];
+    auto blockified_img_Cb = new float[SDQ::seq_len_C][8][8];
+    auto blockified_img_Cr = new float[SDQ::seq_len_C][8][8];
 
-    auto seq_dct_coefs_Y = new double[SDQ::seq_len_Y][64];
-    auto seq_dct_coefs_Cb = new double[SDQ::seq_len_C][64];
-    auto seq_dct_coefs_Cr = new double[SDQ::seq_len_C][64];
+    auto seq_dct_coefs_Y = new float[SDQ::seq_len_Y][64];
+    auto seq_dct_coefs_Cb = new float[SDQ::seq_len_C][64];
+    auto seq_dct_coefs_Cr = new float[SDQ::seq_len_C][64];
 
-    auto seq_dct_idxs_Y = new double[SDQ::seq_len_Y][64];
-    auto seq_dct_idxs_Cb = new double[SDQ::seq_len_C][64];
-    auto seq_dct_idxs_Cr = new double[SDQ::seq_len_C][64];
+    auto seq_dct_idxs_Y = new float[SDQ::seq_len_Y][64];
+    auto seq_dct_idxs_Cb = new float[SDQ::seq_len_C][64];
+    auto seq_dct_idxs_Cr = new float[SDQ::seq_len_C][64];
 
-    auto DC_idxs_Y = new double[SDQ::seq_len_Y];
-    auto DC_idxs_Cb = new double[SDQ::seq_len_C];
-    auto DC_idxs_Cr = new double[SDQ::seq_len_C];
+    auto DC_idxs_Y = new float[SDQ::seq_len_Y];
+    auto DC_idxs_Cb = new float[SDQ::seq_len_C];
+    auto DC_idxs_Cr = new float[SDQ::seq_len_C];
 
     blockify(image[0], SDQ::img_shape_Y, blockified_img_Y);
     blockify(image[1], SDQ::img_shape_C, blockified_img_Cb);    
@@ -128,10 +128,10 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::opt_DC(seq_dct_idxs_Y,seq_dct_coefs_Y, 
                 seq_dct_idxs_Cb,seq_dct_coefs_Cb,
                 seq_dct_idxs_Cr,seq_dct_coefs_Cr);
-    map<int, double> DC_P;
+    map<int, float> DC_P;
     DC_P.clear();
-    double EntDCY=0;
-    double EntDCC=0;
+    float EntDCY=0;
+    float EntDCC=0;
     DPCM(seq_dct_idxs_Y, DC_idxs_Y, SDQ::seq_len_Y);
     cal_P_from_DIFF(DC_idxs_Y, DC_P, SDQ::seq_len_Y);
     DC_P.erase(TOTAL_KEY);
@@ -168,8 +168,8 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     }
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACC = calHuffmanCodeSize(SDQ::Block.P);
-    double BPP=0;
-    double file_size = EntACC+EntACY+EntDCC+EntDCY+FLAG_SIZE; // Run_length coding
+    float BPP=0;
+    float file_size = EntACC+EntACY+EntDCC+EntDCY+FLAG_SIZE; // Run_length coding
     BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
     
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
