@@ -10,6 +10,16 @@ using namespace std;
 
 const double MAX_PXL_VAL = 255.;
 
+const double FLAG_SIZE =  8*(1+1) // SOI
+                        + 8*(1+1+2+5+1+1+2+2+1) // APP0
+                        + 8*(1+1+2+1+1+64) // DQT
+                        + 8*(1+1+2+1+2+2+1+1+1+1) // SOF0
+                        // TODO: cal n in DHT and change 2 to 4
+                        + 8*(1+1+2+1+16)*2+256*2 //DHT
+                        + 8*(1+1+2+1+1+1+3) // SOS
+                        + 8*(2+2+1+2)
+                        + 8*(1+1); //EOI;
+                        
 struct node{
     double cost[64];
     int ID[64]= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

@@ -169,16 +169,7 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::Block.P.erase(TOTAL_KEY);
     EntACC = calHuffmanCodeSize(SDQ::Block.P);
     double BPP=0;
-    double file_size = EntACC+EntACY+EntDCC+EntDCY; // Run_length coding
-    file_size += 8*(1+1); // SOI
-    // file_size += 8*(1+1+2+5+1+1+2+2+1); // APP0
-    file_size += 8*(1+1+2+1+1+64); // DQT
-    file_size += 8*(1+1+2+1+2+2+1+1+1+1); // SOF0
-    // TODO: cal n in DHT and change 2 to 4
-    file_size += 8*(1+1+2+1+16)*2+256*2; //DHT
-    file_size += 8*(1+1+2+1+1+1+3); // SOS
-    file_size += 8*(2+2+1+2);
-    file_size += 8*(1+1); //EOI
+    double file_size = EntACC+EntACY+EntDCC+EntDCY+FLAG_SIZE; // Run_length coding
     BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
     
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
