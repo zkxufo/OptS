@@ -20,8 +20,8 @@ test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffl
 J = 4
 a = 1
 b = 0
-QF_Y = 90
-QF_C = 90
+QF_Y = 50
+QF_C = 50
 Beta_S = 1
 Beta_W = 1
 Beta_X = 1
@@ -30,17 +30,17 @@ eps = 10
 # # corr_counts = 0
 # # total_counts = 0
 # data = np.array(Image.open(r"./sample/img101.jpeg")).transpose(2,0,1)
-data = np.array(Image.open(r"./sample/ILSVRC2012_val_00017916.JPEG")).transpose(2,0,1)
+# data = np.array(Image.open(r"./sample/ILSVRC2012_val_00017916.JPEG")).transpose(2,0,1)
 # ILSVRC2012_val_00017916.JPEG
 # plt.imshow(data.transpose(1,2,0)/255.)
 # plt.show()
-compressed_img, bit_rate = SDQ.__call__(data, "NoModel", J, a, b,
-                                        QF_Y, QF_C, Beta_S, Lmbd, eps)
+# compressed_img, bit_rate = SDQ.__call__(data, "NoModel", J, a, b,
+#                                         QF_Y, QF_C, Beta_S, Lmbd, eps)
 
-plt.imshow(compressed_img.transpose(1,2,0)/255.)
-plt.show()
+# plt.imshow(compressed_img.transpose(1,2,0)/255.)
+# plt.show()
 
-# normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 # pretrained_model = models.alexnet(pretrained=True).to(device)
 # _ = pretrained_model.eval()
 # for idx, dt in enumerate(test_loader):
@@ -65,14 +65,14 @@ plt.show()
 #         print("ACC : ", (corr_counts/(total_counts)*100))
 #         print("Correct : ", corr_counts, "  out ", total_counts)
 # # i = 0
-# for dt in tqdm.tqdm(test_loader):
-#     data, tar = dt
-#     data = data[0].numpy()#[0, 255]
-#     # plt.imshow(data.transpose(1,2,0)/255.)
-#     # plt.show()
-#     compressed_img, BPP = SDQ.__call__(data, "NoModel", J, a, b,
-#                                             QF_Y, QF_C, Beta_S, Lmbd, eps)
-#     print(BPP)
+for dt in tqdm.tqdm(test_loader):
+    data, tar = dt
+    data = data[0].numpy()#[0, 255]
+    # plt.imshow(data.transpose(1,2,0)/255.)
+    # plt.show()
+    compressed_img, BPP = SDQ.__call__(data, "NoModel", J, a, b,
+                                            QF_Y, QF_C, Beta_S, Lmbd, eps)
+    print(BPP)
 #     break
 # plt.imshow(compressed_img.transpose(1,2,0)/255.)#red
 # plt.show()

@@ -81,8 +81,6 @@ int main(int argc, char* argv[]) {
   double bias_rgb2swx = 128;
   int nrows = image.rows;
   int ncols = image.cols;
-  // ncols = 512;
-  // nrows = 512;
   vector<vector<vector<double>>> Vect_img(3, vector<vector<double>>(nrows, vector<double>(ncols, 0)));
   vector<vector<vector<double>>> ori_img(3, vector<vector<double>>(nrows, vector<double>(ncols, 0)));
   Mat2Vector(image, Vect_img);
@@ -98,17 +96,6 @@ int main(int argc, char* argv[]) {
                J, a, b);
   double BPP = sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
   cout<<"BPP: "<<BPP<<endl;
-  /////////////////////////////////////////////////////////////
-  // string IM_PATH_str = IM_PATH;
-  // cout<<"./lena/"+IM_PATH_str<<endl;
-  // string encoded_filename = "./lena/"+IM_PATH_str;
-
-  // jpeg_decoder test(IM_PATH_str);
-  // jpeg_encoder enc(&test, encoded_filename, QF_Y);
-  // enc.copy_sdq(Vect_img, sdq.Q_table_Y, sdq.Q_table_C);
-  // enc.savePicture();
-  // cout << "BPP : " << to_string(enc.image_bpp) << endl;
-  /////////////////////////////////////////////////////////////
 
   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
 

@@ -116,11 +116,6 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     blockify(image[0], SDQ::img_shape_Y, blockified_img_Y);
     blockify(image[1], SDQ::img_shape_C, blockified_img_Cb);    
     blockify(image[2], SDQ::img_shape_C, blockified_img_Cr);
-/////////////////////////////////////////////////////////////////////////////
-    // block_2_seqdct(blockified_img_Y, seq_dct_idxs_Y, SDQ::seq_len_Y);
-    // block_2_seqdct(blockified_img_Cb, seq_dct_idxs_Cb, SDQ::seq_len_C);
-    // block_2_seqdct(blockified_img_Cr, seq_dct_idxs_Cr, SDQ::seq_len_C);
-/////////////////////////////////////////////////////////////////////////////
 
     block_2_seqdct(blockified_img_Y, seq_dct_coefs_Y, SDQ::seq_len_Y);
     block_2_seqdct(blockified_img_Cb, seq_dct_coefs_Cb, SDQ::seq_len_C);
