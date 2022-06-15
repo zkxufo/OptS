@@ -1,106 +1,9 @@
 #include "SDQ_Class.h"
 
-void SDQ::Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst){
-    //tested
-    // convert a flatten block to a Run Size list
-    int i,j, r, S, RS;
-    int cur_idx=0;
-    int RS150 = 0;
-    for(i=1; i<64; i++){
-        r = i-cur_idx-1;
-        if(block[i] == 0){
-            if(r != 15){continue;}
-            else{
-                RS150++;
-            }
-        }
-        else{
-            if(RS!=0){
-                RS = rs2hash(15,0);
-                for(j=0; j<RS150; j++){
-                    RSlst.push_back(RS);
-                }
-                RS150=0;}
-            S = size_group(block[i]);
-            RS = rs2hash(r,S);
-            RSlst.push_back(RS);
-            IDlst.push_back(block[i]);
-        }
-        cur_idx = i;
-    }
-    RSlst.push_back(0);
-}
-
-void SDQ::RSlst_to_Block(double DC, vector<int> RSlst,
-                         vector<int> IDlst, double block[64]){
-    // tested
-    // convert a Run Size list to a flatten block
-    std::fill_n(block, 64, 0);
-    block[0] = DC;
-    int blk_idx = 0;
-    int ididx = 0;
-    int r, s;
-    for(auto RS: RSlst){
-        if(RS!=0){
-            hash2rs(RS, r, s);
-            blk_idx = blk_idx+r+1;
-            if(s!=0){
-                block[blk_idx] = IDlst[ididx];
-                ididx++;
-            }
-        }
-        else{break;}
-    }
-}
-
-void SDQ::norm(map<int, double> P, map<int, double> & ent){
-    //tested
-    double total = P[TOTAL_KEY];
-    int KEY;
-    // cout<<"total: "<<total<<endl;
-    for(map<int, double>::iterator it = P.begin(); it != P.end(); it++){
-        KEY = it->first;
-        // cout<<KEY<<":"<<P[KEY]/total<<endl<<flush;
-        if(KEY!=TOTAL_KEY){
-            ent.insert({KEY, 0});
-            ent[KEY] = P[KEY]/total;
-        }
-    }
-}
-
-void SDQ::cal_ent(map<int, double> & ent){
-    //tested
-    int R, S;
-    int KEY;
-    for(map<int, double>::iterator it = ent.begin(); it != ent.end(); it++){
-        KEY = it->first;
-        if(KEY!=TOTAL_KEY){
-            hash2rs(KEY, R, S);
-            ent[KEY] = (-log2(ent[KEY])+ (double)S);
-        }
-    }
-}
-
 void SDQ::opt_DC(double seq_dct_idxs_Y[][64],  double seq_dct_coefs_Y[][64],
                  double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
                  double seq_dct_idxs_Cb[][64], double seq_dct_coefs_Cb[][64]){
     double a = seq_dct_idxs_Y[0][0];
-}
-
-void SDQ::cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P){
-    int length = RSlst.size(), i;
-    int RS;
-    P.insert({TOTAL_KEY, 0});
-    for(i=0; i<length; i++){
-        RS = RSlst[i];
-        if(P.count(RS)){
-            P[RS] += 1;
-        }
-        else{
-            P.insert({RS, 1});
-        }
-        P[TOTAL_KEY] += 1;
-    }
 }
 
 void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
@@ -113,12 +16,12 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
     // initialize Py0
     for(i=0; i<SDQ::seq_len_Y; i++){
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
-        SDQ::Block_to_RSlst(seq_dct_idxs_Y[i], SDQ::RSlst, SDQ::IDlst);
-        SDQ::cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.P);
+        Block_to_RSlst(seq_dct_idxs_Y[i], SDQ::RSlst, SDQ::IDlst);
+        cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.P);
     }
     SDQ::RSlst.clear(); SDQ::IDlst.clear();
-    SDQ::norm(SDQ::Block.P, SDQ::Block.ent);
-    SDQ::cal_ent(SDQ::Block.ent);
+    norm(SDQ::Block.P, SDQ::Block.ent);
+    cal_ent(SDQ::Block.ent);
     SDQ::Block.set_channel('S');
     SDQ::Block.set_Q_table(SDQ::Q_table_Y); 
     SDQ::Loss = 0;
@@ -129,7 +32,7 @@ void SDQ::opt_RS_Y(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64]){
         SDQ::Block.cal_RS(seq_dct_coefs_Y[i],
                           seq_dct_idxs_Y[i],
                           SDQ::RSlst, SDQ::IDlst);
-        SDQ::RSlst_to_Block(seq_dct_idxs_Y[i][0], SDQ::RSlst,
+        RSlst_to_Block(seq_dct_idxs_Y[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Y[i]);
         SDQ::RSlst.clear();SDQ::IDlst.clear();
         // cout<<SDQ::Block.J<<" ";
@@ -150,25 +53,20 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
     // initialize Pc0
     for(i=0; i<SDQ::seq_len_C; i++){
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
-        SDQ::Block_to_RSlst(seq_dct_idxs_Cr[i], SDQ::RSlst, SDQ::IDlst);
-        SDQ::cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.ent);
+        Block_to_RSlst(seq_dct_idxs_Cr[i], SDQ::RSlst, SDQ::IDlst);
+        cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.ent);
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
-        SDQ::Block_to_RSlst(seq_dct_idxs_Cb[i], SDQ::RSlst, SDQ::IDlst);
-        SDQ::cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.P);
+        Block_to_RSlst(seq_dct_idxs_Cb[i], SDQ::RSlst, SDQ::IDlst);
+        cal_P_from_RSlst(SDQ::RSlst, SDQ::Block.P);
     }
-////////////////////////////////////////////////////////////////////////////////
-    // for(map<int, double>::iterator it = SDQ::Block.P.begin(); it != SDQ::Block.P.end(); it++){
-    //     cout<<it->first<<"->"<<it->second<<endl<<flush;
-    // }
-////////////////////////////////////////////////////////////////////////////////
     SDQ::RSlst.clear(); SDQ::IDlst.clear();
-    SDQ::norm(SDQ::Block.P, SDQ::Block.ent);
+    norm(SDQ::Block.P, SDQ::Block.ent);
     ////////////////////////////////////////////////////////////////////////////////
     // for(map<int, double>::iterator it = SDQ::Block.ent.begin(); it != SDQ::Block.ent.end(); it++){
     //     cout<<it->first<<"-->"<<it->second<<endl<<flush;
     // }
 ////////////////////////////////////////////////////////////////////////////////
-    SDQ::cal_ent(SDQ::Block.ent);
+    cal_ent(SDQ::Block.ent);
     SDQ::Block.set_channel('W');
     SDQ::Block.set_Q_table(SDQ::Q_table_C);
     SDQ::Loss = 0;
@@ -179,7 +77,7 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::Block.cal_RS(seq_dct_coefs_Cb[i],
                           seq_dct_idxs_Cb[i],
                           SDQ::RSlst, SDQ::IDlst);
-        SDQ::RSlst_to_Block(seq_dct_idxs_Cb[i][0], SDQ::RSlst,
+        RSlst_to_Block(seq_dct_idxs_Cb[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Cb[i]);
         SDQ::RSlst.clear();SDQ::IDlst.clear();
         SDQ::Loss += SDQ::Block.J;
@@ -191,7 +89,7 @@ void SDQ::opt_RS_C(double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
         SDQ::Block.cal_RS(seq_dct_coefs_Cr[i],
                           seq_dct_idxs_Cr[i],
                           SDQ::RSlst, SDQ::IDlst);
-        SDQ::RSlst_to_Block(seq_dct_idxs_Cr[i][0], SDQ::RSlst,
+        RSlst_to_Block(seq_dct_idxs_Cr[i][0], SDQ::RSlst,
                             SDQ::IDlst, seq_dct_idxs_Cr[i]);
         SDQ::RSlst.clear(); SDQ::IDlst.clear();
         SDQ::Loss += SDQ::Block.J;  

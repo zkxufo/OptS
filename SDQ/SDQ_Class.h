@@ -5,8 +5,7 @@
 #include "../EntCoding/Huffman.h"
 using namespace std;
 
-const double MIN_Q_VAL = 1.733;
-const int TOTAL_KEY = -10011;
+const double MIN_Q_VAL = 1;
 class SDQ{
     public:
         // attributes
@@ -43,12 +42,12 @@ class SDQ{
         void __init__(double eps, double Beta_S, double Beta_W, double Beta_X,
                       double Lmbda, double Sen_Map[3][64], int QF_Y, int QF_C, 
                       int J, int a, int b);
-        void Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst);
-        void RSlst_to_Block(double DC, vector<int> RSlst,
-                            vector<int> IDlst, double block[64]);
-        void cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P);
-        void norm(map<int, double> P, map<int, double> & ent);
-        void cal_ent(map<int, double> & ent);
+        // void Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst);
+        // void RSlst_to_Block(double DC, vector<int> RSlst,
+        //                     vector<int> IDlst, double block[64]);
+        // void cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P);
+        // void norm(map<int, double> P, map<int, double> & ent);
+        // void cal_ent(map<int, double> & ent);
         void Subsampling(vector<vector<double>>& img);
         void Upsampling(vector<vector<double>>& img);
 

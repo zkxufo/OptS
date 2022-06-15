@@ -110,7 +110,6 @@ std::multimap<B,A> flip_map(const std::map<A,B> &src){
     return dst;
 }
 
-
 double calHuffmanCodeSize(map<int, double> P){
     double cnt = 0;
     if(P.size()>1){

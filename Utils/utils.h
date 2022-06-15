@@ -152,3 +152,23 @@ double PSNRY(vector<vector<vector<double>>> img1,
     double m = MSEY(img1, img2);
     return 10*log10(pow(MAX_PXL_VAL,2)/m);
 }
+
+void seq2img(vector<double> pos, vector<vector<vector<double>>>& img, int nrow, int ncol){
+  for(int c=0; c<3; ++c){
+    for(int i=0; i<nrow; ++i){
+      for(int j=0; j<ncol; ++j){
+        img[c][i][j] = pos[c*nrow*ncol+i*ncol+j];
+      }
+    }
+  }
+}
+
+void img2seq(vector<vector<vector<double>>> img, vector<double>& pos, int nrow, int ncol){
+  for(int c=0; c<3; ++c){
+    for(int i=0; i<nrow; ++i){
+      for(int j=0; j<ncol; ++j){
+        pos[c*nrow*ncol+i*ncol+j] = img[c][i][j];
+      }
+    }
+  }
+}
