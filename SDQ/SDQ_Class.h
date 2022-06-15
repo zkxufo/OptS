@@ -18,8 +18,8 @@ class SDQ{
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
-        int SmplHstep, SmplVstep;
-        int Smplcols, Smplrows;
+        // int SmplHstep, SmplVstep;
+        // int Smplcols, Smplrows;
         BLOCK Block;
         int seq_block_dcts[64];
         int DCT_block_shape[3];
@@ -48,8 +48,8 @@ class SDQ{
         // void cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P);
         // void norm(map<int, double> P, map<int, double> & ent);
         // void cal_ent(map<int, double> & ent);
-        void Subsampling(vector<vector<double>>& img);
-        void Upsampling(vector<vector<double>>& img);
+        // void Subsampling(vector<vector<double>>& img);
+        // void Upsampling(vector<vector<double>>& img);
 
         void opt_DC(double seq_dct_idxs_Y[][64], double seq_dct_coefs_Y[][64],
                     double seq_dct_idxs_Cr[][64], double seq_dct_coefs_Cr[][64],
@@ -92,10 +92,17 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     SDQ::n_col = SDQ::img_shape_Y[1];
     SDQ::n_row = SDQ::img_shape_Y[0];
     SDQ::seq_len_Y = pad_shape(SDQ::img_shape_Y[0], 8)*pad_shape(SDQ::img_shape_Y[1], 8)/64;
+    int SmplHstep = floor(J/a);
+    int SmplVstep;
+    if(b==0){SmplVstep = 2;} else{SmplVstep = 1;}
+    int pad_rows = pad_shape(SDQ::img_shape_Y[0], J);
+    int pad_cols = pad_shape(SDQ::img_shape_Y[1], J);
+    int Smplrows = pad_rows/SmplVstep;
+    int Smplcols = pad_cols/SmplHstep;
+    Subsampling(image[1], SDQ::img_shape_Y, SDQ::img_shape_C, SDQ::J, SDQ::a, SDQ::b);
+    Subsampling(image[2], SDQ::img_shape_Y, SDQ::img_shape_C, SDQ::J, SDQ::a, SDQ::b);
 
-    SDQ::Subsampling(image[1]);
-    SDQ::Subsampling(image[2]);
-    SDQ::seq_len_C = pad_shape(SDQ::Smplcols, 8)*pad_shape(SDQ::Smplrows, 8)/64;
+    SDQ::seq_len_C = pad_shape(Smplcols, 8)*pad_shape(Smplrows, 8)/64;
     auto blockified_img_Y = new double[SDQ::seq_len_Y][8][8];
     auto blockified_img_Cb = new double[SDQ::seq_len_C][8][8];
     auto blockified_img_Cr = new double[SDQ::seq_len_C][8][8];
@@ -197,7 +204,7 @@ double SDQ::__call__(vector<vector<vector<double>>>& image){
     deblockify(blockified_img_Cb, image[1], SDQ::img_shape_C);
     deblockify(blockified_img_Cr, image[2], SDQ::img_shape_C);
     delete [] blockified_img_Y; delete [] blockified_img_Cb; delete [] blockified_img_Cr;
-    Upsampling(image[1]);
-    Upsampling(image[2]);
+    Upsampling(image[1], SDQ::img_shape_Y, SDQ::J, SDQ::a, SDQ::b);
+    Upsampling(image[2], SDQ::img_shape_Y, SDQ::J, SDQ::a, SDQ::b);
     return BPP;
 }

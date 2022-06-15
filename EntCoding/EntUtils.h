@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <map>
+#include <vector>
 // #include "../SDQ/utils.h"
 const int TOTAL_KEY = -10011;
 void DPCM(double blockified_channel[][64], double differ[], int size){
@@ -12,7 +13,7 @@ void DPCM(double blockified_channel[][64], double differ[], int size){
     }
 }
 
-void cal_P_from_DIFF(double differ[], map<int, double> & P, int size){
+void cal_P_from_DIFF(double differ[], std::map<int, double> & P, int size){
     int i;
     double val, sizeGroup;
     for(i=1; i<size; i++){
@@ -28,7 +29,7 @@ void cal_P_from_DIFF(double differ[], map<int, double> & P, int size){
     }
 }
 
-void Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst){
+void Block_to_RSlst(double block[64], std::vector<int>& RSlst, std::vector<int>& IDlst){
     //tested
     // convert a flatten block to a Run Size list
     int i,j, r, S, RS;
@@ -59,8 +60,8 @@ void Block_to_RSlst(double block[64],vector<int>& RSlst, vector<int>& IDlst){
     RSlst.push_back(0);
 }
 
-void RSlst_to_Block(double DC, vector<int> RSlst,
-                         vector<int> IDlst, double block[64]){
+void RSlst_to_Block(double DC, std::vector<int> RSlst,
+                         std::vector<int> IDlst, double block[64]){
     // tested
     // convert a Run Size list to a flatten block
     std::fill_n(block, 64, 0);
@@ -81,11 +82,11 @@ void RSlst_to_Block(double DC, vector<int> RSlst,
     }
 }
 
-void norm(map<int, double> P, map<int, double> & ent){
+void norm(std::map<int, double> P, std::map<int, double> & ent){
     //tested
     double total = P[TOTAL_KEY];
     int KEY;
-    for(map<int, double>::iterator it = P.begin(); it != P.end(); it++){
+    for(std::map<int, double>::iterator it = P.begin(); it != P.end(); it++){
         KEY = it->first;
         if(KEY!=TOTAL_KEY){
             ent.insert({KEY, 0});
@@ -94,11 +95,11 @@ void norm(map<int, double> P, map<int, double> & ent){
     }
 }
 
-void cal_ent(map<int, double> & ent){
+void cal_ent(std::map<int, double> & ent){
     //tested
     int R, S;
     int KEY;
-    for(map<int, double>::iterator it = ent.begin(); it != ent.end(); it++){
+    for(std::map<int, double>::iterator it = ent.begin(); it != ent.end(); it++){
         KEY = it->first;
         if(KEY!=TOTAL_KEY){
             hash2rs(KEY, R, S);
@@ -107,7 +108,7 @@ void cal_ent(map<int, double> & ent){
     }
 }
 
-void cal_P_from_RSlst(vector<int> RSlst, map<int, double> & P){
+void cal_P_from_RSlst(std::vector<int> RSlst, std::map<int, double> & P){
     int length = RSlst.size(), i;
     int RS;
     P.insert({TOTAL_KEY, 0});

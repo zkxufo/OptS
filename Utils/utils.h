@@ -172,3 +172,53 @@ void img2seq(vector<vector<vector<double>>> img, vector<double>& pos, int nrow, 
     }
   }
 }
+
+void Subsampling(vector<vector<double>>& img,int img_shape_Y[2],
+                 int img_shape_C[2], int J, int a, int b){
+    int Nrows = img_shape_Y[0];
+    int Ncols = img_shape_Y[1];
+    int pad_rows = pad_shape(Nrows, J);
+    int pad_cols = pad_shape(Ncols, J);
+    int SmplHstep = floor(J/a);
+    int SmplVstep;
+    if(b==0){SmplVstep = 2;} else{SmplVstep = 1;}
+    int i;
+    int j;
+    int hidx;
+    int vidx;
+    for(i=0, hidx=0; i<pad_rows; i+=SmplVstep, hidx++){
+        for(j=0, vidx=0;j<pad_cols;j+=SmplHstep,vidx++){
+            if(j<Ncols && i<Nrows){
+                img[hidx][vidx] = img[i][j];
+            }
+        }
+    }
+    int Smplrows = pad_rows/SmplVstep;
+    int Smplcols = pad_cols/SmplHstep;
+    img_shape_C[0] = min(Nrows,Smplrows);
+    img_shape_C[1] = min(Ncols,Smplcols);
+}
+
+void Upsampling(vector<vector<double>>& img, int img_shape_Y[2], 
+                int J, int a, int b){
+    int Nsampled_row = img_shape_Y[0];
+    int Nsampled_col = img_shape_Y[1];
+    int x,y,xidx,yidx;
+    int i,j;
+    int SmplHstep = floor(J/a);
+    int SmplVstep;
+    if(b==0){SmplVstep = 2;} else{SmplVstep = 1;}
+    for(i=Nsampled_row-1;i>-1;i--){
+        for(j=Nsampled_col-1;j>-1;j--){
+            for(x=SmplHstep-1; x>-1; x--){
+                for(y=SmplVstep-1; y>-1; y--){
+                    yidx = i*SmplVstep+y;
+                    xidx = j*SmplHstep+x;
+                    if(xidx<Nsampled_col && yidx<Nsampled_row){
+                        img[yidx][xidx] = img[i][j];
+                    }
+                }
+            }
+        }
+    }
+}
