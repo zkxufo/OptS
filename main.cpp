@@ -3,8 +3,6 @@
 #include <getopt.h>
 #include <iostream>
 #include <stdlib.h>
-#include "./Utils/utils.h"
-#include "./Utils/Q_Table.h"
 #include "./SDQ/SDQ.h"
 #include "./SDQ/load.h"
 

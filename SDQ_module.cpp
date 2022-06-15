@@ -1,14 +1,11 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
-
 #include <opencv2/highgui.hpp>
 #include <unistd.h>
 #include <getopt.h>
 #include <iostream>
 #include <stdlib.h>
-#include "./Utils/utils.h"
-#include "./Utils/Q_Table.h"
 #include "./SDQ/SDQ.h"
 #include "./SDQ/load.h"
 using namespace cv;

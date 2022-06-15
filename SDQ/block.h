@@ -3,7 +3,7 @@
 #include <map>
 #include <iostream>
 #include <algorithm>
-
+#include "../Utils/utils.h"
 const double INIT_LOSS = 1e30;
 const double  ZERO = 0;
 using namespace std;
