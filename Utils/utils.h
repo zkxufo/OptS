@@ -5,11 +5,7 @@
 #include "Quantize.h"
 #include "Blockify.h"
 using namespace std;
-// using namespace cv;
-//TODO:: check N and ID is necessary
 
-// const float MAX_PXL_VAL = 255.;
-// const float MIN_PXL_VAL = 0.;
 const float FLAG_SIZE =  8*(1+1) // SOI
                         + 8*(1+1+2+5+1+1+2+2+1) // APP0
                         + 8*(1+1+2+1+1+64) // DQT
@@ -117,51 +113,6 @@ int find_the_last_non_zero(float arr[64]){
     return 63-idx;
 }
 
-float MSE3C(vector<vector<vector<float>>>img1,
-           vector<vector<vector<float>>>img2){
-    float m = 0;
-    int nrows = img1[0].size();
-    int ncols = img1[0][0].size();
-    for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols; j++){
-            m += pow(img1[0][j][i]-img2[0][j][i], 2);
-            m += pow(img1[1][j][i]-img2[1][j][i], 2);
-            m += pow(img1[2][j][i]-img2[2][j][i], 2);
-        }
-    }
-    m = m/3/nrows/ncols;
-    return m;
-}
-
-float PSNR3C(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = MSE3C(img1, img2);
-    return 10*log10(pow(MAX_PXL_VAL,2)/m);
-}
-
-float MSEY(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = 0;
-    float Y1, Y2;
-    int nrows = img1[0].size();
-    int ncols = img1[0][0].size();
-    for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols; j++){
-            Y1 = 0.299*img1[0][i][j] + 0.587*img1[1][i][j] + 0.114*img1[2][i][j];
-            Y2 = 0.299*img2[0][i][j] + 0.587*img2[1][i][j] + 0.114*img2[2][i][j];
-            m += pow((Y1-Y2), 2);
-        }
-    }
-    m = m/nrows/ncols;
-    return m;
-}
-
-float PSNRY(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = MSEY(img1, img2);
-    return 10*log10(pow(MAX_PXL_VAL,2)/m);
-}
-
 void seq2img(vector<float> pos, vector<vector<vector<float>>>& img, int nrow, int ncol){
   for(int c=0; c<3; ++c){
     for(int i=0; i<nrow; ++i){
@@ -230,4 +181,50 @@ void Upsampling(vector<vector<float>>& img, int img_shape_Y[2],
             }
         }
     }
+}
+
+
+float MSE3C(vector<vector<vector<float>>>img1,
+           vector<vector<vector<float>>>img2){
+    float m = 0;
+    int nrows = img1[0].size();
+    int ncols = img1[0][0].size();
+    for(int i=0; i<nrows; i++){
+        for(int j=0; j<ncols; j++){
+            m += pow(img1[0][j][i]-img2[0][j][i], 2);
+            m += pow(img1[1][j][i]-img2[1][j][i], 2);
+            m += pow(img1[2][j][i]-img2[2][j][i], 2);
+        }
+    }
+    m = m/3/nrows/ncols;
+    return m;
+}
+
+float PSNR3C(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = MSE3C(img1, img2);
+    return 10*log10(pow(MAX_PXL_VAL,2)/m);
+}
+
+float MSEY(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = 0;
+    float Y1, Y2;
+    int nrows = img1[0].size();
+    int ncols = img1[0][0].size();
+    for(int i=0; i<nrows; i++){
+        for(int j=0; j<ncols; j++){
+            Y1 = 0.299*img1[0][i][j] + 0.587*img1[1][i][j] + 0.114*img1[2][i][j];
+            Y2 = 0.299*img2[0][i][j] + 0.587*img2[1][i][j] + 0.114*img2[2][i][j];
+            m += pow((Y1-Y2), 2);
+        }
+    }
+    m = m/nrows/ncols;
+    return m;
+}
+
+float PSNRY(vector<vector<vector<float>>> img1,
+           vector<vector<vector<float>>> img2){
+    float m = MSEY(img1, img2);
+    return 10*log10(pow(MAX_PXL_VAL,2)/m);
 }
