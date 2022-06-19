@@ -20,12 +20,13 @@ QF_C = 50
 Beta_S = 1
 Beta_W = 1
 Beta_X = 1
-Lmbd = 8
+Lmbd = 1
 model = "NoModel"
 eps = 10
-# pretrained_model = models.alexnet(pretrained=True).to(device)
-# _ = pretrained_model.eval()
 device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
+pretrained_model = models.alexnet(pretrained=True).to(device)
+_ = pretrained_model.eval()
+
 transform = transforms.Compose([transforms.ToTensor(),
                                 transforms.Normalize(mean=[0, 0, 0], std=[1/255., 1/255., 1/255.]),
                                 SDQ_transforms(model, QF_Y, QF_C, J, a, b, Lmbd, Beta_S, Beta_W, Beta_X),
@@ -38,7 +39,8 @@ normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 
 
 for dt in tqdm.tqdm(test_loader):
     data_BPP, tar = dt
-    resizedimg = resize(data_BPP['image'])
+    resizedimg = resize(data_BPP['image'])/255
+    normdata = normalize(resizedimg)
     print("BPP: ",data_BPP['BPP'])
     # breakpoint()
     # breakpoint()
