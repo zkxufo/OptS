@@ -47,7 +47,7 @@ for dt in tqdm.tqdm(test_loader):
     num_correct += (pred.argmax(1) == labels).sum().item()
     num_tests += len(labels)
     BPP+=data_BPP['BPP']
-    if cnt %1000 ==0:
+    if cnt %1 ==0:
         print(num_correct/num_tests,"=",num_correct,"/",num_tests)
         print(BPP/num_tests)
     cnt += 1
