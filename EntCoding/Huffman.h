@@ -29,10 +29,6 @@
 #include <algorithm>
 #include "EntUtils.h"
 using namespace std;
- 
-// This constant can be avoided by explicitly
-// calculating height of Huffman Tree
-#define MAX_TREE_HT 33
 
 struct CompareSecond{
     bool operator()(const pair<int, float>& left, const pair<int, float>& right) const{

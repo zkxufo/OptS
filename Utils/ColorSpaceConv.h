@@ -52,6 +52,7 @@ void rgb2swx(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matr
 void swx2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matrix[3][3], float bias){
     int i, j, k;
     float r_ch, g_ch, b_ch;
+    float Y_ch, U_ch, V_ch;
     int nrows = rgb_img[0].size();
     int ncols = rgb_img[0][0].size();
     for(j=0; j<nrows; j++){
@@ -59,9 +60,15 @@ void swx2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matr
             r_ch=rgb_img[0][j][k];
             g_ch=rgb_img[1][j][k];
             b_ch=rgb_img[2][j][k];
-            rgb_img[0][j][k] = std::min(std::max(r_ch*W_matrix[0][0]+g_ch*W_matrix[0][1]+b_ch*W_matrix[0][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[1][j][k] = std::min(std::max(r_ch*W_matrix[1][0]+g_ch*W_matrix[1][1]+b_ch*W_matrix[1][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[2][j][k] = std::min(std::max(r_ch*W_matrix[2][0]+g_ch*W_matrix[2][1]+b_ch*W_matrix[2][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
+            Y_ch = r_ch*W_matrix[0][0]+g_ch*W_matrix[0][1]+b_ch*W_matrix[0][2]+bias;
+            U_ch = r_ch*W_matrix[1][0]+g_ch*W_matrix[1][1]+b_ch*W_matrix[1][2]+bias;
+            V_ch = r_ch*W_matrix[2][0]+g_ch*W_matrix[2][1]+b_ch*W_matrix[2][2]+bias;
+            rgb_img[0][j][k] = MinMaxClip(Y_ch, MIN_PXL_VAL, MAX_PXL_VAL);
+            rgb_img[1][j][k] = MinMaxClip(U_ch, MIN_PXL_VAL, MAX_PXL_VAL);
+            rgb_img[2][j][k] = MinMaxClip(V_ch, MIN_PXL_VAL, MAX_PXL_VAL);
+            // rgb_img[0][j][k] = std::min(std::max(r_ch*W_matrix[0][0]+g_ch*W_matrix[0][1]+b_ch*W_matrix[0][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
+            // rgb_img[1][j][k] = std::min(std::max(r_ch*W_matrix[1][0]+g_ch*W_matrix[1][1]+b_ch*W_matrix[1][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
+            // rgb_img[2][j][k] = std::min(std::max(r_ch*W_matrix[2][0]+g_ch*W_matrix[2][1]+b_ch*W_matrix[2][2]+bias, MIN_PXL_VAL), MAX_PXL_VAL);
         }
     }
 }
@@ -102,9 +109,9 @@ void YUV2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matr
             r_ch = Y_ch+2*(1-WR)*V_ch;
             g_ch = Y_ch-2*(1-WB)*WB/WG*U_ch-2*(1-WR)*WR/WG*V_ch;
             b_ch = Y_ch+2*(1-WB)*U_ch;
-            rgb_img[0][j][k] = min(max(r_ch, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[1][j][k] = min(max(g_ch, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[2][j][k] = min(max(b_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[0][j][k] = MinMaxClip(r_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(r_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[1][j][k] = MinMaxClip(g_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(g_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[2][j][k] = MinMaxClip(b_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(b_ch, MIN_PXL_VAL), MAX_PXL_VAL);
         }
     }
 }

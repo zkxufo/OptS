@@ -34,22 +34,26 @@
 #include "./SDQ/load.h"
 using namespace cv;
 using namespace std;
-
-// -------------
-// pure C++ code
-// -------------
-using namespace std;
-
-// ----------------
-// Python interface
-// ----------------
-
 namespace py = pybind11;
 
-// wrap C++ function with NumPy array IO
 std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | py::array::forcecast> array,
-                     string Model, int J, int a, int b, int QF_Y, int QF_C, float Beta, float Lmbd, float eps){
-
+                     string Model, int J, int a, int b, int QF_Y, int QF_C, float Beta_S, float Beta_W,
+                     float Beta_X, float Lmbd, float eps){
+  /*
+  :Fn  py__call__: 
+  :param py::array_t<float, py::array::c_style | py::array::forcecast> array: 
+  :param string Model:
+  :param int J, int a, int b:
+  :param int QF_Y:
+  :param int QF_C:
+  :param int QF_C:
+  :param float Beta_S:
+  :param float Beta_W:
+  :param float Beta_X:
+  :param float Lmbd:
+  :param float eps: 
+  :return: std::pair<py::array, float>
+  */
   unsigned long size[2];
   size[0] = (unsigned long)array.shape()[1];
   size[1] = (unsigned long)array.shape()[2];
@@ -64,10 +68,6 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   float BPP =0;
   vector<float> result(array.size());
   seq2img(pos, Vect_img, size[0], size[1]);
-  float Lmbda = Lmbd;
-  float Beta_S = Beta;
-  float Beta_W = Beta;
-  float Beta_X = Beta;  
   float Sen_Map[3][64]={0};
   LoadSenMap(Model, Sen_Map);
   float W_rgb2swx[3][3];
@@ -75,22 +75,23 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
   float bias_rgb2swx = 128;
   
-  // Mat2Vector(image, Vect_img);
-  if(Model=="NoModel"){
-    rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
-  }
-  else{
-    rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
-  }
+  rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // if(Model=="NoModel"){
+  //   rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // }
+  // else{
+  //   rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // }
   SDQ sdq;
-  sdq.__init__(eps, Beta_S, Beta_W, Beta_X, Lmbda, Sen_Map, QF_Y, QF_C, J, a ,b);
+  sdq.__init__(eps, Beta_S, Beta_W, Beta_X, Lmbd, Sen_Map, QF_Y, QF_C, J, a ,b);
   BPP = sdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
-  if(Model=="NoModel"){
-    YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
-  }
-  else{
-    swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
-  }
+  YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // if(Model=="NoModel"){
+  //   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // }
+  // else{
+  //   swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
+  // }
   img2seq(Vect_img, result, size[0], size[1]);
   int ndim = 3;
   vector<unsigned long> shape   = { 3, size[0], size[1]};

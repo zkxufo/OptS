@@ -123,6 +123,14 @@ float BLOCK::eob_cost(int i, float CumC[64]){
 void BLOCK::cal_RS(float C[64], float ind[64], 
                    vector<int>& RSlst,
                    vector<int>& IDlst){
+    /*
+    :Fn  cal_RS:
+    :param float C[64]: 
+    :param float ind[64]:
+    :param vector<int>& RSlst:
+    :param vector<int>& IDlst:
+    :return: None
+    */
     int i,r,s;
     float Sign;
     float cumsum_C[64];cumsum_C[0]=0;

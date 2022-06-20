@@ -48,7 +48,7 @@ class SDQ_transforms(torch.nn.Module):
     def __call__(self, img):
         img = img.detach().cpu().numpy()
         compressed_img, BPP = SDQ.__call__(img, self.model, self.J, self.a, self.b, 
-                                           self.Q, self.q, self.Beta_S, self.Lambda, 0.)
+                                           self.Q, self.q, self.Beta_S, self.Beta_W, self.Beta_X, self.Lambda, 0.)
         compressed_img = torch.tensor(compressed_img)
         return{'image': compressed_img, 'BPP': BPP}
 

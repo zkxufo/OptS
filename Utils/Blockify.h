@@ -25,9 +25,9 @@
 #include <math.h>
 #include <iostream>
 using namespace std;
-// using namespace cv;
 
 int pad_shape(int Num, int size=8){
+    
     int res =  Num%size;
     int pad = 1;
     if (res == 0){
@@ -38,6 +38,7 @@ int pad_shape(int Num, int size=8){
 }
 
  void Mat2Vector(cv::Mat Mat_img, vector<vector<vector<float>>>& Vect_img){
+
      int i, j;
      int nrows = Mat_img.rows;
      int ncols = Mat_img.cols;

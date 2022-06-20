@@ -25,7 +25,6 @@
 #include <math.h>
 #include <iostream>
 #include "DCT.h"
-#include "ColorSpaceConv.h"
 #include "Quantize.h"
 #include "Blockify.h"
 using namespace std;
@@ -75,6 +74,10 @@ int argmin(float J_lst[63]){
         }
     }
     return idx;
+}
+
+float MinMaxClip(float num, float MIN, float MAX){
+    return min(max(num, MIN), MAX);
 }
 
 void shape(vector<vector<vector<float>>> img, int S[2]){
@@ -223,6 +226,8 @@ float MSE3C(vector<vector<vector<float>>>img1,
     m = m/3/nrows/ncols;
     return m;
 }
+
+#include "ColorSpaceConv.h"
 
 float PSNR3C(vector<vector<vector<float>>> img1,
            vector<vector<vector<float>>> img2){

@@ -30,7 +30,6 @@
 #include "../EntCoding/Huffman.h"
 using namespace std;
 
-const float MIN_Q_VAL = 1;
 class SDQ{
     public:
         // attributes
@@ -133,7 +132,7 @@ float SDQ::__call__(vector<vector<vector<float>>>& image){
     auto DC_idxs_Cr = new float[SDQ::seq_len_C];
 
     blockify(image[0], SDQ::img_shape_Y, blockified_img_Y);
-    blockify(image[1], SDQ::img_shape_C, blockified_img_Cb);    
+    blockify(image[1], SDQ::img_shape_C, blockified_img_Cb);
     blockify(image[2], SDQ::img_shape_C, blockified_img_Cr);
 
     block_2_seqdct(blockified_img_Y, seq_dct_coefs_Y, SDQ::seq_len_Y);

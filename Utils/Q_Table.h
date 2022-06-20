@@ -24,7 +24,7 @@
 
 #include <math.h>
 using namespace std;
-const float MINQVALUE = 1;
+const float MINQVALUE = 1.;
 const float MAXQVALUE = 128.;
 
 void quantizationTable(int QF, bool Luminance, float Q_Table[64]){
