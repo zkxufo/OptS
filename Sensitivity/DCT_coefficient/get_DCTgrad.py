@@ -24,7 +24,6 @@ os.environ["CUDA_VISIBLE_DEVICES"]='1'
 Batch_size = 100
 from model import get_model
 import argparse
-
 from matplotlib.pyplot import figure
 
 def main(model = 'alexnet', Batch_size = 100, Nexample= 10000):

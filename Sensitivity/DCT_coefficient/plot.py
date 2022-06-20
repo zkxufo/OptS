@@ -103,6 +103,6 @@ def main(model = 'alexnet'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='model')
-    parser.add_argument('-model',type=str, default='alexnet', help='DNN model')
+    parser.add_argument('-model',type=str, default='Alexnet', help='DNN model')
     args = parser.parse_args()
     main(**vars(args))
