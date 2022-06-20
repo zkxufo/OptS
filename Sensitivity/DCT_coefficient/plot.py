@@ -42,8 +42,8 @@ def main(model = 'alexnet'):
     plt.plot(top_lst)
     plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
-    stdvar = np.std(mean_lst)
-    mean_lst = mean_lst/stdvar
+    Range = np.max(mean_lst)-np.min(mean_lst)
+    mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
     plt.xticks(np.arange(1,65,4))
@@ -66,8 +66,8 @@ def main(model = 'alexnet'):
     plt.plot(top_lst)
     plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
-    stdvar = np.std(mean_lst)
-    mean_lst = mean_lst/stdvar
+    Range = np.max(mean_lst)-np.min(mean_lst)
+    mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
     plt.xticks(np.arange(1,65,4))
@@ -90,8 +90,8 @@ def main(model = 'alexnet'):
     plt.plot(top_lst)
     plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
-    stdvar = np.std(mean_lst)
-    mean_lst = mean_lst/stdvar
+    Range = np.max(mean_lst)-np.min(mean_lst)
+    mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
     plt.xticks(np.arange(1,65,4))
