@@ -142,10 +142,10 @@ void SDQ::opt_Q_C(float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64],
     int i,j;
     for(j=1; j<63; j++){  
         for(i=0; i<SDQ::seq_len_C; i++){
-            divisor+=seq_dct_coefs_Cb[i][j+1]*seq_dct_idxs_Cb[i][j+1];
-            divisor += seq_dct_coefs_Cr[i][j+1]*seq_dct_idxs_Cr[i][j+1];
-            denominator += pow(seq_dct_idxs_Cb[i][j+1],2);
-            denominator += pow(seq_dct_idxs_Cr[i][j+1],2);
+            divisor += seq_dct_coefs_Cb[i][j+1]*seq_dct_idxs_Cb[i][j+1]*SDQ::Block.Sen_Map[1][j];
+            divisor += seq_dct_coefs_Cr[i][j+1]*seq_dct_idxs_Cr[i][j+1]*SDQ::Block.Sen_Map[2][j];
+            denominator += pow(seq_dct_idxs_Cb[i][j+1],2)*SDQ::Block.Sen_Map[1][j];
+            denominator += pow(seq_dct_idxs_Cr[i][j+1],2)*SDQ::Block.Sen_Map[2][j];
         }
         if(denominator != 0){
             val = divisor/denominator;
