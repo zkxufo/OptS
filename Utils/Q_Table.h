@@ -47,20 +47,15 @@ void quantizationTable(int QF, bool Luminance, float Q_Table[64]){
         float S;
         float q;              
         if(QF<50){
-        S = 5000/QF;
+            S = 5000/QF;
         }
         else{
-        S = 200-2*QF;
+            S = 200-2*QF;
         }
         if (Luminance == true){
             for(int i=0; i<64; i++){
                 q = (50+S*quantizationTableData_Y[i])/100;
-                if(floor(q)<MINQVALUE){
-                    Q_Table[i] = MINQVALUE;
-                }
-                else{
-                    Q_Table[i] = floor(q);
-                }
+                Q_Table[i] = min(max(floor(q), MINQVALUE),MAXQVALUE);
             }
         }
         else{

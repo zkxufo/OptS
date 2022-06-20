@@ -1,30 +1,16 @@
 import numpy as np
 import torch
-from torchvision import models, datasets, transforms
+from torchvision import transforms
 import torchvision
 from tqdm import tqdm
-from scipy.stats import ttest_ind
-from scipy.stats import bootstrap
-from matplotlib.pyplot import figure
-import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-from torch.utils.data import Dataset, TensorDataset
-# import torchattacks
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-from tqdm import tqdm
-import numpy as np
 from utils import *
-#from imagenet_class import imagenet_label
 import os
-import matplotlib.pyplot as plt
+
 os.environ["CUDA_VISIBLE_DEVICES"]='1'
 Batch_size = 100
 from model import get_model
 import argparse
-from matplotlib.pyplot import figure
 
 def main(model = 'alexnet', Batch_size = 100, Nexample= 10000):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
