@@ -97,12 +97,10 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   vector<unsigned long> shape   = { 3, size[0], size[1]};
   vector<unsigned long> strides = { size[0]*size[1]*sizeof(float),
                                     size[1]*sizeof(float), sizeof(float)};
-  // delete [] Sen_Map;
-  // return 2-D NumPy array
   return std::make_pair(py::array(py::buffer_info(
     result.data(),                           /* data as contiguous array */
-    sizeof(float),                          /* size of one scalar       */
-    py::format_descriptor<float>::format(), /* data type                */
+    sizeof(float),                           /* size of one scalar       */
+    py::format_descriptor<float>::format(),  /* data type                */
     ndim,                                    /* number of dimensions     */
     shape,                                   /* shape of the matrix      */
     strides                                  /* strides for each axis    */

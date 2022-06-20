@@ -33,7 +33,7 @@ void DPCM(float blockified_channel[][64], float differ[], int size){
     :param float blockified_channel[][64]: flatten blockified channel
     :param float differ[]: the DPCM coding sequence
     :param int size: number of blocks in a channel
-    :return: None
+    :return void:
     */
     int i;
     differ[0] = blockified_channel[0][0];
@@ -49,7 +49,7 @@ void cal_P_from_DIFF(float differ[], std::map<int, float> & P, int size){
     :param float differ[]: the DPCM coding sequence
     :param std::map<int, float> & P: Count the group size, key: size group, value: number of size group 
     :param int size: number of blocks in a channel
-    :return: None
+    :return void:
     */
     int i;
     float val, sizeGroup;
@@ -72,7 +72,7 @@ void Block_to_RSlst(float block[64], std::vector<int>& RSlst, std::vector<int>& 
     :param float block[64]: flatten block
     :param std::vector<int>& RSlst: Run-Size list
     :param std::vector<int>& IDlst: Index list
-    :return: None
+    :return void:
     */
     int i,j, R, S, RS;
     int cur_idx=0; // current index
@@ -110,7 +110,7 @@ void RSlst_to_Block(float DC, std::vector<int> RSlst,
     :param float block[64]: flatten block
     :param std::vector<int>& RSlst: Run-Size list
     :param std::vector<int>& IDlst: Index list
-    :return: None
+    :return void:
     */
     std::fill_n(block, 64, 0);
     block[0] = DC;
@@ -136,7 +136,7 @@ void norm(std::map<int, float> P, std::map<int, float> & ent){
     :Fn  norm: normalize the P to a distribution
     :param std::map<int, float> P: count the Run-size pair
     :param std::map<int, float> & ent: distribution
-    :return: None
+    :return void:
     */
     float total = P[TOTAL_KEY];
     int KEY;
@@ -155,7 +155,7 @@ void cal_ent(std::map<int, float> & ent){
     :Fn  cal_ent: Entropy rate associated with pair (r,s), i.e, $ent(r,s) = -log_2 P(r,s)+s$
     :param std::map<int, float> P: distribution
     :param std::map<int, float> & ent: Entropy rate
-    :return: None
+    :return void:
     */
     int R, S;
     int KEY;
@@ -174,7 +174,7 @@ void cal_P_from_RSlst(std::vector<int> RSlst, std::map<int, float> & P){
     :Fn  cal_P_from_RSlst: Count the size group of Run-Size list coding sequence in P
     :param std::vector<int> RSlst: Run-Size list
     :param std::map<int, float> & P: Count the group size, key: size group, value: number of size group 
-    :return: None
+    :return void:
     */
     int length = RSlst.size(), i;
     int RS;

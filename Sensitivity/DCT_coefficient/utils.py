@@ -3,6 +3,8 @@ import torch.nn.functional as F
 import math
 import numpy as np
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
 
 def get_zigzag():
     zigzag = torch.tensor(( [[0,   1,   5,  6,   14,  15,  27,  28],
@@ -146,3 +148,13 @@ def load_3x3_weight(model_name = "Alexnet"):
         for j in range(3):
             rt_arr[i, j] = seq_weight[i*3+j]
     return torch.Tensor(rt_arr)
+
+
+def plot_confidence_interval(x, top, bottom, mean, horizontal_line_width=0.25, color='#2187bb',label=None,alpha=1):
+    left = x - horizontal_line_width / 2
+    right = x + horizontal_line_width / 2
+    plt.plot([x, x], [top, bottom], color=color,alpha=0.7*alpha)
+    plt.plot([left, right], [top, top], color=color,alpha=0.7*alpha)
+    plt.plot([left, right], [bottom, bottom], color=color,alpha=0.7*alpha)
+    plt.plot(x, mean, 'o', color=color, label=label,alpha=alpha)
+    return mean

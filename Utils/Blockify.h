@@ -27,7 +27,12 @@
 using namespace std;
 
 int pad_shape(int Num, int size=8){
-    
+    /*
+    :Fn  pad_shape: calculate the padded shape
+    :param Num: number of row or col of image 
+    :param size: block size
+    :return int: padded size
+    */
     int res =  Num%size;
     int pad = 1;
     if (res == 0){
@@ -38,7 +43,12 @@ int pad_shape(int Num, int size=8){
 }
 
  void Mat2Vector(cv::Mat Mat_img, vector<vector<vector<float>>>& Vect_img){
-
+    /*
+    :Fn  Mat2Vector: 
+    :param cv::Mat Mat_img:
+    :param vector<vector<vector<float>>>& Vect_img:
+    :return void:
+    */
      int i, j;
      int nrows = Mat_img.rows;
      int ncols = Mat_img.cols;
