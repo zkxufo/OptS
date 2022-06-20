@@ -2,7 +2,7 @@
 
 // MIT License
 
-// Copyright (c) 2022 deponce(Linfeng Ye), University of Waterloo
+// Copyright (c) 2022 Ahmed Hussein Salamah, deponce(Linfeng Ye), Kaixiang Zheng, University of Waterloo
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
