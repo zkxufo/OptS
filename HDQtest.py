@@ -15,8 +15,8 @@ Batch_size = 1
 J = 4
 a = 2
 b = 0
-QF_Y = 25
-QF_C = 25
+QF_Y = 100
+QF_C = 100
 device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
 # pretrained_model = models.vgg11(pretrained=True)
 # pretrained_model = models.resnet18(pretrained=True)
@@ -41,7 +41,6 @@ BPP = 0
 cnt = 0
 for dt in tqdm.tqdm(test_loader):
     data_BPP, labels = dt
-    # resizedimg = crop(resize(data_BPP['image']))/255
     resizedimg = data_BPP['image']/255
     normdata = normalize(resizedimg)
     pred = pretrained_model(normdata)

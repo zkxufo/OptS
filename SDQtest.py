@@ -24,6 +24,9 @@ Lmbd = 1
 model = "NoModel"
 eps = 10
 device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
+# pretrained_model = models.vgg11(pretrained=True)
+# pretrained_model = models.resnet18(pretrained=True)
+# pretrained_model = models.squeezenet1_0(pretrained=True)
 pretrained_model = models.alexnet(pretrained=True).to(device)
 _ = pretrained_model.eval()
 
@@ -36,23 +39,21 @@ dataset = datasets.ImageNet(root="~/project/data", split='val', transform=transf
 test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffle=False, num_workers=6)
 
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
+num_correct = 0
+num_tests = 0
+BPP = 0
+cnt = 0
 for dt in tqdm.tqdm(test_loader):
-    data_BPP, tar = dt
+    data_BPP, labels = dt
     resizedimg = resize(data_BPP['image'])/255
     normdata = normalize(resizedimg)
-    print("BPP: ",data_BPP['BPP'])
-    # breakpoint()
-    # breakpoint()
-    # data = data_BPP['image']
-    # BPP = data_BPP['BPP']
-    # data = data[0].numpy()#[0, 255]
-    # plt.imshow(data.transpose(1,2,0)/255.)
-    # plt.show()
-    # compressed_img, BPP = SDQ.__call__(data, model, J, a, b,
-    #                                         QF_Y, QF_C, Beta_S, Lmbd, eps)
-    # breakpoint()
-
-    # plt.imshow(data_BPP[0].numpy().transpose(1, 2, 0) / 255.)
-    # plt.show()
-    # print(BPP)
+    pred = pretrained_model(normdata)
+    num_correct += (pred.argmax(1) == labels).sum().item()
+    num_tests += len(labels)
+    BPP+=data_BPP['BPP']
+    if cnt %1 ==0:
+        print(num_correct/num_tests,"=",num_correct,"/",num_tests)
+        print(BPP/num_tests)
+    cnt += 1
+print(num_correct/num_tests,"=",num_correct,"/",num_tests)
+print(BPP/num_tests)
