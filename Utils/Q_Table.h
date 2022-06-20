@@ -28,7 +28,7 @@ const float MINQVALUE = 1.;
 const float MAXQVALUE = 128.;
 
 void quantizationTable(int QF, bool Luminance, float Q_Table[64]){
-    if (QF <100){
+    if (QF <= 100){
         QF = max(min(QF, 100),0);
         if(QF==0){
             QF=1;
