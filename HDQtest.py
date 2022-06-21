@@ -42,6 +42,7 @@ cnt = 0
 for dt in tqdm.tqdm(test_loader):
     data_BPP, labels = dt
     resizedimg = data_BPP['image']/255
+    breakpoint()
     normdata = normalize(resizedimg)
     pred = pretrained_model(normdata)
     num_correct += (pred.argmax(1) == labels).sum().item()

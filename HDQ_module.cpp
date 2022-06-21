@@ -31,6 +31,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "./HDQ/HDQ.h"
+#include "./SDQ/load.h"
 using namespace cv;
 using namespace std;
 
@@ -64,13 +65,17 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   float W_rgb2swx[3][3];
   float W_swx2rgb[3][3];
   float bias_rgb2swx = 128;
-  
+  string Model = "Alexnet";
   // Mat2Vector(image, Vect_img);
-  rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
+  rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  
   HDQ hdq;
   hdq.__init__(QF_Y, QF_C, J, a ,b);
   BPP = hdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
-  YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  // YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
   img2seq(Vect_img, result, size[0], size[1]);
   int ndim = 3;
   vector<unsigned long> shape   = { 3, size[0], size[1]};
