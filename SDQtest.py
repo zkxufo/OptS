@@ -13,15 +13,15 @@ from Compress import SDQ_transforms
 
 Batch_size = 1
 J = 4
-a = 1
-b = 0
-QF_Y = 50
-QF_C = 50
+a = 4
+b = 4
+QF_Y = 10
+QF_C = 10
 Beta_S = 1
 Beta_W = 1
 Beta_X = 1
-Lmbd = 1
-model = "NoModel"
+Lmbd = 15
+model = "Alexnet"
 eps = 10
 device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
 # pretrained_model = models.vgg11(pretrained=True)

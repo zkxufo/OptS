@@ -21,7 +21,7 @@ from utils import *
 import os
 import matplotlib.pyplot as plt
 os.environ["CUDA_VISIBLE_DEVICES"]='1'
-Batch_size = 100
+Batch_size = 1
 from model import get_model
 import argparse
 
@@ -35,22 +35,23 @@ def plot_confidence_interval(x, top, bottom, mean, horizontal_line_width=0.25, c
     return mean
 from matplotlib.pyplot import figure
 
-def main(model = 'alexnet', Batch_size = 100, Nexample= 10000):
+def main(model = 'Alexnet', Batch_size = 100, Nexample= 10000):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    Batch_size = Batch_size
+    Batch_size = 1
     thr = Nexample
     model_name = model
     print("code run on", device)
     Trans = [transforms.ToTensor(),
-             transforms.Resize((224, 224)),
+             transforms.Resize((256, 256)),
+             transforms.CenterCrop(224),
              transforms.Normalize(mean=[0, 0, 0], std=[1/255., 1/255., 1/255.])]
     transform = transforms.Compose(Trans)
-    dataset = torchvision.datasets.ImageNet(root="~/project/data", split='train',
+    dataset = torchvision.datasets.ImageNet(root="~/project/data", split='val',
                                             transform=transform)
     A = load_3x3_weight(model_name).to(device)
     A_inv = torch.linalg.inv(A).to(device)
     Scale2One = transforms.Normalize(mean=[0, 0, 0], std=[255., 255., 255.])
-    test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffle=True)
+    test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffle=False)
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     pretrained_model = get_model(model_name)
     pretrained_model.to(device)
@@ -62,9 +63,15 @@ def main(model = 'alexnet', Batch_size = 100, Nexample= 10000):
     for data, target in tqdm(test_loader):
         data, target = data.to(device), target.to(device)  # [0,225]
         data = data.transpose(0, 1).reshape(3, -1)  # [0,225]
+        # WXV = data
         WXV = A @ (data - 128.)  # [-128, 127]
         WXV.requires_grad = True
         recoverd_img = WXV.reshape(3, Batch_size, 224, 224)  # [-128, 127]
+        #################################################
+        # recoverd_img = recoverd_img.transpose(1,0)[0]
+        # pimg = recoverd_img.detach().cpu().numpy().transpose(1,2,0)
+        # breakpoint()
+        #################################################
         seq_recoverd_img = recoverd_img.reshape(3, -1)  # [-128, 127]
         seq_recoverd_STD = A_inv @ seq_recoverd_img + 128.  # [0,225]
         recoverd_img_STD = seq_recoverd_STD.reshape(3, Batch_size, 224, 224).transpose(0, 1)

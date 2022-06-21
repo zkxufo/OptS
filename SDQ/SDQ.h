@@ -130,7 +130,7 @@ void SDQ::opt_Q_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]){
             // if (val<MINQVALUE){val = MINQVALUE;}
             SDQ::Q_table_Y[j] = val;
         }
-        divisor=0;denominator=0; 
+        divisor=0; denominator=0; 
     }
 }
 

@@ -75,9 +75,9 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
   float bias_rgb2swx = 128;
   
-  rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  rgb2YUV(Vect_img);
   // if(Model=="NoModel"){
-  //   rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  //   rgb2YUV(Vect_img);
   // }
   // else{
   //   rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
@@ -85,9 +85,9 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   SDQ sdq;
   sdq.__init__(eps, Beta_S, Beta_W, Beta_X, Lmbd, Sen_Map, QF_Y, QF_C, J, a ,b);
   BPP = sdq.__call__(Vect_img); // Vect_img is the compressed dequantilzed image after sdq.__call__()
-  YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  YUV2rgb(Vect_img);
   // if(Model=="NoModel"){
-  //   YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  //   YUV2rgb(Vect_img);
   // }
   // else{
   //   swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);

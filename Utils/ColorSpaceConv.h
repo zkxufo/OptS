@@ -73,7 +73,7 @@ void swx2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matr
     }
 }
 
-void rgb2YUV(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matrix[3][3], float bias){
+void rgb2YUV(std::vector<std::vector<std::vector<float>>>& rgb_img){
     int i, j, k;
     float r_ch, g_ch, b_ch;
     float Y_ch, U_ch, V_ch;
@@ -95,7 +95,7 @@ void rgb2YUV(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matr
     }
 }
 
-void YUV2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img, float W_matrix[3][3], float bias){
+void YUV2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img){
     int i, j, k;
     float Y_ch, U_ch, V_ch;
     float r_ch, g_ch, b_ch;

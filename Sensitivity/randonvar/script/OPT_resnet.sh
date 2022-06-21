@@ -1,0 +1,1 @@
+python3 get_pixgrad.py -model Resnet18 -Batch_size 100 -Nexample 10000 -resize
