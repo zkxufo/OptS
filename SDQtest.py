@@ -29,12 +29,12 @@ device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
 # pretrained_model = models.squeezenet1_0(pretrained=True)
 pretrained_model = models.alexnet(pretrained=True).to(device)
 _ = pretrained_model.eval()
-
 transform = transforms.Compose([transforms.ToTensor(),
+                                transforms.Resize((256, 256)),
+                                transforms.CenterCrop(224),
                                 transforms.Normalize(mean=[0, 0, 0], std=[1/255., 1/255., 1/255.]),
                                 SDQ_transforms(model, QF_Y, QF_C, J, a, b, Lmbd, Beta_S, Beta_W, Beta_X),
                                 ])
-resize = transforms.Resize((224, 224))
 dataset = datasets.ImageNet(root="~/project/data", split='val', transform=transform)
 test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffle=False, num_workers=6)
 
@@ -45,7 +45,7 @@ BPP = 0
 cnt = 0
 for dt in tqdm.tqdm(test_loader):
     data_BPP, labels = dt
-    resizedimg = resize(data_BPP['image'])/255
+    resizedimg = data_BPP['image']/255
     normdata = normalize(resizedimg)
     pred = pretrained_model(normdata)
     num_correct += (pred.argmax(1) == labels).sum().item()

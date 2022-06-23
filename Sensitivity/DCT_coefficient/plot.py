@@ -38,14 +38,17 @@ def main(model = 'alexnet'):
         top_lst.append(top)
         mean_lst.append(mean)
     plt.figure(figsize=(10,8))
-    plt.plot(bottom_lst)
-    plt.plot(top_lst)
-    plt.plot(mean_lst)
+    # plt.plot(bottom_lst)
+    # plt.plot(top_lst)
+    # plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
     Range = np.max(mean_lst)-np.min(mean_lst)
     mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
+    #
+    plt.plot(mean_lst)
+    #
     plt.xticks(np.arange(1,65,4))
     plt.title('Y channel L1 sensitivity, per image')
     plt.savefig("Y"+model+".pdf")
@@ -62,14 +65,17 @@ def main(model = 'alexnet'):
         bottom_lst.append(bottom)
         top_lst.append(top)
         mean_lst.append(mean)
-    plt.plot(bottom_lst)
-    plt.plot(top_lst)
-    plt.plot(mean_lst)
+    # plt.plot(bottom_lst)
+    # plt.plot(top_lst)
+    # plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
     Range = np.max(mean_lst)-np.min(mean_lst)
     mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
+    #
+    plt.plot(mean_lst)
+    #
     plt.xticks(np.arange(1,65,4))
     plt.title('Cb channel L1 sensitivity, per image')
     plt.savefig("Cb"+model+".pdf")
@@ -86,14 +92,17 @@ def main(model = 'alexnet'):
         bottom_lst.append(bottom)
         top_lst.append(top)
         mean_lst.append(mean)
-    plt.plot(bottom_lst)
-    plt.plot(top_lst)
-    plt.plot(mean_lst)
+    # plt.plot(bottom_lst)
+    # plt.plot(top_lst)
+    # plt.plot(mean_lst)
     mean_lst = np.array(mean_lst)
     Range = np.max(mean_lst)-np.min(mean_lst)
     mean_lst = mean_lst/Range
     mean_val = np.mean(mean_lst)
     mean_lst = mean_lst-mean_val+1
+    #
+    plt.plot(mean_lst)
+    #
     plt.xticks(np.arange(1,65,4))
     plt.title('Cr channel L1 sensitivity, per image')
     plt.savefig("Cr"+model+".pdf")
