@@ -194,7 +194,6 @@ float SDQ::__call__(vector<vector<vector<float>>>& image){
     float BPP=0;
     float file_size = EntACC+EntACY+EntDCC+EntDCY+FLAG_SIZE; // Run_length coding
     BPP = file_size/SDQ::img_shape_Y[0]/SDQ::img_shape_Y[1];
-    
     delete [] seq_dct_coefs_Y; delete [] seq_dct_coefs_Cb; delete [] seq_dct_coefs_Cr;
     Dequantize(seq_dct_idxs_Y, SDQ::Q_table_Y, SDQ::seq_len_Y); //seq_dct_idxs_Y: [][64]
     Dequantize(seq_dct_idxs_Cb, SDQ::Q_table_C, SDQ::seq_len_C);

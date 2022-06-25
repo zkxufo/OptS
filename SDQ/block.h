@@ -149,7 +149,7 @@ void BLOCK::cal_RS(float C[64], float ind[64],
         Sign = sign(C[i]);
         switch (S[i]){
             case 0 ... 1:{
-                ID[0][i] = Sign;   
+                ID[0][i] = Sign;
                 ID[1][i] = 2*Sign;
                 ID[2][i] = 4*Sign;
                 break;
@@ -172,9 +172,9 @@ void BLOCK::cal_RS(float C[64], float ind[64],
         }
     }
     float J_lst[63]= {0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                       0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                       0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
-                       0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.}; 
+                      0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                      0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,
+                      0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.};
     float curr_minicost;
     int i_nl, size;
     float dist_inc, mean_square_dist;
@@ -244,6 +244,7 @@ void BLOCK::cal_RS(float C[64], float ind[64],
         // cost of each node
         // J_lst: [1,2,3 ... 63]
     }
+    // cout<<endl;
     int curr_idx;
     // step 3 find the optimal path for current block
     state.cost[63] = eob_cost(0, cumsum_C);

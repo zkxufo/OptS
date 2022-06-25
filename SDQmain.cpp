@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
   Mat2Vector(image, ori_img);
   // cout<<Model;
     
-  rgb2YUV(Vect_img, W_rgb2swx, bias_rgb2swx);
+  rgb2YUV(Vect_img);
   // rgb2swx(Vect_img, W_rgb2swx, bias_rgb2swx);
   
   SDQ sdq;
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
   float BPP = sdq.__call__(Vect_img); //Vect_img is the compressed dequantilzed image after sdq.__call__()
   cout<<"BPP: "<<BPP<<endl;
 
-  YUV2rgb(Vect_img, W_rgb2swx, bias_rgb2swx);
+  YUV2rgb(Vect_img);
 
   // swx2rgb(Vect_img, W_swx2rgb, bias_rgb2swx);
   float psnrVal = PSNRY(Vect_img, ori_img);

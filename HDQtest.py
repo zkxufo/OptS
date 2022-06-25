@@ -17,12 +17,12 @@ a = 4
 b = 4
 QF_Y = 30
 QF_C = 30
-device = torch.device('cpu' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # pretrained_model = models.vgg11(pretrained=True)
 # pretrained_model = models.resnet18(pretrained=True)
 # pretrained_model = models.squeezenet1_0(pretrained=True)
-pretrained_model = models.alexnet(pretrained=True).to(device)
-_ = pretrained_model.eval()
+pretrained_model = models.alexnet(pretrained=True)
+_ = pretrained_model.eval().to(device)
 transform = transforms.Compose([transforms.ToTensor(),
                                 transforms.Resize((256, 256)),
                                 transforms.CenterCrop(224),
@@ -39,15 +39,16 @@ BPP = 0
 cnt = 0
 for dt in tqdm.tqdm(test_loader):
     data_BPP, labels = dt
-    resizedimg = data_BPP['image']
+    labels = labels.to(device)
+    resizedimg = data_BPP['image'].to(device)/255.
     # pimg = resizedimg[0].cpu().numpy().transpose(1,2,0)
     # breakpoint()
-    normdata = normalize(resizedimg/255)
+    normdata = normalize(resizedimg)
     pred = pretrained_model(normdata)
     num_correct += (pred.argmax(1) == labels).sum().item()
     num_tests += len(labels)
     BPP+=data_BPP['BPP']
-    if cnt %1 ==0:
+    if (cnt+1) %1000 ==0:
         print(num_correct/num_tests,"=",num_correct,"/",num_tests)
         print(BPP/num_tests)
     cnt += 1

@@ -37,6 +37,7 @@ using namespace std;
 namespace py = pybind11;
 
 std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | py::array::forcecast> array,
+                     py::array_t<float, py::array::c_style | py::array::forcecast> SenMap,
                      string Model, int J, int a, int b, int QF_Y, int QF_C, float Beta_S, float Beta_W,
                      float Beta_X, float Lmbd, float eps){
   /*
@@ -69,10 +70,11 @@ std::pair<py::array, float> py__call__(py::array_t<float, py::array::c_style | p
   vector<float> result(array.size());
   seq2img(pos, Vect_img, size[0], size[1]);
   float Sen_Map[3][64]={0};
-  LoadSenMap(Model, Sen_Map);
+  memcpy(Sen_Map, SenMap.data(), 3*64*sizeof(float));
+  // LoadSenMap(Model, Sen_Map);
   float W_rgb2swx[3][3];
   float W_swx2rgb[3][3];
-  LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
+  // LoadColorConvW(Model, W_rgb2swx, W_swx2rgb);
   float bias_rgb2swx = 128;
   
   rgb2YUV(Vect_img);

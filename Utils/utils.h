@@ -29,7 +29,7 @@
 #include "Blockify.h"
 using namespace std;
 
-const float FLAG_SIZE =  8*(1+1) // SOI
+const float FLAG_SIZE = 8*(1+1) // SOI
                         + 8*(1+1+2+5+1+1+2+2+1) // APP0
                         + 8*(1+1+2+1+1+64) // DQT
                         + 8*(1+1+2+1+2+2+1+1+1+1) // SOF0
@@ -37,7 +37,7 @@ const float FLAG_SIZE =  8*(1+1) // SOI
                         + 8*(1+1+2+1+16)*4+256*4 //DHT
                         + 8*(1+1+2+1+1+1+3) + 8*(2+2+1+2)// SOS
                         + 8*(1+1); //EOI;
-
+                        
 struct node{
     float cost[64];
     int ID[64]= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -87,7 +87,7 @@ void shape(vector<vector<vector<float>>> img, int S[2]){
 
 int size_group(float num, const int MAX_val=10, const int MIN_val = 0){
     int S;
-    int abs_num = abs(num);
+    int abs_num = round(abs(num));
     switch (abs_num){
         case 0 :{S = 0;break;}
         case 1 :{S = 1;break;}

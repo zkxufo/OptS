@@ -126,8 +126,7 @@ void SDQ::opt_Q_Y(float seq_dct_idxs_Y[][64], float seq_dct_coefs_Y[][64]){
         }
         if(denominator != 0){
             val = divisor/denominator;
-            val = MinMaxClip(val, MINQVALUE, MAXQVALUE);
-            // if (val<MINQVALUE){val = MINQVALUE;}
+            val = round(MinMaxClip(val, MINQVALUE, MAXQVALUE));
             SDQ::Q_table_Y[j] = val;
         }
         divisor=0; denominator=0; 
@@ -149,8 +148,7 @@ void SDQ::opt_Q_C(float seq_dct_idxs_Cb[][64], float seq_dct_coefs_Cb[][64],
         }
         if(denominator != 0){
             val = divisor/denominator;
-            val = MinMaxClip(val, MINQVALUE, MAXQVALUE);
-            // if (val<MINQVALUE){val = MINQVALUE;}
+            val = round(MinMaxClip(val, MINQVALUE, MAXQVALUE));
             SDQ::Q_table_C[j] = val;
         }    
         divisor=0;denominator=0; 
