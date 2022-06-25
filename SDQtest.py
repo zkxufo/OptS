@@ -5,11 +5,13 @@ from torchvision import transforms
 import torch
 import matplotlib.pyplot as plt
 from torchvision import models
-from PIL import Image
+# from PIL import Image
+from utils import load_model
 from Compress import SDQ_transforms
 import argparse
 def main(args):
     Batch_size = 1
+    model = args.Model
     J = args.J
     a = args.a
     b = args.b
@@ -19,15 +21,25 @@ def main(args):
     Beta_W = args.Beta_W
     Beta_X = args.Beta_X
     Lmbd = args.L
-    model = "Alexnet"
     eps = 10
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(device)
+    print("Model: ", model)
+    print("J =", J)
+    print("a =", a)
+    print("b =", b)
+    print("QF_Y =",QF_Y)
+    print("QF_C =",QF_C)
+    print("Beta_S=",Beta_S)
+    print("Beta_W=",Beta_W)
+    print("Beta_X=",Beta_X)
+    print("Lambda=",Lmbd)
     # pretrained_model = models.vgg11(pretrained=True)
     # pretrained_model = models.resnet18(pretrained=True)
     # pretrained_model = models.squeezenet1_0(pretrained=True)
-    pretrained_model = models.alexnet(pretrained=True)
-    _ = pretrained_model.eval().to(device)
+    # pretrained_model = models.alexnet(pretrained=True)
+    pretrained_model = load_model(model) 
+    _ = pretrained_model.to(device)
     transform = transforms.Compose([transforms.ToTensor(),
                                     transforms.Resize((256, 256)),
                                     transforms.CenterCrop(224),

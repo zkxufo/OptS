@@ -5,27 +5,32 @@ from torchvision import transforms
 import torch
 import matplotlib.pyplot as plt
 from torchvision import models
-from PIL import Image
+# from PIL import Image
+from utils import load_model
 from Compress import HDQ_transforms
 import argparse
 def main(args):
     Batch_size = 1
+    model = args.Model
     J = args.J
     a = args.a
     b = args.b
     QF_Y = args.QF_Y
     QF_C = args.QF_C
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    pretrained_model = models.vgg11(pretrained=True)
-    print("J =",J)
-    print("a =",a)
-    print("b =",b)
+    print(device)
+    print("Model: ", model)
+    print("J =", J)
+    print("a =", a)
+    print("b =", b)
     print("QF_Y =",QF_Y)
     print("QF_C =",QF_C)
+    # pretrained_model = models.vgg11(pretrained=True)
     # pretrained_model = models.resnet18(pretrained=True)
     # pretrained_model = models.squeezenet1_0(pretrained=True)
     # pretrained_model = models.alexnet(pretrained=True)
-    _ = pretrained_model.eval().to(device)
+    pretrained_model = load_model(model) 
+    _ = pretrained_model.to(device)
     transform = transforms.Compose([transforms.ToTensor(),
                                     transforms.Resize((256, 256)),
                                     transforms.CenterCrop(224),
@@ -57,6 +62,7 @@ def main(args):
     print(BPP/num_tests)
 if '__main__' == __name__:
     parser = argparse.ArgumentParser(description="HDQ")
+    parser.add_argument('--Model', type=str, default="Alexnet", help='Subsampling b')
     parser.add_argument('--J', type=int, default=4, help='Subsampling J')
     parser.add_argument('--a', type=int, default=4, help='Subsampling a')
     parser.add_argument('--b', type=int, default=4, help='Subsampling b')
