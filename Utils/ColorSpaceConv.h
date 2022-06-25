@@ -2,7 +2,7 @@
 
 // MIT License
 
-// Copyright (c) 2022 deponce(Linfeng Ye), University of Waterloo
+// Copyright (c) 2022 deponce(Linfeng Ye), Kaixaing Zheng, University of Waterloo
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,9 +82,9 @@ void rgb2YUV(std::vector<std::vector<std::vector<float>>>& rgb_img){
     float ch[3];
     for(i=0; i<nrows; i++){
         for(j=0; j<ncols; j++){
-            r_ch = rgb_img[0][i][j];
-            g_ch = rgb_img[1][i][j];
-            b_ch = rgb_img[2][i][j];
+            r_ch = rgb_img[0][i][j]-128.;
+            g_ch = rgb_img[1][i][j]-128.;
+            b_ch = rgb_img[2][i][j]-128.;
             Y_ch = r_ch*WR+g_ch*WG+b_ch*WB;
             U_ch = (b_ch-Y_ch)/(1-WB)/2;
             V_ch = (r_ch-Y_ch)/(1-WR)/2;
@@ -109,9 +109,9 @@ void YUV2rgb(std::vector<std::vector<std::vector<float>>>& rgb_img){
             r_ch = Y_ch+2*(1-WR)*V_ch;
             g_ch = Y_ch-2*(1-WB)*WB/WG*U_ch-2*(1-WR)*WR/WG*V_ch;
             b_ch = Y_ch+2*(1-WB)*U_ch;
-            rgb_img[0][j][k] = MinMaxClip(r_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(r_ch, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[1][j][k] = MinMaxClip(g_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(g_ch, MIN_PXL_VAL), MAX_PXL_VAL);
-            rgb_img[2][j][k] = MinMaxClip(b_ch, MIN_PXL_VAL, MAX_PXL_VAL); // min(max(b_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[0][j][k] = MinMaxClip(r_ch+128., MIN_PXL_VAL, MAX_PXL_VAL); // min(max(r_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[1][j][k] = MinMaxClip(g_ch+128., MIN_PXL_VAL, MAX_PXL_VAL); // min(max(g_ch, MIN_PXL_VAL), MAX_PXL_VAL);
+            rgb_img[2][j][k] = MinMaxClip(b_ch+128., MIN_PXL_VAL, MAX_PXL_VAL); // min(max(b_ch, MIN_PXL_VAL), MAX_PXL_VAL);
         }
     }
 }
