@@ -44,7 +44,7 @@ def main(args):
                                     transforms.Resize((256, 256)),
                                     transforms.CenterCrop(224),
                                     transforms.Normalize(mean=[0, 0, 0], std=[1/255., 1/255., 1/255.]),
-                                    SDQ_transforms(model, QF_Y, QF_C, J, a, b, Lmbd, Beta_S, Beta_W, Beta_X),
+                                    SDQ_transforms(model, QF_Y, QF_C, J, a, b, Lmbd, Beta_S, Beta_W, Beta_X)
                                     ])
     dataset = datasets.ImageNet(root="~/project/data", split='val', transform=transform)
     test_loader = torch.utils.data.DataLoader(dataset, batch_size=Batch_size, shuffle=False, num_workers=6)

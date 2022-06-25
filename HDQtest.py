@@ -10,7 +10,7 @@ from utils import load_model
 from Compress import HDQ_transforms
 import argparse
 def main(args):
-    Batch_size = 1
+    Batch_size = 50
     model = args.Model
     J = args.J
     a = args.a
@@ -48,12 +48,12 @@ def main(args):
     for dt in tqdm.tqdm(test_loader):
         data_BPP, labels = dt
         labels = labels.to(device)
-        resizedimg = data_BPP['image'].to(device)/255.
+        resizedimg = data_BPP.to(device)/255.
         normdata = normalize(resizedimg)
         pred = pretrained_model(normdata)
         num_correct += (pred.argmax(1) == labels).sum().item()
         num_tests += len(labels)
-        BPP+=data_BPP['BPP']
+        # BPP+=data_BPP['BPP']
         # if (cnt+1) %1000 ==0:
         #     print(num_correct/num_tests,"=",num_correct,"/",num_tests)
         #     print(BPP/num_tests)
