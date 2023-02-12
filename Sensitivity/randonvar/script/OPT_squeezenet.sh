@@ -1,1 +1,0 @@
-python3 get_pixgrad.py -model Squeezenet -Batch_size 100 -Nexample 10000 -resize

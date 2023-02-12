@@ -1,1 +1,0 @@
-python3 get_DCTgrad.py -model Squeezenet -Batch_size 100 -Nexample 10000

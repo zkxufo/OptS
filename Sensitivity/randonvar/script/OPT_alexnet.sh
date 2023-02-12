@@ -1,1 +1,0 @@
-python3 get_pixgrad.py -model Alexnet -Batch_size 100 -Nexample 10000 -resize

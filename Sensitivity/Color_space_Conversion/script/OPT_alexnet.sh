@@ -1,1 +1,0 @@
-python3 Optimal.py -model Alexnet -Batch_size 100 -Nexample 10000

@@ -1,1 +1,0 @@
-python3 get_DCTgrad.py -model Resnet18 -Batch_size 100 -Nexample 10000

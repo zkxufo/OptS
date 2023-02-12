@@ -1,1 +1,1 @@
-# DNN_SDQ
+# JPEG_Compliant_Compression_for_DNN_Vision

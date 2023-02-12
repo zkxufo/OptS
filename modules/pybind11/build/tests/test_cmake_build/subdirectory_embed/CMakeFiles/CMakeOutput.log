@@ -1,0 +1,251 @@
+The system is: Linux - 5.13.0-40-generic - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/linuxbrew/.linuxbrew/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/3.16.3/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9c4fa/fast && make[4]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9c4fa.dir/build.make CMakeFiles/cmTC_9c4fa.dir/build
+make[5]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9c4fa.dir/testCXXCompiler.cxx.o
+/home/linuxbrew/.linuxbrew/bin/c++     -o CMakeFiles/cmTC_9c4fa.dir/testCXXCompiler.cxx.o -c /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_9c4fa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c4fa.dir/link.txt --verbose=1
+/home/linuxbrew/.linuxbrew/bin/c++       CMakeFiles/cmTC_9c4fa.dir/testCXXCompiler.cxx.o  -o cmTC_9c4fa 
+make[5]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+make[4]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9aea9/fast && make[4]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9aea9.dir/build.make CMakeFiles/cmTC_9aea9.dir/build
+make[5]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o
+/home/linuxbrew/.linuxbrew/bin/c++    -v -o CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+Reading specs from /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
+COLLECT_GCC=/home/linuxbrew/.linuxbrew/bin/c++
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Linuxbrew/homebrew-core/issues --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion='Homebrew gcc 5.5.0_4' --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-nls --disable-multilib
+Thread model: posix
+gcc version 5.5.0 (Homebrew gcc 5.5.0_4) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -isysroot /home/linuxbrew/.linuxbrew/nonexistent -idirafter /home/linuxbrew/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccJmDFcl.s
+GNU C++ (Homebrew gcc 5.5.0_4) version 5.5.0 (x86_64-unknown-linux-gnu)
+	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/local/include"
+ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"
+ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/x86_64-unknown-linux-gnu
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/backward
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed
+ /home/linuxbrew/.linuxbrew/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C++ (Homebrew gcc 5.5.0_4) version 5.5.0 (x86_64-unknown-linux-gnu)
+	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0
+warning: MPFR header version 4.0.1 differs from library version 4.0.2.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: c0397e549ce7fd5fdecb76485ce74ae8
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccJmDFcl.s
+GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
+COMPILER_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/
+LIBRARY_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/x86_64-linux-gnu/:/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+Linking CXX executable cmTC_9aea9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9aea9.dir/link.txt --verbose=1
+/home/linuxbrew/.linuxbrew/bin/c++      -v CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_9aea9 
+Reading specs from /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
+COLLECT_GCC=/home/linuxbrew/.linuxbrew/bin/c++
+COLLECT_LTO_WRAPPER=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Linuxbrew/homebrew-core/issues --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion='Homebrew gcc 5.5.0_4' --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-nls --disable-multilib
+Thread model: posix
+gcc version 5.5.0 (Homebrew gcc 5.5.0_4) 
+COMPILER_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/
+LIBRARY_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/x86_64-linux-gnu/:/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9aea9' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvsfLBW.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/linuxbrew/.linuxbrew/lib/ld.so -rpath /home/linuxbrew/.linuxbrew/lib -o cmTC_9aea9 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L/home/linuxbrew/.linuxbrew/lib CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /lib/x86_64-linux-gnu/crtn.o
+make[5]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+make[4]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0]
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/x86_64-unknown-linux-gnu]
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/backward]
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include]
+    add: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+    add: [/home/linuxbrew/.linuxbrew/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0]
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/x86_64-unknown-linux-gnu] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0/x86_64-unknown-linux-gnu]
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/backward] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0/backward]
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include]
+  collapse include dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+  collapse include dir [/home/linuxbrew/.linuxbrew/include] ==> [/home/linuxbrew/.linuxbrew/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0/x86_64-unknown-linux-gnu;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include/c++/5.5.0/backward;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed;/home/linuxbrew/.linuxbrew/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_9aea9/fast && make[4]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_9aea9.dir/build.make CMakeFiles/cmTC_9aea9.dir/build]
+  ignore line: [make[5]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/linuxbrew/.linuxbrew/bin/c++    -v -o CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Reading specs from /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
+  ignore line: [COLLECT_GCC=/home/linuxbrew/.linuxbrew/bin/c++]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Configured with: ../configure --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Linuxbrew/homebrew-core/issues --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion='Homebrew gcc 5.5.0_4' --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-nls --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.5.0 (Homebrew gcc 5.5.0_4) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -isysroot /home/linuxbrew/.linuxbrew/nonexistent -idirafter /home/linuxbrew/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccJmDFcl.s]
+  ignore line: [GNU C++ (Homebrew gcc 5.5.0_4) version 5.5.0 (x86_64-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0]
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/home/linuxbrew/.linuxbrew/nonexistent/usr/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/x86_64-unknown-linux-gnu]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../include/c++/5.5.0/backward]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include]
+  ignore line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+  ignore line: [ /home/linuxbrew/.linuxbrew/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++ (Homebrew gcc 5.5.0_4) version 5.5.0 (x86_64-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0]
+  ignore line: [warning: MPFR header version 4.0.1 differs from library version 4.0.2.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: c0397e549ce7fd5fdecb76485ce74ae8]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccJmDFcl.s]
+  ignore line: [GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34]
+  ignore line: [COMPILER_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/x86_64-linux-gnu/:/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking CXX executable cmTC_9aea9]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9aea9.dir/link.txt --verbose=1]
+  ignore line: [/home/linuxbrew/.linuxbrew/bin/c++      -v CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_9aea9 ]
+  ignore line: [Reading specs from /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
+  ignore line: [COLLECT_GCC=/home/linuxbrew/.linuxbrew/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Configured with: ../configure --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Linuxbrew/homebrew-core/issues --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --enable-stage1-checking --enable-checking=release --enable-lto --with-build-config=bootstrap-debug --disable-werror --with-pkgversion='Homebrew gcc 5.5.0_4' --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-nls --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.5.0 (Homebrew gcc 5.5.0_4) ]
+  ignore line: [COMPILER_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/x86_64-linux-gnu/:/lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_9aea9' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccvsfLBW.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/linuxbrew/.linuxbrew/lib/ld.so -rpath /home/linuxbrew/.linuxbrew/lib -o cmTC_9aea9 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/lib/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu -L/home/linuxbrew/.linuxbrew/lib CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccvsfLBW.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [--dynamic-linker] ==> ignore
+    arg [/home/linuxbrew/.linuxbrew/lib/ld.so] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/home/linuxbrew/.linuxbrew/lib] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_9aea9] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o] ==> ignore
+    arg [-L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
+    arg [-L/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/home/linuxbrew/.linuxbrew/lib] ==> dir [/home/linuxbrew/.linuxbrew/lib]
+    arg [CMakeFiles/cmTC_9aea9.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
+  collapse library dir [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/home/linuxbrew/.linuxbrew/lib] ==> [/home/linuxbrew/.linuxbrew/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/x86_64-unknown-linux-gnu/5.5.0;/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib;/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/home/linuxbrew/.linuxbrew/lib]
+  implicit fwks: []
+
+
+Performing C++ SOURCE FILE Test HAS_FLTO succeeded with the following output:
+Change Dir: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a1e51/fast && make[4]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a1e51.dir/build.make CMakeFiles/cmTC_a1e51.dir/build
+make[5]: Entering directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a1e51.dir/src.cxx.o
+/home/linuxbrew/.linuxbrew/bin/c++    -DHAS_FLTO   -flto -fno-fat-lto-objects -o CMakeFiles/cmTC_a1e51.dir/src.cxx.o -c /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_a1e51
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1e51.dir/link.txt --verbose=1
+/home/linuxbrew/.linuxbrew/bin/c++   -DHAS_FLTO    CMakeFiles/cmTC_a1e51.dir/src.cxx.o  -o cmTC_a1e51  -flto 
+make[5]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+make[4]: Leaving directory '/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
