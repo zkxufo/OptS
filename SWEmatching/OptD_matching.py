@@ -1,5 +1,5 @@
 import numpy as np
-import tqdm
+# import tqdm
 import torchvision.datasets as datasets
 from torchvision import transforms
 import torch
@@ -9,6 +9,7 @@ from torchvision import models
 from Utils.utils import *
 from Utils.args_inputs import *
 from Utils.loader import HDQ_loader, SWE_matching_loader 
+from perc import Perc
 
 import random
 import warnings
@@ -22,7 +23,7 @@ import SWE_OptD_d_fixed
 # import SWE_OptD_QF_fixed
 # import SWE_OptS_QF_fixed
 
-num_workers=32
+num_workers=48
 
 def seed_worker(worker_id):
     worker_seed = torch.initial_seed() % 2**num_workers
@@ -88,12 +89,12 @@ def running_func(args):
     print("Qmax_C =", args.Qmax_C)
     print("OptD enables =", OptD_enable)
     print("OptS enables =", args.OptS_enable)
-    print("HDQ enables =", args.HDQ_enable)
+    print("HDQ enables =", args.JPEG_enable)
 
     pretrained_model = load_model(model) 
     _ = pretrained_model.to(device)
 
-    if args.OptD_enable or args.JEPG_enable:
+    if (args.OptD_enable) or (args.JPEG_enable):
         dataset = SWE_matching_loader(args)
     else:
         dataset = HDQ_loader(args)
@@ -115,7 +116,8 @@ def running_func(args):
     top1 = 0
     top5 = 0
     
-    for dt in tqdm.tqdm(test_loader):
+    # for dt in tqdm.tqdm(test_loader):
+    for dt in Perc(test_loader):
         image, image_BPP, image_PSNR , labels = dt
         filter = image_BPP>=0
         image = image[filter]

@@ -1,5 +1,5 @@
 import numpy as np
-import tqdm
+# import tqdm
 import torchvision.datasets as datasets
 from torchvision import transforms
 import torch
@@ -9,6 +9,7 @@ from torchvision import models
 from Utils.utils import *
 from Utils.args_inputs import *
 from Utils.loader import SWE_matching_loader , HDQ_loader
+from perc import Perc
 
 import random
 import warnings
@@ -115,7 +116,8 @@ def running_func(args):
     top1 = 0
     top5 = 0
     
-    for dt in tqdm.tqdm(test_loader):
+    # for dt in tqdm.tqdm(test_loader):
+    for dt in Perc(test_loader):
         image, image_BPP, image_PSNR , labels = dt
         filter = image_BPP>=0
         image = image[filter]
