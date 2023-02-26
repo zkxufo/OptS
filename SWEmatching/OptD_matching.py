@@ -76,6 +76,7 @@ def running_func(args):
     # print_exp_details(args)
     print("Running Devcie: ", device)
     print("No. of Workers : ", num_workers)
+    print("Batch_size : ", Batch_size)
     print("Model: ", args.Model)
     print("Colorspace: ", args.colorspace)
     print("J =", args.J)
@@ -119,7 +120,7 @@ def running_func(args):
     # for dt in tqdm.tqdm(test_loader):
     for dt in Perc(test_loader):
         image, image_BPP, image_PSNR , labels = dt
-        filter = image_BPP>=0
+        filter = image_BPP>-1
         image = image[filter]
         image_PSNR = image_PSNR[filter]
         labels = labels[filter]

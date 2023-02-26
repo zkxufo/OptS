@@ -5,7 +5,7 @@ def getArgs():
     #  Deep Learning Parameters
     parser.add_argument('--Model', type=str, default="Alexnet", help='Model Name')
     parser.add_argument('--split', type=str, default="val", help='val or train')
-    parser.add_argument('--batchsize', type=int, default=50, help='Batch size in each interation')
+    parser.add_argument('--batchsize', type=int, default=128, help='Batch size in each interation')
     parser.add_argument('--device', type=str, default="cuda:0", help='cpu or cuda:0')
     parser.add_argument('--root', type=str, default="/home/h2amer/AhmedH.Salamah/ilsvrc2012", 
                             help='root to ImageNet Driectory')

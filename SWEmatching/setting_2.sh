@@ -1,5 +1,5 @@
 export root=/home/ahamsala/Dataset/ImagetNet/
-export model=Alexnet
+export model=mobilenet_v2
 export sens_dir=./SenMap/
 export colorspace=0
 
@@ -8,12 +8,12 @@ export colorspace=0
 # ----------------------------- OptS -------------------------------------
 
 dy_Start=0.005
-dy_Step=0.0005
+dy_Step=0.002
 dy_End=0.1
 
-dc_Start=0.005
-dc_Step=0.001
-dc_End=0.01
+dc_Start=0.01
+dc_Step=0.01
+dc_End=0.1
 
 # OptS
 for dy in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do  
