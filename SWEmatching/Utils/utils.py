@@ -123,10 +123,24 @@ def PSNR_cal_YUV(s, r, max_value=255):
     return round(psnr,2)
 
 def load_model(Model, device="cpu"):
-    if Model=="Alexnet":
-        pretrained_model = models.alexnet(pretrained=True).eval()
+    if Model=="Resnet18":
+        pretrained_model = models.resnet18(pretrained=True)
+    elif Model=="Squeezenet":
+        pretrained_model = models.squeezenet1_0(pretrained=True)
+    elif Model == 'Shufflenetv2':
+        pretrained_model = models.shufflenet_v2_x1_0(pretrained=True)
+    elif Model == 'Regnet':
+        pretrained_model = models.regnet_y_400mf(pretrained=True)
+    elif Model == 'Mnasnet':
+        pretrained_model = models.mnasnet1_0(pretrained=True)
     elif Model == 'mobilenet_v2':
         pretrained_model = models.mobilenet_v2(pretrained=True)
+    elif Model == 'efficientnet_b1':
+        pretrained_model = models.efficientnet_b1(pretrained=True)
+    elif Model == 'Alexnet':
+        pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
+    elif Model == 'VGG16':
+        pretrained_model = models.vgg16(weights=models.VGG16_Weights.IMAGENET1K_V1)
     else: 
         print("Enter a model SOS")
         exit(0)

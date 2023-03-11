@@ -23,7 +23,7 @@ import SWE_OptD_d_fixed
 # import SWE_OptD_QF_fixed
 # import SWE_OptS_QF_fixed
 
-num_workers=48
+num_workers=64
 
 def seed_worker(worker_id):
     worker_seed = torch.initial_seed() % 2**num_workers
