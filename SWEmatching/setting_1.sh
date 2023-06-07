@@ -5,6 +5,8 @@ echo ${model}
 export sens_dir=./SenMap/
 
 
+
+# Remove it forto normal inference --> compress_resize
 python HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
 								--batchsize 50 \
 								--device "cuda" --root ${root} \
