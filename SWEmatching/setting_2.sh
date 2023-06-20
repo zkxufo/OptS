@@ -9,21 +9,6 @@ dy_Start=0.005
 dy_Step=0.001
 dy_End=0.01
 
-# OptS
-for dy in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do  
-    for dc in $(seq ${dc_Start} ${dc_Step} ${dc_End}); do  
-            echo ${dy[i]} ${dc[i]} 
-            python OptD_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-                --batchsize 48 \
-                --resize_compress True --colorspace ${colorspace} \
-                --device "cuda" --root ${root} \
-                --SenMap_dir ${sens_dir} \
-                --OptS_enable True \
-                --Qmax_Y 100 --Qmax_C 100 --DT_Y 1 --DT_C 1 \
-                --d_waterlevel_Y ${dy} --d_waterlevel_C ${dc}
-    done
-done
-
 dc_Start=0.011
 dc_Step=0.01
 dc_End=0.1
@@ -33,7 +18,7 @@ for dy in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do
     for dc in $(seq ${dc_Start} ${dc_Step} ${dc_End}); do  
             echo ${dy[i]} ${dc[i]} 
             python OptD_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-                --batchsize 48 \
+                --batchsize 50\
                 --resize_compress True --colorspace ${colorspace} \
                 --device "cuda" --root ${root} \
                 --SenMap_dir ${sens_dir} \
@@ -43,6 +28,24 @@ for dy in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do
     done
 done
 
+dy_Start=0.005
+dy_Step=0.001
+dy_End=0.01
+
+# OptS
+for dydc in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do  
+    echo ${dy[i]} ${dc[i]} 
+    python OptD_matching.py --Model ${model} --J 4 --a 4 --b 4 \
+                --batchsize 50\
+                --resize_compress True --colorspace ${colorspace} \
+                --device "cuda" --root ${root} \
+                --SenMap_dir ${sens_dir} \
+                --OptS_enable True \
+                --Qmax_Y 100 --Qmax_C 100 --DT_Y 1 --DT_C 1 \
+                --d_waterlevel_Y ${dydc} --d_waterlevel_C ${dydc}
+
+done
+
 dy_Start=0.011
 dy_Step=0.01
 dy_End=0.1
@@ -50,7 +53,7 @@ dy_End=0.1
 for dydc in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do  
     echo ${dy[i]} ${dc[i]} 
     python OptD_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-                --batchsize 48 \
+                --batchsize 50\
                 --resize_compress True --colorspace ${colorspace} \
                 --device "cuda" --root ${root} \
                 --SenMap_dir ${sens_dir} \
@@ -67,7 +70,7 @@ dy_End=1
 for dydc in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do  
     echo ${dy[i]} ${dc[i]} 
     python OptD_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-                --batchsize 48 \
+                --batchsize 50\
                 --resize_compress True --colorspace ${colorspace} \
                 --device "cuda" --root ${root} \
                 --SenMap_dir ${sens_dir} \
@@ -135,7 +138,7 @@ for dydc in $(seq ${dy_Start} ${dy_Step} ${dy_End}); do
 
 done
 
-# # ----------------------------- JPEG -------------------------------------
+# # # ----------------------------- JPEG -------------------------------------
 
 dy_Start=0.005
 dy_Step=0.001

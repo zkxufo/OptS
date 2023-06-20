@@ -13,7 +13,8 @@ from PIL import Image
 
 def normalize(arr, factor):
     if factor == 0:
-        factor = 10*np.max(arr)
+        # factor = 10*np.max(arr)
+        factor = np.max(arr)
     arr = arr/factor
     return arr, factor
 
@@ -30,10 +31,7 @@ def colorSpace_machineSenstivity(args):
     InvColorSpaceW[np.abs(InvColorSpaceW) < eps] = 0 # adjust the weight matrix in the color matrix
     sen_map = np.ones((3,64), dtype=float)
     
-    print("Sensitivity is loaded :D")
-    # sen_map[0]  = 1 + args.beta * np.load(args.SenMap_dir+"Y" +str(args.resize_resl)+args.Model+".npy")
-    # sen_map[1]  = 1 + args.beta * np.load(args.SenMap_dir+"Cb"+str(args.resize_resl)+args.Model+".npy")
-    # sen_map[2]  = 1 + args.beta * np.load(args.SenMap_dir+"Cr"+str(args.resize_resl)+args.Model+".npy")
+    print("Sensitivity is loaded :D --> ", args.SenMap_dir+args.Model)
 
     sen_map[0], factor   = normalize(np.load(args.SenMap_dir+"Y" +args.Model+".npy"), 0 )
     sen_map[1],  _       = normalize(np.load(args.SenMap_dir+"Cb"+args.Model+".npy"), factor)
