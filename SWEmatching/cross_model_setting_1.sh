@@ -1,7 +1,7 @@
 export root=/home/l44ye/DATASETS/
 # Resnet18 Squeezenet Shufflenetv2 Regnet Mnasnet mobilenet_v2 Alexnet
 export sens_dir=./SenMap/
-GPU_ID=3
+GPU_ID=0
 
 # # Fixing QF: OptS Matching JPEG 
 # Regnet400mf Regnet800mf Regnet2gf Regnet6gf Regnet8gf Regnet16gf Regnet32gf

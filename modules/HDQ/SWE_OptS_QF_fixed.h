@@ -15,6 +15,8 @@ class HDQ_OptD{
         // attributes
         float Q_table_Y[64];
         float Q_table_C[64];
+        float varianceData_Y[64];
+        float varianceData_CbCr[128];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
@@ -154,7 +156,7 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     // SWE_Y_target from JPEG is clipped by [0, sum of variance] from the prespective of OptD
     // to guarantee that this number is reachable by OptD 
 
-    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, 
+    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, HDQ_OptD::varianceData_Y,
                 HDQ_OptD::seq_len_Y, SWE_Y_target, HDQ_OptD::d_waterlevel_Y, HDQ_OptD::QMAX_Y, HDQ_OptD::max_var_Y);
 
     HDQ_OptD::up = HDQ_OptD::max_var_Y;
@@ -172,13 +174,13 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     {
         HDQ_OptD::mid = (HDQ_OptD::up + HDQ_OptD::low)/2.0;
         // mid
-        quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, 
+        quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, HDQ_OptD::varianceData_Y,
                     HDQ_OptD::seq_len_Y, HDQ_OptD::DT_Y, HDQ_OptD::mid, HDQ_OptD::QMAX_Y, HDQ_OptD::max_var_Y);
         mid_D = SWE_eval(0,HDQ_OptD::Q_table_Y, seq_dct_coefs_Y, seq_dct_idxs_Y, HDQ_OptD::seq_len_Y);
 
 
         // low
-        quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, 
+        quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, HDQ_OptD::varianceData_Y,
                     HDQ_OptD::seq_len_Y, HDQ_OptD::DT_Y, HDQ_OptD::low, HDQ_OptD::QMAX_Y, HDQ_OptD::max_var_Y);
         low_D = SWE_eval(0,HDQ_OptD::Q_table_Y, seq_dct_coefs_Y, seq_dct_idxs_Y, HDQ_OptD::seq_len_Y);
         
@@ -200,7 +202,7 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
         // cout << "DT_Y = " << HDQ_OptD::DT_Y << "\t" << "d_waterLevel_Y = " << HDQ_OptD::d_waterlevel_Y << endl;
 
     }
-    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, 
+    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, HDQ_OptD::varianceData_Y,
             HDQ_OptD::seq_len_Y, HDQ_OptD::DT_Y, HDQ_OptD::mid, HDQ_OptD::QMAX_Y, HDQ_OptD::max_var_Y);
     mid_D = SWE_eval(0,HDQ_OptD::Q_table_Y, seq_dct_coefs_Y, seq_dct_idxs_Y, HDQ_OptD::seq_len_Y);
     
@@ -208,8 +210,7 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     // cout << "Selected SWE_Y = " << mid_D  << endl;
 
 // ------------------------------------- CbCr -----------------------------------------------
-
-    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C
+    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
         , HDQ_OptD::seq_len_C, SWE_C_target, HDQ_OptD::d_waterlevel_C, HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
     HDQ_OptD::up = HDQ_OptD::max_var_C;
     HDQ_OptD::low = HDQ_OptD::d_waterlevel_C;
@@ -224,14 +225,14 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     {
         HDQ_OptD::mid = (HDQ_OptD::up + HDQ_OptD::low)/2.0;
 
-        quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C
+        quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
             , HDQ_OptD::seq_len_C, HDQ_OptD::DT_C, HDQ_OptD::mid, HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
         mid_D = SWE_eval(1,HDQ_OptD::Q_table_C, seq_dct_coefs_Cb, seq_dct_idxs_Cb, HDQ_OptD::seq_len_C);
         mid_D += SWE_eval(2,HDQ_OptD::Q_table_C, seq_dct_coefs_Cr, seq_dct_idxs_Cr, HDQ_OptD::seq_len_C);
 
         // print_Q_table(HDQ_OptD::Q_table_C);
 
-        quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C
+        quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
             , HDQ_OptD::seq_len_C, HDQ_OptD::DT_C, HDQ_OptD::low, HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
         low_D = SWE_eval(1,HDQ_OptD::Q_table_C, seq_dct_coefs_Cb, seq_dct_idxs_Cb, HDQ_OptD::seq_len_C);
         low_D += SWE_eval(2,HDQ_OptD::Q_table_C, seq_dct_coefs_Cr, seq_dct_idxs_Cr, HDQ_OptD::seq_len_C);
@@ -255,7 +256,7 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
         // cout << "DT_Y = " << HDQ_OptD::DT_Y << "\t" << "d_waterLevel_Y = " << HDQ_OptD::d_waterlevel_Y << endl;
 
     }
-    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C
+    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
         , HDQ_OptD::seq_len_C, HDQ_OptD::DT_C, HDQ_OptD::mid , HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
     mid_D = SWE_eval(1,HDQ_OptD::Q_table_C, seq_dct_coefs_Cb, seq_dct_idxs_Cb, HDQ_OptD::seq_len_C);
     mid_D += SWE_eval(2,HDQ_OptD::Q_table_C, seq_dct_coefs_Cr, seq_dct_idxs_Cr, HDQ_OptD::seq_len_C);
@@ -281,6 +282,9 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
              HDQ_OptD::Q_table_C,HDQ_OptD::seq_len_C);
     Quantize(seq_dct_coefs_Cr,seq_dct_idxs_Cr,
              HDQ_OptD::Q_table_C,HDQ_OptD::seq_len_C);
+
+    fast_quatization_CbCr(3 , HDQ_OptD::varianceData_CbCr, seq_dct_idxs_Cb, 
+                            seq_dct_idxs_Cr, HDQ_OptD::d_waterlevel_C, HDQ_OptD::seq_len_C);
 
     for(int j=0; j<64; ++j)
     {
@@ -353,10 +357,16 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
 }
 
 
-float HDQ_OptD::SWE_eval(int Sens_index, float Q_table[64],float seq_dct_coefs[][64], float seq_dct_idxs[][64], int seq_len)
+float HDQ_OptD::SWE_eval(int Sens_index, float Q_table[64], float seq_dct_coefs[][64], float seq_dct_idxs[][64], int seq_len)
 {
     Quantize(seq_dct_coefs, seq_dct_idxs, Q_table, seq_len);
- 
+
+    if (Sens_index > 0 )
+    {
+        fast_quatization_CbCr(Sens_index, HDQ_OptD::varianceData_CbCr, seq_dct_idxs, 
+                                seq_dct_idxs, HDQ_OptD::d_waterlevel_C, HDQ_OptD::seq_len_C);
+    }
+    
     Dequantize(seq_dct_idxs, Q_table, seq_len);
 
     return SWE(HDQ_OptD::Sen_Map, Sens_index,
@@ -364,4 +374,5 @@ float HDQ_OptD::SWE_eval(int Sens_index, float Q_table[64],float seq_dct_coefs[]
                             seq_dct_idxs, 
                             seq_len);
 }
+
 

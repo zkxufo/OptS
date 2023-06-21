@@ -7,16 +7,16 @@ GPU_ID=0
 
 
 # Remove it for normal inference --> compress_resize
-CUDA_VISIBLE_DEVICES=${GPU_ID}  python HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-								--batchsize 10 \
-								--device "cuda" --root ${root} \
-								--SenMap_dir ${sens_dir} \
-								--OptS_enable True \
-								--Qmax_Y 100 --Qmax_C 100 
+# CUDA_VISIBLE_DEVICES=${GPU_ID}  python HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
+# 								--batchsize 10 \
+# 								--device "cuda" --root ${root} \
+# 								--SenMap_dir ${sens_dir} \
+# 								--OptS_enable True \
+# 								--Qmax_Y 100 --Qmax_C 100 
 
 
 # Fixing QF: OptS Matching JPEG 
-for qf in `seq 98 -1 70`
+for qf in `seq 98 -1 80`
 do
 	CUDA_VISIBLE_DEVICES=${GPU_ID} python3 HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
 									--batchsize 10 \
@@ -44,17 +44,17 @@ done
 # done
 
 # Normal JEPG
-for qf in `seq 98 -1 70`
-do
-	CUDA_VISIBLE_DEVICES=${GPU_ID} python3 HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
-									--batchsize 10 \
-									--device "cuda" --root ${root} \
-									--SenMap_dir ${sens_dir} \
-									--JPEG_enable True \
-									--resize_compress True \
-									--Qmax_Y 100 --Qmax_C 100 \
-									--QF_Y ${qf} --QF_C ${qf} 
-done
+# for qf in `seq 98 -1 70`
+# do
+# 	CUDA_VISIBLE_DEVICES=${GPU_ID} python3 HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
+# 									--batchsize 10 \
+# 									--device "cuda" --root ${root} \
+# 									--SenMap_dir ${sens_dir} \
+# 									--JPEG_enable True \
+# 									--resize_compress True \
+# 									--Qmax_Y 100 --Qmax_C 100 \
+# 									--QF_Y ${qf} --QF_C ${qf} 
+# done
 
 
 

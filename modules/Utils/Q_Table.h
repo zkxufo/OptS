@@ -55,11 +55,14 @@ void quantizationTable(int QF, bool Luminance, float Q_Table[64])
 
 void parameterCal(float varianceData[64], float lambdaData[64],float seq_dct_coefs[][64], int N_block)
 {
+    /*
+        This function is mainly used to estimate the parameters of the laplicain model.
+    */
     float tmp;
     for (int i = 0; i < 64; i++ )
     {
         float variance = 0, mean = 0, lambda = 0;
-
+        
         for (int j=0;j<N_block; j++)
         {
             mean += seq_dct_coefs[j][i];
@@ -143,6 +146,7 @@ void OptD_C(float Sen_Map[][64],
             float lambdaData_Cb[], float lambdaData_Cr[], 
             float Q_Table[], float& DT, float& d_waterLevel, int QMAX_C)
 {
+    // Dlap is to model the distortion of each coefficient
     auto Dlap_Cb = new float[QMAX_C + 1][64];
     auto Dlap_Cr = new float[QMAX_C + 1][64];
     if (d_waterLevel < 0) d_waterLevel = Cal_d(DT, varianceData_CbCr, 128); // DT will be used only if d_waterLevel < 0
@@ -348,8 +352,6 @@ void OptD_Y(float Sen_Map[3][64], float varianceData[64], float lambdaData[64], 
 }
 
 
-// m += pow((Y1-Y2), 2);
-
 float SWE(float Sen_Map[3][64], int Sens_index,
                 float seq_dct_coefs_RAW[][64],
                 float seq_dct_coefs[][64],
@@ -440,12 +442,13 @@ void Sens_ones(float Sen_Map[3][64])
 
 
 void quantizationTable_OptD_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64], float seq_dct_coefs_Cr[][64], 
-        float Q_Table[64], int N_block, float& DT, float& d_waterLevel, int QMAX_C, float& max_var_C)
+        float Q_Table[64], float varianceData_CbCr[128], 
+        int N_block, float& DT, float& d_waterLevel, int QMAX_C, float& max_var_C)
 {
-    float varianceData_Cb[64], varianceData_Cr[64], varianceData_CbCr[128];
+    float varianceData_Cb[64], varianceData_Cr[64];
     float lambdaData_Cb[64],  lambdaData_Cr[64];   // No need for DC
-    parameterCal(varianceData_Cb, lambdaData_Cb , seq_dct_coefs_Cb ,N_block);
-    parameterCal(varianceData_Cr, lambdaData_Cr , seq_dct_coefs_Cr ,N_block);
+    parameterCal(varianceData_Cb, lambdaData_Cb , seq_dct_coefs_Cb, N_block);
+    parameterCal(varianceData_Cr, lambdaData_Cr , seq_dct_coefs_Cr, N_block);
     float tmp;
     for (int i=0;i<2;i++)
     {
@@ -472,10 +475,34 @@ void quantizationTable_OptD_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64]
 }
 
 
-void quantizationTable_OptD_Y(float Sen_Map[3][64], float seq_dct_coefs[][64], float Q_Table[64], int N_block, 
-                float& DT, float& d_waterLevel, int QMAX_Y , float& max_var_Y)
+
+void fast_quatization_CbCr(int channel_index, float varianceData_CbCr[128], float seq_dct_idxs_Cb[][64], float seq_dct_idxs_Cr[][64], float d_waterLevel, int N_block)
 {
-    float varianceData[64];
+    // [Fast Quantization] Managing the case where the waterlevel is already higher than the maximum level of the channel distortion
+    for (int i = 0; i < 64; i++)
+    {
+        if ((varianceData_CbCr[i] < d_waterLevel) && (varianceData_CbCr[i+64] >= d_waterLevel) && (channel_index == 1 || channel_index > 2))
+        {
+            for (int j = 0 ; j < N_block; j++)
+            {
+                seq_dct_idxs_Cb[j][i]= 0;
+            }
+        }
+        else if ((varianceData_CbCr[i] >= d_waterLevel) && (varianceData_CbCr[i+64] < d_waterLevel) && (channel_index == 2 || channel_index > 2))
+        {
+            for (int j = 0 ; j < N_block; j++)
+            {
+                seq_dct_idxs_Cr[j][i] = 0;
+            }
+        } 
+    }
+
+}
+
+void quantizationTable_OptD_Y(float Sen_Map[3][64], float seq_dct_coefs[][64], float Q_Table[64], float varianceData[64], 
+                int N_block, float& DT, float& d_waterLevel, int QMAX_Y , float& max_var_Y)
+{
+    // float varianceData[64];
     float lambdaData[64];   // No need for DC
     parameterCal(varianceData, lambdaData , seq_dct_coefs ,N_block);
 

@@ -15,6 +15,8 @@ class HDQ_OptD{
         // attributes
         float Q_table_Y[64];
         float Q_table_C[64];
+        float varianceData_Y[64];
+        float varianceData_CbCr[128];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
@@ -129,10 +131,10 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     block_2_seqdct(blockified_img_Cb, seq_dct_coefs_Cb, HDQ_OptD::seq_len_C);
     block_2_seqdct(blockified_img_Cr, seq_dct_coefs_Cr, HDQ_OptD::seq_len_C);
 
-    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, 
+    quantizationTable_OptD_Y(HDQ_OptD::Sen_Map, seq_dct_coefs_Y, HDQ_OptD::Q_table_Y, HDQ_OptD::varianceData_Y,
                 HDQ_OptD::seq_len_Y, HDQ_OptD::DT_Y, HDQ_OptD::d_waterlevel_Y, HDQ_OptD::QMAX_Y, HDQ_OptD::max_var_Y);
 
-    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C
+    quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
             , HDQ_OptD::seq_len_C, HDQ_OptD::DT_C, HDQ_OptD::d_waterlevel_C, HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
 
 

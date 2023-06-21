@@ -15,6 +15,8 @@ class OptD{
         // attributes
         float Q_table_Y[64];
         float Q_table_C[64];
+        float varianceData_Y[64];
+        float varianceData_CbCr[128];
         int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
@@ -139,10 +141,10 @@ float OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_tabl
 
     float dummy;
     // Customized Quantization Table
-    quantizationTable_OptD_Y(OptD::Sen_Map, seq_dct_coefs_Y, OptD::Q_table_Y, 
+    quantizationTable_OptD_Y(OptD::Sen_Map, seq_dct_coefs_Y, OptD::Q_table_Y, OptD::varianceData_Y,
                 OptD::seq_len_Y, OptD::DT_Y, OptD::d_waterlevel_Y, OptD::QMAX_Y, dummy);
     // cout << "DT_Y = " << OptD::DT_Y << "\t" << "d_waterLevel_Y = " << OptD::d_waterlevel_Y << endl;
-    quantizationTable_OptD_C(OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, OptD::Q_table_C
+    quantizationTable_OptD_C(OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, OptD::Q_table_C, OptD::varianceData_CbCr
         , OptD::seq_len_C, OptD::DT_C, OptD::d_waterlevel_C, OptD::QMAX_C, dummy);
     // cout << "DT_C = " << OptD::DT_C << "\t" << "d_waterLevel_C = " << OptD::d_waterlevel_C << endl;
    
@@ -172,6 +174,10 @@ float OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_tabl
              OptD::Q_table_C,OptD::seq_len_C);
     Quantize(seq_dct_coefs_Cr,seq_dct_idxs_Cr,
              OptD::Q_table_C,OptD::seq_len_C);
+
+    fast_quatization_CbCr(3, OptD::varianceData_CbCr, seq_dct_idxs_Cb, 
+                            seq_dct_idxs_Cr, OptD::d_waterlevel_C, OptD::seq_len_C);
+
 
     
     // cout << "number of blocks: " << seq_len_C << endl;
