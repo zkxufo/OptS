@@ -439,6 +439,35 @@ void Sens_ones(float Sen_Map[3][64])
     }
 }
 
+void cal_ImageStat_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64], float seq_dct_coefs_Cr[][64], 
+        float varianceData_CbCr[128], float lambdaData_Cb[64],  float lambdaData_Cr[64],
+        int N_block, float& max_var_C)
+{
+    float varianceData_Cb[64], varianceData_Cr[64];
+    parameterCal(varianceData_Cb, lambdaData_Cb , seq_dct_coefs_Cb, N_block);
+    parameterCal(varianceData_Cr, lambdaData_Cr , seq_dct_coefs_Cr, N_block);
+    float tmp;
+    for (int i=0;i<2;i++)
+    {
+        for(int l=0;l<64;l++)
+        {
+            if (i == 0) 
+            {
+                tmp = Sen_Map[1][l] * varianceData_Cb[l];
+            }
+            else 
+            {
+                tmp = Sen_Map[2][l] * varianceData_Cr[l];
+            }
+            varianceData_CbCr[l+i*64] = tmp;
+        }
+    }
+
+    if(max_var_C  == 0)
+    {
+        max_var_C = *max_element(varianceData_CbCr, varianceData_CbCr + 128);
+    }
+}
 
 
 void quantizationTable_OptD_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64], float seq_dct_coefs_Cr[][64], 
@@ -485,7 +514,7 @@ void fast_quatization_CbCr(int channel_index, float varianceData_CbCr[128], floa
         {
             for (int j = 0 ; j < N_block; j++)
             {
-                seq_dct_idxs_Cb[j][i]= 0;
+                seq_dct_idxs_Cb[j][i]= 0; 
             }
         }
         else if ((varianceData_CbCr[i] >= d_waterLevel) && (varianceData_CbCr[i+64] < d_waterLevel) && (channel_index == 2 || channel_index > 2))
@@ -500,6 +529,29 @@ void fast_quatization_CbCr(int channel_index, float varianceData_CbCr[128], floa
 }
 
 void quantizationTable_OptD_Y(float Sen_Map[3][64], float seq_dct_coefs[][64], float Q_Table[64], float varianceData[64], 
+                int N_block, float& DT, float& d_waterLevel, int QMAX_Y , float& max_var_Y)
+{
+    // float varianceData[64];
+    float lambdaData[64];   // No need for DC
+    parameterCal(varianceData, lambdaData , seq_dct_coefs ,N_block);
+
+    for(int i = 0; i <64; i++)
+    {
+        varianceData[i] = Sen_Map[0][i] * varianceData[i];
+    }
+
+    if(max_var_Y  == 0)
+    {
+        max_var_Y = *max_element(varianceData, varianceData + 64);
+    }
+
+    OptD_Y(Sen_Map, varianceData, lambdaData, Q_Table, DT, d_waterLevel,QMAX_Y);
+
+}
+
+
+
+void cal_ImageStat_Y(float Sen_Map[3][64], float seq_dct_coefs[][64], float Q_Table[64], float varianceData[64], 
                 int N_block, float& DT, float& d_waterLevel, int QMAX_Y , float& max_var_Y)
 {
     // float varianceData[64];

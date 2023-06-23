@@ -16,7 +16,7 @@ GPU_ID=0
 
 
 # Fixing QF: OptS Matching JPEG 
-for qf in `seq 98 -1 80`
+for qf in `seq 98 -1 70`
 do
 	CUDA_VISIBLE_DEVICES=${GPU_ID} python3 HDQ_matching.py --Model ${model} --J 4 --a 4 --b 4 \
 									--batchsize 10 \
