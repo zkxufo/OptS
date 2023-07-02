@@ -175,6 +175,7 @@ float OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_tabl
     Quantize(seq_dct_coefs_Cr,seq_dct_idxs_Cr,
              OptD::Q_table_C,OptD::seq_len_C);
 
+
     fast_quatization_CbCr(3, OptD::varianceData_CbCr, seq_dct_idxs_Cb, 
                             seq_dct_idxs_Cr, OptD::d_waterlevel_C, OptD::seq_len_C);
 

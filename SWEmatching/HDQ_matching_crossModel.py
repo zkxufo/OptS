@@ -133,14 +133,12 @@ def running_func(args):
     # for dt in tqdm.tqdm(test_loader):
     for dt in Perc(test_loader):
         image, image_BPP, image_PSNR , labels = dt
-        
-        if (torch.sum(image_BPP>=-1) == 0):
+        filter = (image_BPP>-1)
+        if (len(image) != filter.sum()):
             breakpoint()
+            running_func(args)
         if(len(image) == 0):
-            breakpoint()
             continue
-        
-        filter = (image_BPP>=-1)
         image = image[filter]
         image_PSNR = image_PSNR[filter]
         labels = labels[filter]

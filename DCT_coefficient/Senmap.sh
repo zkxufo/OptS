@@ -11,22 +11,21 @@ GPU_ID=2
 # python3 get_DCTgrad.py -model convnext_large -Batch_size 2 -Nexample 100000
 # python3 get_DCTgrad.py -model convnext_small -Batch_size 10 -Nexample 100000 
 
-# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet800mf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad_HRS.py -model Regnet800mf -Batch_size 10 -Nexample 10000
 # CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet6gf -Batch_size 10 -Nexample 10000
-# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model regnet2gf -Batch_size 10 -Nexample 10000
-# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model regnet8gf -Batch_size 10 -Nexample 10000
-# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model regnet16gf -Batch_size 10 -Nexample 10000
-# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model regnet32gf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet2gf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet8gf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet16gf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad.py -model Regnet32gf -Batch_size 10 -Nexample 10000
 
 #  --------------------------------------------------------------------------------------------------
 
-
-python3 plot.py -model Regnet800mf
-python3 plot.py -model Regnet6gf
-python3 plot.py -model regnet2gf
-python3 plot.py -model regnet8gf
-python3 plot.py -model regnet16gf
-python3 plot.py -model regnet32gf
+# python3 plot.py -model Regnet800mf
+# python3 plot.py -model Regnet6gf
+# python3 plot.py -model regnet2gf
+# python3 plot.py -model regnet8gf
+# python3 plot.py -model regnet16gf
+# python3 plot.py -model regnet32gf
 
 
 # python3 plot.py -model Resnet18
@@ -43,3 +42,18 @@ python3 plot.py -model regnet32gf
 
 
 
+#  --------------------------------------------------------------------------------------------------
+
+
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad_HRS.py -model Regnet800mf -Batch_size 10 -Nexample 10000
+# CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad_HRS.py -model Regnet8gf -Batch_size 10 -Nexample 10000
+CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad_HRS.py -model Regnet400mf -Batch_size 10 -Nexample 10000
+CUDA_VISIBLE_DEVICES=${GPU_ID} python3 get_DCTgrad_HRS.py -model mobilenet_v2 -Batch_size 10 -Nexample 10000
+
+
+
+# python3 plot_HRS.py -model Regnet800mf
+# python3 plot_HRS.py -model Regnet8gf
+
+python3 plot_HRS.py -model Regnet400mf
+python3 plot_HRS.py -model mobilenet_v2

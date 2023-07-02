@@ -282,6 +282,8 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
              HDQ_OptD::Q_table_C,HDQ_OptD::seq_len_C);
     Quantize(seq_dct_coefs_Cr,seq_dct_idxs_Cr,
              HDQ_OptD::Q_table_C,HDQ_OptD::seq_len_C);
+    
+
     for(int j=0; j<64; ++j)
     {
     q_table[j] = HDQ_OptD::Q_table_Y[j];
@@ -355,7 +357,6 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
 float HDQ_OptD::SWE_eval(int Sens_index, float Q_table[64],float seq_dct_coefs[][64], float seq_dct_idxs[][64], int seq_len)
 {
     Quantize(seq_dct_coefs, seq_dct_idxs, Q_table, seq_len);
- 
     Dequantize(seq_dct_idxs, Q_table, seq_len);
 
     return SWE(HDQ_OptD::Sen_Map, Sens_index,

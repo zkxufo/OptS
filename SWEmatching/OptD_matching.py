@@ -23,7 +23,7 @@ import SWE_OptD_d_fixed
 # import SWE_OptD_QF_fixed
 # import SWE_OptS_QF_fixed
 
-num_workers=64
+num_workers=100
 
 def seed_worker(worker_id):
     worker_seed = torch.initial_seed() % 2**num_workers
@@ -88,7 +88,7 @@ def running_func(args):
     print("d_waterlevel_C: ", args.d_waterlevel_C)
     print("Qmax_Y =", args.Qmax_Y)
     print("Qmax_C =", args.Qmax_C)
-    print("OptD enables =", OptD_enable)
+    print("OptD enables =", args.OptD_enable)
     print("OptS enables =", args.OptS_enable)
     print("HDQ enables =", args.JPEG_enable)
 
@@ -120,7 +120,10 @@ def running_func(args):
     # for dt in tqdm.tqdm(test_loader):
     for dt in Perc(test_loader):
         image, image_BPP, image_PSNR , labels = dt
-        filter = image_BPP>-1
+        filter = (image_BPP>-1)
+        if (len(image) != filter.sum()):
+            breakpoint()
+            running_func(args)
         image = image[filter]
         image_PSNR = image_PSNR[filter]
         labels = labels[filter]

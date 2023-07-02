@@ -91,7 +91,10 @@ def running_func(args):
     
     for dt in tqdm.tqdm(test_loader):
         image, image_BPP, image_PSNR , labels = dt
-        filter = image_BPP>=0
+        filter = (image_BPP>-1)
+        if (len(image) != filter.sum()):
+            breakpoint()
+            running_func(args)
         image = image[filter]
         image_PSNR = image_PSNR[filter]
         labels = labels[filter]

@@ -138,13 +138,13 @@ def PSNR_cal_YUV(s, r, max_value=255):
 def load_model(Model, device="cpu"):
     if Model=="Resnet18":
         pretrained_model = models.resnet18(pretrained=True)
-    if Model=="Resnet34":
+    elif Model=="Resnet34":
         pretrained_model = models.resnet34(pretrained=True)
-    if Model=="Resnet50":
+    elif Model=="Resnet50":
         pretrained_model = models.resnet50(pretrained=True)
-    if Model=="Resnet101":
+    elif Model=="Resnet101":
         pretrained_model = models.resnet101(pretrained=True)
-    if Model=="Resnet152":
+    elif Model=="Resnet152":
         pretrained_model = models.resnet152(pretrained=True)
     
     elif Model == 'convnext_base':

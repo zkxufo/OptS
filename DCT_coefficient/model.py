@@ -3,13 +3,13 @@ from torchvision.models import MobileNet_V2_Weights, AlexNet_Weights
 def get_model(Model):
     if Model=="Resnet18":
         pretrained_model = models.resnet18(pretrained=True).eval()
-    if Model=="Resnet34":
+    elif Model=="Resnet34":
         pretrained_model = models.resnet34(pretrained=True).eval()
-    if Model=="Resnet50":
+    elif Model=="Resnet50":
         pretrained_model = models.resnet50(pretrained=True).eval()
-    if Model=="Resnet101":
+    elif Model=="Resnet101":
         pretrained_model = models.resnet101(pretrained=True).eval()
-    if Model=="Resnet152":
+    elif Model=="Resnet152":
         pretrained_model = models.resnet152(pretrained=True).eval()
     elif Model=="Squeezenet":
         pretrained_model = models.squeezenet1_0(pretrained=True).eval()

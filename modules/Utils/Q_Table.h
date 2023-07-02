@@ -439,7 +439,7 @@ void Sens_ones(float Sen_Map[3][64])
     }
 }
 
-void cal_ImageStat_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64], float seq_dct_coefs_Cr[][64], 
+void cal_ImageStat_CbCr(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64], float seq_dct_coefs_Cr[][64], 
         float varianceData_CbCr[128], float lambdaData_Cb[64],  float lambdaData_Cr[64],
         int N_block, float& max_var_C)
 {

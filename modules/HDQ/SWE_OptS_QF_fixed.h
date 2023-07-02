@@ -45,7 +45,7 @@ class HDQ_OptD{
         float EntDCC = 0;
         float eps = 1e-4, iter_stop = 50;
         float up, low, mid;
-
+        bool enable_FastQuantization = false;
         float (*Sen_Map)[64];
         float MINQVALUE, MAXQVALUE, QUANTIZATION_SCALE;
         vector<int> RSlst;
@@ -131,8 +131,7 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
     block_2_seqdct(blockified_img_Cb, seq_dct_coefs_Cb, HDQ_OptD::seq_len_C);
     block_2_seqdct(blockified_img_Cr, seq_dct_coefs_Cr, HDQ_OptD::seq_len_C);
 
-    cal_ImageStat_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::varianceData_CbCr,
-                    HDQ_OptD::lambdaData_Cb, HDQ_OptD::lambdaData_Cr, HDQ_OptD::seq_len_C, HDQ_OptD::max_var_C);
+
 
     Quantize(seq_dct_coefs_Y,seq_dct_idxs_Y, 
              HDQ_OptD::Q_table_Y, HDQ_OptD::seq_len_Y);
@@ -148,11 +147,20 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
 
     // // SWE
     // cout << "A: " << DT_Y << endl;
+    // Disable Fast Quantization before Calc. the JPEG target distortion
     
+    HDQ_OptD::enable_FastQuantization = false;
     float SWE_Y_target = SWE_eval(0,HDQ_OptD::Q_table_Y, seq_dct_coefs_Y, seq_dct_idxs_Y, HDQ_OptD::seq_len_Y, HDQ_OptD::d_waterlevel_Y);
     float SWE_C_target = SWE_eval(1,HDQ_OptD::Q_table_C, seq_dct_coefs_Cb, seq_dct_idxs_Cb, HDQ_OptD::seq_len_C, HDQ_OptD::d_waterlevel_C);
     SWE_C_target += SWE_eval(2,HDQ_OptD::Q_table_C, seq_dct_coefs_Cr, seq_dct_idxs_Cr, HDQ_OptD::seq_len_C, HDQ_OptD::d_waterlevel_C);
 
+    // Calc. the Statics of the Image for CbCr ... it will help to do the fast quantization for the CbCr 
+    // indicis for CbCr at espcific frequency.
+    cal_ImageStat_CbCr(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::varianceData_CbCr,
+                    HDQ_OptD::lambdaData_Cb, HDQ_OptD::lambdaData_Cr, HDQ_OptD::seq_len_C, HDQ_OptD::max_var_C);
+                    
+    HDQ_OptD::enable_FastQuantization = true;
+    
     // cout << "A : " << SWE_Y << " -- " << SWE_C << endl;
 
     // Customized Quantization Table
@@ -278,10 +286,10 @@ float HDQ_OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_
         // cout << "DT_Y = " << HDQ_OptD::DT_Y << "\t" << "d_waterLevel_Y = " << HDQ_OptD::d_waterlevel_Y << endl;
 
     }
-    HDQ_OptD::d_waterlevel_C = HDQ_OptD::mid;
     // quantizationTable_OptD_C(HDQ_OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::varianceData_CbCr
     //     , HDQ_OptD::seq_len_C, HDQ_OptD::DT_C, HDQ_OptD::mid , HDQ_OptD::QMAX_C, HDQ_OptD::max_var_C);
     
+    HDQ_OptD::d_waterlevel_C = HDQ_OptD::mid;
     OptD_C(HDQ_OptD::Sen_Map, HDQ_OptD::varianceData_CbCr, HDQ_OptD::lambdaData_Cb, 
             HDQ_OptD::lambdaData_Cr, HDQ_OptD::Q_table_C, HDQ_OptD::DT_C, HDQ_OptD::mid, HDQ_OptD::QMAX_C);
     mid_D = SWE_eval(1,HDQ_OptD::Q_table_C, seq_dct_coefs_Cb, seq_dct_idxs_Cb, HDQ_OptD::seq_len_C, HDQ_OptD::d_waterlevel_C);
@@ -387,10 +395,10 @@ float HDQ_OptD::SWE_eval(int Sens_index, float Q_table[64], float seq_dct_coefs[
 {
     Quantize(seq_dct_coefs, seq_dct_idxs, Q_table, seq_len);
 
-    if (Sens_index > 0 )
+    if ((Sens_index > 0) &&  HDQ_OptD::enable_FastQuantization)
     {
         fast_quatization_CbCr(Sens_index, HDQ_OptD::varianceData_CbCr, seq_dct_idxs, 
-                                seq_dct_idxs, d_waterlevel, HDQ_OptD::seq_len_C);
+                                seq_dct_idxs, d_waterlevel, seq_len);
     }
 
     Dequantize(seq_dct_idxs, Q_table, seq_len);
