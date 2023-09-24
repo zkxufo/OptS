@@ -1,2 +1,0 @@
-Senmaps of Mnasnet mobilenetV2 Regnet Resnet18 ShufflenetV2 Squeezenet Alexnet **squared senmap**
-Date: 2023 Feb 8th on MultiCom PC15

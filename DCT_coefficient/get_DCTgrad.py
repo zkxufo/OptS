@@ -5,10 +5,8 @@ import torchvision
 from tqdm import tqdm
 import torch.nn.functional as F
 from utils import *
-import os
 from torch import nn
 
-# os.environ["CUDA_VISIBLE_DEVICES"]='1'
 
 from model import get_model
 import argparse
@@ -73,16 +71,7 @@ def main(args):
         idx += args.Batch_size
         if idx >= thr:
             break
-    
-    # pretrained_model.zero_grad()
-    # del loss
-    # del input_DCT_block_batch
-    # del pretrained_model
-    # del recoverd_img
-    # del data_grad
-    # del Y
-    # del Cb
-    # del Cr
+
     
     Y_sen_list = np.array(Y_sen_list).reshape(-1,8,8)
     print("Convert Y")
@@ -92,10 +81,7 @@ def main(args):
     print("Convert Cb")
     np.save("./grad/Y_sen_list" + model_name + ".npy",Y_sen_list)
     print("")
-    # del Y_sen_list
-    
     np.save("./grad/Cr_sen_list" + model_name + ".npy", Cr_sen_list)
-    # del Cr_sen_list
     np.save("./grad/Cb_sen_list" + model_name + ".npy", Cb_sen_list)
 
 if __name__ == '__main__':
