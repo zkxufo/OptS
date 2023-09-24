@@ -15,11 +15,8 @@ import random
 import warnings
 import pickle
 
-# import OptD
 import HDQ
-# import SDQ
-# import SWE_JPEG_d_fixed
-# import SWE_OptD_d_fixed
+
 import SWE_OptD_QF_fixed
 import SWE_OptS_QF_fixed
 

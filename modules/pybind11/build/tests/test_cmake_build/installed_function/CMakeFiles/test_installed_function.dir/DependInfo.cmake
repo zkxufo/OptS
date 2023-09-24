@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/main.cpp" "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_function/CMakeFiles/test_installed_function.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/main.cpp.o"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/main.cpp" "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_function/CMakeFiles/test_installed_function.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,7 +15,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/mock_install/include"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/mock_install/include"
   "/home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9"
   )
 

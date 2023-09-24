@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/subdirectory_embed
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/subdirectory_embed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test_embed_lib.dir/depend.make
@@ -57,30 +57,30 @@ include CMakeFiles/test_embed_lib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_embed_lib.dir/flags.make
 
-CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o: CMakeFiles/test_embed_lib.dir/flags.make
-CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
-	/home/linuxbrew/.linuxbrew/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o -c /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp
+CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o: CMakeFiles/test_embed_lib.dir/flags.make
+CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o: /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
+	/home/linuxbrew/.linuxbrew/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o -c /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp
 
-CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i"
-	/home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp > CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i
+CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i"
+	/home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp > CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i
 
-CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s"
-	/home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp -o CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s
+CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s"
+	/home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp -o CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s
 
 # Object files for target test_embed_lib
 test_embed_lib_OBJECTS = \
-"CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
+"CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
 
 # External object files for target test_embed_lib
 test_embed_lib_EXTERNAL_OBJECTS =
 
-libtest_embed_lib.a: CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o
+libtest_embed_lib.a: CMakeFiles/test_embed_lib.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o
 libtest_embed_lib.a: CMakeFiles/test_embed_lib.dir/build.make
 libtest_embed_lib.a: CMakeFiles/test_embed_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libtest_embed_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libtest_embed_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/test_embed_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_embed_lib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -94,6 +94,6 @@ CMakeFiles/test_embed_lib.dir/clean:
 .PHONY : CMakeFiles/test_embed_lib.dir/clean
 
 CMakeFiles/test_embed_lib.dir/depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/test_embed_lib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/CMakeFiles/test_embed_lib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test_embed_lib.dir/depend
 

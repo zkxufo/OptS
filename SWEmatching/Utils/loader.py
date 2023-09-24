@@ -7,9 +7,6 @@ from PIL import Image
 import numpy as np
 import math 
 
-# import matplotlib.pyplot as plt
-
-# from Utils.padding import *
 from Utils.utils import *
 
 
@@ -40,7 +37,6 @@ def normal(sample):
     return sample, BPP, PSNR
 
 class HDQ_loader(datasets.ImageNet):
-    """docstring for loader"""
     def __init__(self, args):
         self.split=args.split
         self.root = args.root
@@ -50,9 +46,8 @@ class HDQ_loader(datasets.ImageNet):
         elif args.JPEG_enable:
             self.HDQ_transforms = HDQ_transforms(args)
         else:
-            print("NON sense")
+            print("Set one of these flags: <OptS_enable> or <JPEG_enable>")
             exit(0)
-        
         
         if args.resize_compress:
             print("Resize Compress IMAGE ...")
@@ -71,7 +66,6 @@ class HDQ_loader(datasets.ImageNet):
 
 
 class SWE_matching_loader(datasets.ImageNet):
-    """docstring for loader"""
     def __init__(self, args):
         self.split=args.split
         self.root = args.root

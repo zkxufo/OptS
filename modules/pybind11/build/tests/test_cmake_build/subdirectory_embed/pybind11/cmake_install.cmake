@@ -1,4 +1,4 @@
-# Install script for directory: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+# Install script for directory: /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/include/pybind11")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/include/pybind11")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/pybind11Config.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/pybind11ConfigVersion.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/FindPythonLibsNew.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Common.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Tools.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11NewTools.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/pybind11Config.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/pybind11ConfigVersion.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/FindPythonLibsNew.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Common.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Tools.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11NewTools.cmake"
     )
 endif()
 
@@ -56,7 +56,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/test_export.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/test_export.cmake"
-         "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export.cmake")
+         "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/test_export-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -65,9 +65,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed/pybind11/CMakeFiles/Export/share/cmake/pybind11/test_export-release.cmake")
   endif()
 endif()
 

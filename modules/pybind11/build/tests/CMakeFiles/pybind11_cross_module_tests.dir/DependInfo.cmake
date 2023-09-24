@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_cross_module_tests.cpp" "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/CMakeFiles/pybind11_cross_module_tests.dir/pybind11_cross_module_tests.cpp.o"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_cross_module_tests.cpp" "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/CMakeFiles/pybind11_cross_module_tests.dir/pybind11_cross_module_tests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

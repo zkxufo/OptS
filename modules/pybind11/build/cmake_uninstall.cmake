@@ -1,10 +1,10 @@
 # Source: https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#can-i-do-make-uninstall-with-cmake
 
-if(NOT EXISTS "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/install_manifest.txt")
+if(NOT EXISTS "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/install_manifest.txt")
 endif()
 
-file(READ "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/install_manifest.txt" files)
+file(READ "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 foreach(file ${files})
   message(STATUS "Uninstalling $ENV{DESTDIR}${file}")

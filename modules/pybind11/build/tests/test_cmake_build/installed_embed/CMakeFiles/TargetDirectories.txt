@@ -1,4 +1,4 @@
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/rebuild_cache.dir
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/edit_cache.dir
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/check_installed_embed.dir
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/test_installed_embed.dir
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/rebuild_cache.dir
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/edit_cache.dir
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/check_installed_embed.dir
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/test_installed_embed.dir

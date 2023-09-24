@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/include -isystem /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 
+CXX_INCLUDES = -isystem /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/include -isystem /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 
 

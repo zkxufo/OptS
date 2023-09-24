@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/installed_embed
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/installed_embed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_embed/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -136,32 +136,32 @@ test_installed_embed/fast:
 	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/build
 .PHONY : test_installed_embed/fast
 
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.o: home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.o: home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o
 
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.o
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.o
 
 # target to build an object file
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o:
-	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o:
+	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o
 
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.i: home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.i: home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i
 
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.i
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.i
 
 # target to preprocess a source file
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i:
-	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.i
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i:
+	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.i
 
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.s: home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.s: home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s
 
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.s
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.s
 
 # target to generate assembly for a file
-home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s:
-	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s
-.PHONY : home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.s
+home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s:
+	$(MAKE) -f CMakeFiles/test_installed_embed.dir/build.make CMakeFiles/test_installed_embed.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s
+.PHONY : home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.s
 
 # Help Target
 help:
@@ -173,9 +173,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... check_installed_embed"
 	@echo "... test_installed_embed"
-	@echo "... home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.o"
-	@echo "... home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.i"
-	@echo "... home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.s"
+	@echo "... home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.o"
+	@echo "... home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.i"
+	@echo "... home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.s"
 .PHONY : help
 
 

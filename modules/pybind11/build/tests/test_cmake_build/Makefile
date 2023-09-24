@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/progress.marks
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles 0
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/progress.marks
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/clean
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,23 +143,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/preinstall
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/preinstall
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/rule
 
 # Convenience name for target.
@@ -169,12 +169,12 @@ test_cmake_build: tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/rule
 
 # fast build rule for target.
 test_cmake_build/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/build.make tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/build.make tests/test_cmake_build/CMakeFiles/test_cmake_build.dir/build
 .PHONY : test_cmake_build/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/rule
 
 # Convenience name for target.
@@ -184,12 +184,12 @@ test_build_subdirectory_target: tests/test_cmake_build/CMakeFiles/test_build_sub
 
 # fast build rule for target.
 test_build_subdirectory_target/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_target.dir/build
 .PHONY : test_build_subdirectory_target/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/rule
 
 # Convenience name for target.
@@ -199,12 +199,12 @@ test_build_subdirectory_function: tests/test_cmake_build/CMakeFiles/test_build_s
 
 # fast build rule for target.
 test_build_subdirectory_function/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_function.dir/build
 .PHONY : test_build_subdirectory_function/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/rule
 
 # Convenience name for target.
@@ -214,12 +214,12 @@ test_build_installed_embed: tests/test_cmake_build/CMakeFiles/test_build_install
 
 # fast build rule for target.
 test_build_installed_embed/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_embed.dir/build
 .PHONY : test_build_installed_embed/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/rule
 
 # Convenience name for target.
@@ -229,12 +229,12 @@ test_build_subdirectory_embed: tests/test_cmake_build/CMakeFiles/test_build_subd
 
 # fast build rule for target.
 test_build_subdirectory_embed/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build
 .PHONY : test_build_subdirectory_embed/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/rule
 
 # Convenience name for target.
@@ -244,12 +244,12 @@ test_build_installed_function: tests/test_cmake_build/CMakeFiles/test_build_inst
 
 # fast build rule for target.
 test_build_installed_function/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build
 .PHONY : test_build_installed_function/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/rule
 
 # Convenience name for target.
@@ -259,12 +259,12 @@ test_build_installed_target: tests/test_cmake_build/CMakeFiles/test_build_instal
 
 # fast build rule for target.
 test_build_installed_target/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/build.make tests/test_cmake_build/CMakeFiles/test_build_installed_target.dir/build
 .PHONY : test_build_installed_target/fast
 
 # Convenience name for target.
 tests/test_cmake_build/CMakeFiles/mock_install.dir/rule:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/mock_install.dir/rule
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f CMakeFiles/Makefile2 tests/test_cmake_build/CMakeFiles/mock_install.dir/rule
 .PHONY : tests/test_cmake_build/CMakeFiles/mock_install.dir/rule
 
 # Convenience name for target.
@@ -274,7 +274,7 @@ mock_install: tests/test_cmake_build/CMakeFiles/mock_install.dir/rule
 
 # fast build rule for target.
 mock_install/fast:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/mock_install.dir/build.make tests/test_cmake_build/CMakeFiles/mock_install.dir/build
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(MAKE) -f tests/test_cmake_build/CMakeFiles/mock_install.dir/build.make tests/test_cmake_build/CMakeFiles/mock_install.dir/build
 .PHONY : mock_install/fast
 
 # Help Target
@@ -308,7 +308,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

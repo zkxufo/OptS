@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG -fPIC   -std=gnu++11
 
 CXX_DEFINES = -Dtest_installed_target_EXPORTS
 
-CXX_INCLUDES = -I/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/mock_install/include -I/home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 
+CXX_INCLUDES = -I/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/mock_install/include -I/home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 
 

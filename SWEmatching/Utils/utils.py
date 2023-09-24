@@ -7,19 +7,6 @@ import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
 
-
-models_list = {
-
-    "Resnet": ["Resnet18", "Resnet34", "Resnet50", "Resnet101", "Resnet152"],
-    
-    "convnex": ["convnext_base", "convnext_tiny", "convnext_large", 
-                "convnext_small"],
-    
-    "Regnet": ["Regnet400mf", "Regnet800mf", "Regnet2gf", "Regnet6gf",
-            #    "Regnet8gf", "Regnet16gf", "Regnet32gf"
-               ],
-}
-
 def ssim(img1, img2):
     C1 = (0.01 * 255)**2
     C2 = (0.03 * 255)**2
@@ -136,63 +123,10 @@ def PSNR_cal_YUV(s, r, max_value=255):
 
 
 def load_model(Model, device="cpu"):
-    if Model=="Resnet18":
-        pretrained_model = models.resnet18(pretrained=True)
-    elif Model=="Resnet34":
-        pretrained_model = models.resnet34(pretrained=True)
-    elif Model=="Resnet50":
-        pretrained_model = models.resnet50(pretrained=True)
-    elif Model=="Resnet101":
-        pretrained_model = models.resnet101(pretrained=True)
-    elif Model=="Resnet152":
-        pretrained_model = models.resnet152(pretrained=True)
-    
-    elif Model == 'convnext_base':
-        weights=models.ConvNeXt_Base_Weights.DEFAULT
-        pretrained_model = models.convnext_base(weights=weights)
-    elif Model == 'convnext_tiny':
-        weights=models.ConvNeXt_Tiny_Weights.DEFAULT
-        pretrained_model = models.convnext_tiny(weights=weights)
-    elif Model == 'convnext_large':
-        weights=models.ConvNeXt_Large_Weights.DEFAULT
-        pretrained_model = models.convnext_large(weights=weights)
-    elif  Model == 'convnext_small':
-        weights=models.ConvNeXt_Small_Weights.DEFAULT
-        pretrained_model = models.convnext_small(weights=weights)
-
-    elif Model == 'Regnet400mf':
-        pretrained_model = models.regnet_y_400mf(pretrained=True)
-    elif Model == 'Regnet800mf':
-        pretrained_model = models.regnet_y_800mf(pretrained=True)
-    elif Model == 'Regnet6gf':
-        pretrained_model = models.regnet_y_1_6gf(pretrained=True)
-    elif Model == 'Regnet2gf':
-        pretrained_model = models.regnet_y_3_2gf(pretrained=True)
-    elif Model == 'Regnet8gf':
-        pretrained_model = models.regnet_y_8gf(pretrained=True)
-    elif Model == 'Regnet16gf':
-        pretrained_model = models.regnet_y_16gf(pretrained=True)
-    elif Model == 'Regnet32gf':
-        pretrained_model = models.regnet_y_32gf(pretrained=True)
-
-    elif Model=="Squeezenet":
-        pretrained_model = models.squeezenet1_0(pretrained=True)
-    elif Model == 'Shufflenetv2':
-        pretrained_model = models.shufflenet_v2_x1_0(pretrained=True)
-    elif Model == 'Mnasnet':
-        pretrained_model = models.mnasnet1_0(pretrained=True)
-    elif Model == 'mobilenet_v2':
+    if Model == 'mobilenet_v2':
         pretrained_model = models.mobilenet_v2(pretrained=True)
-    elif Model == 'efficientnet_b1':
-        pretrained_model = models.efficientnet_b1(pretrained=True)
     elif Model == 'Alexnet':
         pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
-    elif Model == 'VGG16':
-        pretrained_model = models.vgg16(weights=models.VGG16_Weights.IMAGENET1K_V1)
-    
-    # elif Model == 'Regnet':
-    #     pretrained_model = models.regnet_y_400mf(pretrained=True)
-    
     else: 
         print("Enter a model SOS")
         exit(0)
@@ -225,9 +159,7 @@ def compute_accuracy(outputs, targets, topk=(1,)):
 
         result_list = []
         for k in topk:
-            # print(corrects[:k].flatten().sum(dtype=torch.float32), batch_size)
             correct_k = corrects[:k].flatten().sum(dtype=torch.float32)
-            # result_list.append(correct_k * (100.0 / batch_size))
             result_list.append(correct_k)
         return result_list
 
@@ -274,7 +206,6 @@ def print_iteration(top1, top5, BPP, PSNR, cnt, num_correct, num_tests, model=""
     l2 = str(BPP.numpy()/num_tests) + "\t" + str(PSNR.numpy()/num_tests) + "\t" + str((top1.cpu().numpy()/num_tests)) + "\t" + str((top5.cpu().numpy()/num_tests)) + "\n"
     l = l0 + l1 + l2
     print(l)
-    # print_file(l, output_txt)
     
 def log_file(top1, top5, BPP, PSNR, loss, cnt, num_correct, num_tests, output_txt, model=""):
     l0 = "#"* 50 + "\n" + "Total Number Images --> " + str(num_tests) + "\n"

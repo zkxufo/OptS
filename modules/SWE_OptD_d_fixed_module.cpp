@@ -1,13 +1,11 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
-// #include <opencv2/highgui.hpp>
 #include <unistd.h>
 #include <getopt.h>
 #include <iostream>
 #include <stdlib.h>
 #include "./HDQ/SWE_OptD_d_fixed.h"
-// using namespace cv;
 using namespace std;
 
 // -------------
@@ -34,10 +32,8 @@ std::tuple<py::array, py::array, float>  py__call__(py::array_t<float, py::array
   unsigned long size[2];
   size[0] = (unsigned long)array.shape()[1];
   size[1] = (unsigned long)array.shape()[2];
-  // allocate std::vector (to pass to the C++ function)
   vector<float> pos(array.size());
   vector<vector<vector<float>>> Vect_img(3, vector<vector<float>>(size[0], vector<float>(size[1], 0)));
-  // copy py::array -> std::vector
   memcpy(pos.data(), array.data(),array.size()*sizeof(float));
   
   float ColorSpaceW[3][3];
@@ -45,9 +41,7 @@ std::tuple<py::array, py::array, float>  py__call__(py::array_t<float, py::array
 
   memcpy(ColorSpaceW, ColorSpaceW_.data(), 3*3*sizeof(float));
   memcpy(InvColorSpaceW, InvColorSpaceW_.data(),3*3*sizeof(float));
-  
-  // call pure C++ function
-  //TODO::
+
   float BPP =0;
   vector<float> result(array.size());
   seq2img(pos, Vect_img, size[0], size[1]);
@@ -61,7 +55,7 @@ std::tuple<py::array, py::array, float>  py__call__(py::array_t<float, py::array
   vector<float> q_table(2 * size_q);
 
   float ImageBias[3] = {0,0,0};
-  float bias_rgb2swx = 128.;
+
 
 
   ColorSpaceConv(Vect_img, ColorSpaceW, ImageBias, BiasPerImageFlag);
@@ -69,7 +63,7 @@ std::tuple<py::array, py::array, float>  py__call__(py::array_t<float, py::array
 
   HDQ_OptD hdq;
   hdq.__init__(Sen_Map, QF_Y , QF_C, J, a, b, DT_Y, DT_C, d_waterlevel_Y, d_waterlevel_C, Qmax_Y, Qmax_C);
-  BPP = hdq.__call__(Vect_img, q_table); // Vect_img is the compressed dequantilzed image after sdq.__call__()
+  BPP = hdq.__call__(Vect_img, q_table); // Vect_img is the compressed dequantilzed image after hdq.__call__()
 
   InvColorSpaceConv(Vect_img, InvColorSpaceW, ImageBias);
 
@@ -83,8 +77,6 @@ std::tuple<py::array, py::array, float>  py__call__(py::array_t<float, py::array
   vector<unsigned long> strides = { size[0]*size[1]*sizeof(float),
                                     size[1]*sizeof(float), sizeof(float)};
 
-  // delete [] Sen_Map;
-  // return 2-D NumPy array
   return std::make_tuple(
     py::array(py::buffer_info(
     result.data(),                          /* data as contiguous array */

@@ -5,8 +5,6 @@
 #include "../Utils/Q_Table.h"
 #include "../EntCoding/Huffman.h"
 #include <limits>
-// #include <algorithm>
-// #include <math.h>
 
 using namespace std;
 const float MIN_Q_VAL = 1;
@@ -17,14 +15,12 @@ class OptD{
         float Q_table_C[64];
         float varianceData_Y[64];
         float varianceData_CbCr[128];
-        int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
+        int seq_len_Y, seq_len_C; // 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
-        // BLOCK Block;
         int seq_block_dcts[64];
         int DCT_block_shape[3];
         int img_shape_Y[2], img_shape_C[2]; // size of channels after subsampling
-        //TODO: P_DC for DC coefficient
         map<int, float> P_DC_Y;
         map<int, float> P_DC_C;
         float J_Y = 10e10;
@@ -117,36 +113,12 @@ float OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_tabl
     block_2_seqdct(blockified_img_Cb, seq_dct_coefs_Cb, OptD::seq_len_C);
     block_2_seqdct(blockified_img_Cr, seq_dct_coefs_Cr, OptD::seq_len_C);
 
-
-    // // adaptive Qmax 
-    // float max_q = std::numeric_limits<float>::min(), tmp, num1, num2;
-    // for(int N=0; N<OptD::seq_len_C; N++)
-    // {
-    //     tmp = *max_element(seq_dct_coefs_Y[N], seq_dct_coefs_Y[N] + 64);
-    //     if (tmp > max_q) max_q = tmp;
-    // }
-    // OptD::QMAX_Y = 2 * max_q + 1;
-    // cout << "Max Quantization Step Y : " <<OptD::QMAX_Y << endl;
-
-    // max_q = std::numeric_limits<float>::min();
-    // for(int N=0; N<OptD::seq_len_C; N++)
-    // {
-    //     num1 = *max_element(seq_dct_coefs_Cb[N], seq_dct_coefs_Cb[N] + 64);
-    //     num2 = *max_element(seq_dct_coefs_Cr[N], seq_dct_coefs_Cr[N] + 64);
-    //     tmp = max(num1, num2);
-    //     if (tmp > max_q) max_q = tmp;
-    // }
-    // OptD::QMAX_C = 2 * max_q + 1;
-    // cout << "Max Quantization Step CbCr : " <<OptD::QMAX_C << endl;
-
     float dummy;
     // Customized Quantization Table
     quantizationTable_OptD_Y(OptD::Sen_Map, seq_dct_coefs_Y, OptD::Q_table_Y, OptD::varianceData_Y,
                 OptD::seq_len_Y, OptD::DT_Y, OptD::d_waterlevel_Y, OptD::QMAX_Y, dummy);
-    // cout << "DT_Y = " << OptD::DT_Y << "\t" << "d_waterLevel_Y = " << OptD::d_waterlevel_Y << endl;
     quantizationTable_OptD_C(OptD::Sen_Map, seq_dct_coefs_Cb, seq_dct_coefs_Cr, OptD::Q_table_C, OptD::varianceData_CbCr
         , OptD::seq_len_C, OptD::DT_C, OptD::d_waterlevel_C, OptD::QMAX_C, dummy);
-    // cout << "DT_C = " << OptD::DT_C << "\t" << "d_waterLevel_C = " << OptD::d_waterlevel_C << endl;
    
     int check = checkQmax(OptD::Q_table_Y, OptD::QMAX_Y, OptD::Q_table_C, OptD::QMAX_C);
     if (check == 2)
@@ -174,24 +146,6 @@ float OptD::__call__(vector<vector<vector<float>>>& image, vector<float>& q_tabl
              OptD::Q_table_C,OptD::seq_len_C);
     Quantize(seq_dct_coefs_Cr,seq_dct_idxs_Cr,
              OptD::Q_table_C,OptD::seq_len_C);
-
-
-    fast_quatization_CbCr(3, OptD::varianceData_CbCr, seq_dct_idxs_Cb, 
-                            seq_dct_idxs_Cr, OptD::d_waterlevel_C, OptD::seq_len_C);
-
-
-    
-    // cout << "number of blocks: " << seq_len_C << endl;
-    // cout << "Cb indices" << endl;
-    // for(int N=0; N<OptD::seq_len_C; N++)
-    // {
-    //     cout << seq_dct_idxs_Cb[N][33] << endl;
-    // }
-    // cout << "Cr indices" << endl;
-    // for(int N=0; N<OptD::seq_len_C; N++)
-    // {
-    //     cout << seq_dct_idxs_Cr[N][33] << endl;
-    // }
     
     map<int, float> DC_P;
     map<int, float> AC_Y_P;

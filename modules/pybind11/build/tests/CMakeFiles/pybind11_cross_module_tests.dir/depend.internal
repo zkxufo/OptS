@@ -19,10 +19,10 @@ tests/CMakeFiles/pybind11_cross_module_tests.dir/pybind11_cross_module_tests.cpp
  ../include/pybind11/pybind11.h
  ../include/pybind11/pytypes.h
  ../include/pybind11/stl_bind.h
- /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/local_bindings.h
- /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_cross_module_tests.cpp
- /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_tests.h
- /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_exceptions.h
+ /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/local_bindings.h
+ /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_cross_module_tests.cpp
+ /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_tests.h
+ /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_exceptions.h
  /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9/Python.h
  /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9/abstract.h
  /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9/bltinmodule.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests
+# Install script for directory: /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_embed/cmake_install.cmake")
+  include("/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_embed/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/cmake_install.cmake")
+  include("/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/cmake_install.cmake")
 endif()
 

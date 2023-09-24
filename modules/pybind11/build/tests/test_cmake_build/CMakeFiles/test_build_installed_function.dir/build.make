@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 # Utility rule file for test_build_installed_function.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
 include tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/progress.make
 
 tests/test_cmake_build/CMakeFiles/test_build_installed_function:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build && /usr/bin/ctest --build-and-test /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/installed_function /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/installed_function --build-config Release --build-noclean --build-generator Unix\ Makefiles  --build-makeprogram /usr/bin/make --build-target check_installed_function --build-options -DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/c++ -DPYTHON_EXECUTABLE=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ_env/bin/python -DCMAKE_PREFIX_PATH=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/mock_install
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build && /usr/bin/ctest --build-and-test /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/installed_function /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/installed_function --build-config Release --build-noclean --build-generator Unix\ Makefiles  --build-makeprogram /usr/bin/make --build-target check_installed_function --build-options -DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/c++ -DPYTHON_EXECUTABLE=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ_env/bin/python -DCMAKE_PREFIX_PATH=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/mock_install
 
 test_build_installed_function: tests/test_cmake_build/CMakeFiles/test_build_installed_function
 test_build_installed_function: tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build.make
@@ -67,10 +67,10 @@ tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build: test_
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/build
 
 tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/clean:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build && $(CMAKE_COMMAND) -P CMakeFiles/test_build_installed_function.dir/cmake_clean.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build && $(CMAKE_COMMAND) -P CMakeFiles/test_build_installed_function.dir/cmake_clean.cmake
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/clean
 
 tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11 /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11 /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_installed_function.dir/depend
 

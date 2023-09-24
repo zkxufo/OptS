@@ -5,6 +5,7 @@ def get_model(Model):
     if Model == 'mobilenet_v2':
         weights = MobileNet_V2_Weights.DEFAULT
         pretrained_model = models.mobilenet_v2(weights=weights).eval()
+
     elif Model == 'Alexnet':
         weights=AlexNet_Weights.DEFAULT
         pretrained_model = models.alexnet(weights=weights).eval()

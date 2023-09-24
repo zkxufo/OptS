@@ -192,55 +192,6 @@ void Upsampling(vector<vector<float>>& img, int img_shape_Y[2],
     }
 }
 
-
-float MSE3C(vector<vector<vector<float>>>img1,
-           vector<vector<vector<float>>>img2){
-    float m = 0;
-    int nrows = img1[0].size();
-    int ncols = img1[0][0].size();
-    for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols; j++){
-            m += pow(img1[0][j][i]-img2[0][j][i], 2);
-            m += pow(img1[1][j][i]-img2[1][j][i], 2);
-            m += pow(img1[2][j][i]-img2[2][j][i], 2);
-        }
-    }
-    m = m/3/nrows/ncols;
-    return m;
-}
-
-
-
-float PSNR3C(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = MSE3C(img1, img2);
-    return 10*log10(pow(MAX_PXL_VAL,2)/m);
-}
-
-float MSEY(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = 0;
-    float Y1, Y2;
-    int nrows = img1[0].size();
-    int ncols = img1[0][0].size();
-    for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols; j++){
-            Y1 = 0.299*img1[0][i][j] + 0.587*img1[1][i][j] + 0.114*img1[2][i][j];
-            Y2 = 0.299*img2[0][i][j] + 0.587*img2[1][i][j] + 0.114*img2[2][i][j];
-            m += pow((Y1-Y2), 2);
-        }
-    }
-    m = m/nrows/ncols;
-    return m;
-}
-
-float PSNRY(vector<vector<vector<float>>> img1,
-           vector<vector<vector<float>>> img2){
-    float m = MSEY(img1, img2);
-    return 10*log10(pow(MAX_PXL_VAL,2)/m);
-}
-
-
 int checkQmax(float Q_table_Y[64], float Qmax_Y, float Q_table_C[64], float Qmax_C)
 {
     float Acc = 0;
@@ -307,19 +258,4 @@ void LoadSenMap(string model, float Sen_Map[3][64]){
             }
         }
     }
-}
-
-void LoadColorConvW(string model, float W_rgb2swx[3][3], float W_swx2rgb[3][3]){
-    if(model != "NoModel"){
-        readData3x3("./color_conv_W/"+model+"_W_OPT.txt", W_rgb2swx);
-        readData3x3("./color_conv_W/"+model+"_W_OPT.txt", W_swx2rgb);
-        Tanspose(W_swx2rgb);
-    }
-    // else
-    // {
-    //     model = "VGG11";
-    //     readData3x3("./color_conv_W/"+model+"_W_OPT.txt", W_rgb2swx);
-    //     readData3x3("./color_conv_W/"+model+"_W_OPT.txt", W_swx2rgb);
-    //     Tanspose(W_swx2rgb); 
-    // }
 }

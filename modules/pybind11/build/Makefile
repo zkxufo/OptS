@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -153,7 +153,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -460,7 +460,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

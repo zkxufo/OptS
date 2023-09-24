@@ -204,7 +204,7 @@ optional
 string_view
 -
 
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/cross_module_gil_utils.cpp
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/cross_module_gil_utils.cpp
 pybind11/pybind11.h
 -
 cstdint

@@ -1,4 +1,4 @@
-# Install script for directory: /home/deponce/project/DNN_SDQ/pybind11
+# Install script for directory: /home/deponce/project/DNN_HDQ/pybind11
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

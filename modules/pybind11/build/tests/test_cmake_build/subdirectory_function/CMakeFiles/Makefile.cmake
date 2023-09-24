@@ -7,13 +7,13 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/CMakeLists.txt"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/CMakeLists.txt"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/subdirectory_function/CMakeLists.txt"
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/FindPythonLibsNew.cmake"
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Common.cmake"
-  "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Tools.cmake"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/subdirectory_function/CMakeLists.txt"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/FindPythonLibsNew.cmake"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Common.cmake"
+  "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Tools.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXCompiler.cmake.in"
   "/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"

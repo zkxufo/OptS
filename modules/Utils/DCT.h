@@ -2,9 +2,6 @@
 #include <iostream>
 
 
-#define QUANTIZATION_SCALE_SWX 3
-#define SWX_SQRT 0
-
 using namespace std;
 
 const float BMA[3] = {-0.27589937928294306, -0.7856949583871022, 0.7653668647301795};
@@ -73,13 +70,7 @@ void block_2_seqdct(float blockified_img_Y[][8][8],
             D1DCT(res_Y[i], tmp_Y);
             for (j=0; j<8; j++){
                 idx = ZIGZAG[j][i];
-
-#if SWX_SQRT > 0
-                seq_dct_coefs_Y[N][idx] = tmp_Y[j]/(8.0 * sqrt(QUANTIZATION_SCALE_SWX));
-                
-#else
                 seq_dct_coefs_Y[N][idx] = tmp_Y[j]/8.;
-#endif
             }
         }
     }
@@ -189,11 +180,7 @@ void seq_2_blockidct(float seq_dct_coefs_Y[][64], float blockified_img_Y[][8][8]
         for (i=0; i<8; i++){
             D1IDCT(res_Y[i], tmp_Y);
             for (j=0; j<8; j++){
-#if SWX_SQRT > 0
-                blockified_img_Y[N][j][i] = (sqrt(QUANTIZATION_SCALE_SWX) * tmp_Y[j])/8.;
-#else
                 blockified_img_Y[N][j][i] = tmp_Y[j]/8.;
-#endif
             }
         }
     }

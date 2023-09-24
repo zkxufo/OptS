@@ -10,15 +10,42 @@ from torch import nn
 
 from model import get_model
 import argparse
-class GGD:
-    def __init__(self, scale, beta, loc):
-        self.scale = scale
-        self.loc = loc
-        self.beta = beta
-    def E(self):
-        x = 0
-        val = -(self.scale*np.exp(self.loc/self.scale - x/self.scale)^self.beta*(self.scale + self.beta*x))/self.beta^2
-        return val
+
+def sentivity_estimation(args):
+    zigzag = get_zigzag()
+    
+    Y_sen_list = np.load("./grad/"+"Y_sen_list" + args.model + ".npy")
+    lst_length = Y_sen_list.shape[0]
+    Y_sen_img = np.zeros((64,lst_length))
+    
+    for i in range(8):
+        for j in range(8):
+            Y_sen_img[zigzag[i,j]] = Y_sen_list[:,i,j]
+    del Y_sen_list
+    Y_sens= np.sum((Y_sen_img)**2,1) * (1/args.Nexample)
+    np.save("SenMap/Y"+args.model, Y_sens)
+    del Y_sen_img
+    
+    Cb_sen_list = np.load("./grad/"+"Cr_sen_list" + args.model + ".npy")
+    Cb_sen_img = np.zeros((64,lst_length))
+    for i in range(8):
+        for j in range(8):
+            Cb_sen_img[zigzag[i,j]] = Cb_sen_list[:,i,j]
+    del Cb_sen_list
+    Cb_sens = np.sum((Cb_sen_img)**2,1) * (1/args.Nexample)
+    np.save("SenMap/Cb"+args.model, Cb_sens)
+    del Cb_sen_img
+
+    Cr_sen_list = np.load("./grad/"+"Cb_sen_list" + args.model + ".npy")
+    Cr_sen_img = np.zeros((64,lst_length))
+    for i in range(8):
+        for j in range(8):
+            Cr_sen_img[zigzag[i,j]] = Cr_sen_list[:,i,j]
+    del Cr_sen_list
+    Cr_sens= np.sum((Cr_sen_img)**2,1) * (1/args.Nexample)
+    np.save("SenMap/Cr"+args.model, Cr_sens)
+    del Cr_sen_img
+    
 
 def main(args):
     device = torch.device(args.dev if torch.cuda.is_available() else 'cpu')
@@ -62,6 +89,7 @@ def main(args):
         pretrained_model.zero_grad()
         loss.backward()
         data_grad = input_DCT_block_batch.grad.transpose(1, 0).detach().cpu().numpy()
+        
         Y = data_grad[0].reshape(-1, 8, 8)
         Y_sen_list.append(Y)
         Cb = data_grad[1].reshape(-1, 8, 8)
@@ -72,15 +100,15 @@ def main(args):
         if idx >= thr:
             break
 
-    
-    Y_sen_list = np.array(Y_sen_list).reshape(-1,8,8)
+    Y_sen_list = np.array(Y_sen_list).reshape(-1,8,8) 
     print("Convert Y")
     Cr_sen_list = np.array(Cr_sen_list).reshape(-1,8,8)
     print("Convert Cr")
     Cb_sen_list = np.array(Cb_sen_list).reshape(-1,8,8)
     print("Convert Cb")
-    np.save("./grad/Y_sen_list" + model_name + ".npy",Y_sen_list)
     print("")
+
+    np.save("./grad/Y_sen_list" + model_name + ".npy",Y_sen_list)
     np.save("./grad/Cr_sen_list" + model_name + ".npy", Cr_sen_list)
     np.save("./grad/Cb_sen_list" + model_name + ".npy", Cb_sen_list)
 
@@ -92,3 +120,4 @@ if __name__ == '__main__':
     parser.add_argument('-Nexample',type=int, default=10000, help='Number of example')
     args = parser.parse_args()
     main(args)
+    sentivity_estimation(args)

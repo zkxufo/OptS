@@ -1,4 +1,4 @@
-# Install script for directory: /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+# Install script for directory: /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/include/pybind11")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/include/pybind11")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/pybind11Config.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/pybind11ConfigVersion.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/FindPythonLibsNew.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Common.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11Tools.cmake"
-    "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tools/pybind11NewTools.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/pybind11Config.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/pybind11ConfigVersion.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/FindPythonLibsNew.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Common.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11Tools.cmake"
+    "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tools/pybind11NewTools.cmake"
     )
 endif()
 
@@ -56,7 +56,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/pybind11Targets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/pybind11Targets.cmake"
-         "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/Export/share/cmake/pybind11/pybind11Targets.cmake")
+         "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/Export/share/cmake/pybind11/pybind11Targets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11/pybind11Targets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -65,12 +65,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles/Export/share/cmake/pybind11/pybind11Targets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cmake/pybind11" TYPE FILE FILES "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles/Export/share/cmake/pybind11/pybind11Targets.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/cmake_install.cmake")
+  include("/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -81,5 +81,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

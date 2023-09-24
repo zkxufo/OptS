@@ -13,8 +13,7 @@ from PIL import Image
 
 def normalize(arr, factor):
     if factor == 0:
-        # factor = 10*np.max(arr)
-        factor = np.max(arr)
+        factor = 10*np.max(arr)
     arr = arr/factor
     return arr, factor
 
@@ -49,7 +48,6 @@ class HDQ_transforms(object):
         self.a = args.a
         self.b = args.b
         self.model = args.Model
-        # Sensivity is ignored in this case as we do not need in the HDQ
         self.ColorSpaceW, self.InvColorSpaceW, _ , self.BiasPerImageFlag = colorSpace_machineSenstivity(args)
         self.comparsionRunner = args.comparsionRunner
     def __call__(self, sample):
@@ -96,15 +94,10 @@ class OptD_transforms(object):
                                         self.Qmax_Y, self.Qmax_C)
 
         
-        # print_2d(q_table)
-        # compressed_img = sample
+
         compressed_img = np.round(compressed_img)    
         compressed_img = np.uint8(compressed_img)
         compressed_img = np.transpose(compressed_img, (1,2,0))
-        # PSNR_cal(sample, compressed_img, BPP, "OptD")
-        # plt.imshow(compressed_img)
-        # plt.show()
-        
         return {'image': compressed_img, 'BPP': BPP}
 
 
@@ -137,14 +130,9 @@ class SWE_matching_transforms(object):
                                         self.Qmax_Y, self.Qmax_C)
 
         
-        # print_2d(q_table)
-        # compressed_img = sample
         compressed_img = np.round(compressed_img)    
         compressed_img = np.uint8(compressed_img)
         compressed_img = np.transpose(compressed_img, (1,2,0))
-        # PSNR_cal(sample, compressed_img, BPP, "OptD")
-        # plt.imshow(compressed_img)
-        # plt.show()
-        
+
         return {'image': compressed_img, 'BPP': BPP}
 

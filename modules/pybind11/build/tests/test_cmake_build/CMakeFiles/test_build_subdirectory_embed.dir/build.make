@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 # Utility rule file for test_build_subdirectory_embed.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
 include tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/progress.make
 
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build && /usr/bin/ctest --build-and-test /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed --build-config Release --build-noclean --build-generator Unix\ Makefiles  --build-makeprogram /usr/bin/make --build-target check_subdirectory_embed --build-options -DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/c++ -DPYTHON_EXECUTABLE=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ_env/bin/python -Dpybind11_SOURCE_DIR=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build && /usr/bin/ctest --build-and-test /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/subdirectory_embed /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/subdirectory_embed --build-config Release --build-noclean --build-generator Unix\ Makefiles  --build-makeprogram /usr/bin/make --build-target check_subdirectory_embed --build-options -DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/c++ -DPYTHON_EXECUTABLE=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ_env/bin/python -Dpybind11_SOURCE_DIR=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 test_build_subdirectory_embed: tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed
 test_build_subdirectory_embed: tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build.make
@@ -67,10 +67,10 @@ tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build: test_
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/build
 
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/clean:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build && $(CMAKE_COMMAND) -P CMakeFiles/test_build_subdirectory_embed.dir/cmake_clean.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build && $(CMAKE_COMMAND) -P CMakeFiles/test_build_subdirectory_embed.dir/cmake_clean.cmake
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/clean
 
 tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11 /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11 /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/test_cmake_build/CMakeFiles/test_build_subdirectory_embed.dir/depend
 

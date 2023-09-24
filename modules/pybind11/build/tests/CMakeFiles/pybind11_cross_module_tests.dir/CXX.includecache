@@ -224,35 +224,35 @@ algorithm
 sstream
 -
 
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/local_bindings.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/local_bindings.h
 pybind11_tests.h
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_tests.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_tests.h
 utility
 -
 
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_cross_module_tests.cpp
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_cross_module_tests.cpp
 pybind11/stl_bind.h
 -
 local_bindings.h
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/local_bindings.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/local_bindings.h
 pybind11_tests.h
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_tests.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_tests.h
 test_exceptions.h
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_exceptions.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_exceptions.h
 numeric
 -
 utility
 -
 
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_tests.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_tests.h
 pybind11/eval.h
 -
 pybind11/pybind11.h
 -
 
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_exceptions.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_exceptions.h
 pybind11_tests.h
-/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/pybind11_tests.h
+/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/pybind11_tests.h
 stdexcept
 -
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_subdirectory_target.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/main.cpp.o"
+  "CMakeFiles/test_subdirectory_target.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/main.cpp.o"
   "test_cmake_build.cpython-39-x86_64-linux-gnu.so"
   "test_cmake_build.pdb"
 )

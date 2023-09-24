@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_subdirectory_embed.dir/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
+  "CMakeFiles/test_subdirectory_embed.dir/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/test_cmake_build/embed.cpp.o"
   "test_cmake_build"
   "test_cmake_build.pdb"
 )

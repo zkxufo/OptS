@@ -11,14 +11,12 @@ class HDQ{
         // attributes
         float Q_table_Y[64];
         float Q_table_C[64];
-        int seq_len_Y, seq_len_C; // # 8x8 DCT blocks after subsampling
+        int seq_len_Y, seq_len_C; // 8x8 DCT blocks after subsampling
         int n_row;
         int n_col;
-        // BLOCK Block;
         int seq_block_dcts[64];
         int DCT_block_shape[3];
         int img_shape_Y[2], img_shape_C[2]; // size of channels after subsampling
-        //TODO: P_DC for DC coefficient
         map<int, float> P_DC_Y;
         map<int, float> P_DC_C;
         float J_Y = 10e10;

@@ -6,5 +6,5 @@ CXX_FLAGS = -Os -DNDEBUG -fPIC -fvisibility=hidden   -Wall -Wextra -Wconversion 
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DPYBIND11_TEST_BOOST -Dpybind11_cross_module_tests_EXPORTS
 
-CXX_INCLUDES = -I/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/include -isystem /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 -isystem /home/h2amer/anaconda3/include 
+CXX_INCLUDES = -I/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/include -isystem /home/linuxbrew/.linuxbrew/opt/python@3.9/include/python3.9 -isystem /home/h2amer/anaconda3/include 
 

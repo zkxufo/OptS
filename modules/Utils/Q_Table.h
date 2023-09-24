@@ -505,29 +505,6 @@ void quantizationTable_OptD_C(float Sen_Map[3][64], float seq_dct_coefs_Cb[][64]
 
 
 
-void fast_quatization_CbCr(int channel_index, float varianceData_CbCr[128], float seq_dct_idxs_Cb[][64], float seq_dct_idxs_Cr[][64], float d_waterLevel, int N_block)
-{
-    // [Fast Quantization] Managing the case where the waterlevel is already higher than the maximum level of the channel distortion
-    for (int i = 0; i < 64; i++)
-    {
-        if ((varianceData_CbCr[i] < d_waterLevel) && (varianceData_CbCr[i+64] >= d_waterLevel) && (channel_index == 1 || channel_index > 2))
-        {
-            for (int j = 0 ; j < N_block; j++)
-            {
-                seq_dct_idxs_Cb[j][i]= 0; 
-            }
-        }
-        else if ((varianceData_CbCr[i] >= d_waterLevel) && (varianceData_CbCr[i+64] < d_waterLevel) && (channel_index == 2 || channel_index > 2))
-        {
-            for (int j = 0 ; j < N_block; j++)
-            {
-                seq_dct_idxs_Cr[j][i] = 0;
-            }
-        } 
-    }
-
-}
-
 void quantizationTable_OptD_Y(float Sen_Map[3][64], float seq_dct_coefs[][64], float Q_Table[64], float varianceData[64], 
                 int N_block, float& DT, float& d_waterLevel, int QMAX_Y , float& max_var_Y)
 {

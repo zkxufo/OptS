@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 # Utility rule file for check.
 
@@ -67,10 +67,10 @@ tests/CMakeFiles/check.dir/build: check
 .PHONY : tests/CMakeFiles/check.dir/build
 
 tests/CMakeFiles/check.dir/clean:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/check.dir/cmake_clean.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/check.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/check.dir/clean
 
 tests/CMakeFiles/check.dir/depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11 /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/CMakeFiles/check.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11 /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/CMakeFiles/check.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/check.dir/depend
 

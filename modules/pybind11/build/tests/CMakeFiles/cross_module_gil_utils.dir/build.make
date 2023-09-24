@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11
+CMAKE_SOURCE_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build
+CMAKE_BINARY_DIR = /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build
 
 # Include any dependencies generated for this target.
 include tests/CMakeFiles/cross_module_gil_utils.dir/depend.make
@@ -59,16 +59,16 @@ include tests/CMakeFiles/cross_module_gil_utils.dir/flags.make
 
 tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o: tests/CMakeFiles/cross_module_gil_utils.dir/flags.make
 tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o: ../tests/cross_module_gil_utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o"
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o -c /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/cross_module_gil_utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o"
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o -c /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/cross_module_gil_utils.cpp
 
 tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.i"
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/cross_module_gil_utils.cpp > CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.i
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/cross_module_gil_utils.cpp > CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.i
 
 tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.s"
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests/cross_module_gil_utils.cpp -o CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.s
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && /home/linuxbrew/.linuxbrew/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests/cross_module_gil_utils.cpp -o CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.s
 
 # Object files for target cross_module_gil_utils
 cross_module_gil_utils_OBJECTS = \
@@ -80,9 +80,9 @@ cross_module_gil_utils_EXTERNAL_OBJECTS =
 tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so: tests/CMakeFiles/cross_module_gil_utils.dir/cross_module_gil_utils.cpp.o
 tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so: tests/CMakeFiles/cross_module_gil_utils.dir/build.make
 tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so: tests/CMakeFiles/cross_module_gil_utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so"
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cross_module_gil_utils.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && /usr/bin/strip /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so"
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cross_module_gil_utils.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && /usr/bin/strip /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so
 
 # Rule to build all files generated by this target.
 tests/CMakeFiles/cross_module_gil_utils.dir/build: tests/cross_module_gil_utils.cpython-39-x86_64-linux-gnu.so
@@ -90,10 +90,10 @@ tests/CMakeFiles/cross_module_gil_utils.dir/build: tests/cross_module_gil_utils.
 .PHONY : tests/CMakeFiles/cross_module_gil_utils.dir/build
 
 tests/CMakeFiles/cross_module_gil_utils.dir/clean:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/cross_module_gil_utils.dir/cmake_clean.cmake
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests && $(CMAKE_COMMAND) -P CMakeFiles/cross_module_gil_utils.dir/cmake_clean.cmake
 .PHONY : tests/CMakeFiles/cross_module_gil_utils.dir/clean
 
 tests/CMakeFiles/cross_module_gil_utils.dir/depend:
-	cd /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11 /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/tests /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests /home/h2amer/work/workspace/JPEG_SDQ/DNN_SDQ/pybind11/build/tests/CMakeFiles/cross_module_gil_utils.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11 /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/tests /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests /home/h2amer/work/workspace/JPEG_HDQ/DNN_HDQ/pybind11/build/tests/CMakeFiles/cross_module_gil_utils.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : tests/CMakeFiles/cross_module_gil_utils.dir/depend
 
